@@ -2,6 +2,9 @@
     import  imageHero from '../lib/img/example.svg';
     import logo from '../lib/img/favicon.ico';
 </script>
+<svelte:head>
+  <title>Policard</title>
+</svelte:head>
   <body>
     <section class="banner">
       <div>

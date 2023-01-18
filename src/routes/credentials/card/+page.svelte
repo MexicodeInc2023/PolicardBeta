@@ -18,7 +18,9 @@
       console.log(error);
     });
 </script>
-
+<svelte:head>
+  <title>Policard-Credencial</title>
+</svelte:head>
 {#if OnError}
   <div
     class="card text-white bg-danger "

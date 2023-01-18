@@ -1,3 +1,6 @@
+<svelte:head>
+  <title>Policard-Tramites</title>
+</svelte:head>
 <div>
   <img
     class="fnd"

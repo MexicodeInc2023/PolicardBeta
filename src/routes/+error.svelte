@@ -3,7 +3,9 @@
   import { page } from '$app/stores';
 	
 </script>
-
+<svelte:head>
+  <title>404</title>
+</svelte:head>
 <div class="e404">
   <div class="huge">{$page.status}</div>
   <div class="big">Pagina no encontrada {$page.error.message}

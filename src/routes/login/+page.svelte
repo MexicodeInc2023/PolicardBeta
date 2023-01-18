@@ -1,4 +1,7 @@
 
+<svelte:head>
+  <title>Policard-Login</title>
+</svelte:head>
 <body class="gradient-custom">
     <section class="vh-100 ">
       <div class="container py-4 h-100">
