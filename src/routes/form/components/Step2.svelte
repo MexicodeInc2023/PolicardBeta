@@ -1,0 +1,165 @@
+<script>
+	import {
+		customerLastnames,
+		customerMatricula,
+		lastnamesIsError,
+		matriculaIsError,
+	} from "./sharedState";
+
+	$: if ($customerLastnames !== "") {
+		$lastnamesIsError = false;
+	}
+	$: if ($customerMatricula !== "") {
+		$matriculaIsError = false;
+	}
+
+	let showComponent = false;
+	window.setTimeout(() => {
+		showComponent = true;
+	}, 0);
+</script>
+
+<article class:show={showComponent}>
+	<h3>Registro de usuario</h3>
+	<p>Ingresa tus datos personales, se mostrarán en tu credencial</p>
+	<form>
+		<div>
+			<label for="nameInput"> Apellidos </label>
+			<input
+				type="text"
+				class:error={$lastnamesIsError}
+				id="nameInput"
+				placeholder=" Ingresa tus apellidos "
+				bind:value={$customerLastnames}
+			/>
+		</div>
+		<div>
+			<label for="emailInput"> Matricula </label>
+			<input
+				type="number"
+				class:error={$matriculaIsError}
+				id="emailInput"
+				placeholder=" Ingresa tu matricula escolar "
+				bind:value={$customerMatricula}
+			/>
+		</div>
+		<div>
+			<label for="phoneInput"> Fecha de nacimiento </label>
+			<input
+				type="date"
+				id="phoneInput"				
+			/>
+		</div>
+	</form>
+</article>
+
+<style>
+	article {
+		transition: 0.3s;
+		position: relative;
+		right: -10rem;
+		opacity: 0;
+	}
+	.show {
+		opacity: 1;
+		right: 0;
+	}
+
+	h3 {
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 28px;
+		color: #022959;
+		margin-bottom: 9px;
+	}
+
+	p {
+		font-size: 16px;
+		line-height: 25px;
+		color: #9699aa;
+		margin-bottom: 22px;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	form div {
+		display: flex;
+		flex-direction: column;
+	}
+
+	label {
+		font-size: 12px;
+		line-height: 14px;
+		color: #022959;
+		margin-bottom: 3px;
+	}
+
+	input {
+		width: 295px;
+		height: 40px;
+		border: 1px solid #d6d9e6;
+		border-radius: 4px;
+		background-color: white;
+		padding-inline: 16px;
+		font-weight: 500;
+		font-size: 15px;
+		line-height: 17px;
+		color: #022959;
+	}
+
+	input::placeholder {
+		color: #9699aa;
+	}
+
+	input:focus {
+		outline: 1px solid #483eff;
+	}
+
+	/* Chrome, Safari, Edge, Opera */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Firefox */
+	input[type="number"] {
+		-moz-appearance: textfield;
+	}
+
+	input.error {
+		outline: 1px solid #ee374a;
+	}
+
+	@media screen and (min-width: 1366px) {
+		h3 {
+			font-size: 32px;
+			line-height: 37px;
+			margin-bottom: 11px;
+		}
+
+		p {
+			font-size: 16px;
+			line-height: 25px;
+			margin-bottom: 40px;
+		}
+
+		label {
+			font-size: 14px;
+			line-height: 16px;
+			margin-bottom: 8px;
+		}
+
+		input {
+			width: 450px;
+			height: 48px;
+			border-radius: 8px;
+			font-size: 16px;
+			line-height: 25px;
+		}
+	}
+</style>
