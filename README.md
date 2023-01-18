@@ -33,7 +33,7 @@
 #### Framework :
 https://svelte.dev/ 
 #### Libreria de estilos :
-https://bootswatch.com/zephyr/ 
+https://getbootstrap.com/
 
 
 ### Back-End :
