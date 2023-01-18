@@ -32,6 +32,7 @@
 ### Front-End  : 
 #### Framework :
 https://svelte.dev/ 
+https://kit.svelte.dev/docs/
 #### Libreria de estilos :
 https://getbootstrap.com/
 
