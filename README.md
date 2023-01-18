@@ -32,8 +32,9 @@
 ### Front-End  : 
 #### Framework :
 https://svelte.dev/ 
+https://kit.svelte.dev/docs/
 #### Libreria de estilos :
-https://bootswatch.com/zephyr/ 
+https://getbootstrap.com/
 
 
 ### Back-End :
