@@ -2,7 +2,7 @@
 	const userView = 'http://127.0.0.1:8000/users/userView/';
 	import Status from './card/components/Status.svelte';
 	import { onMount } from 'svelte';
-  import { authenticated } from '../../stores/auth.js'
+  import { authenticated } from '../../../stores/auth.js'
 
   let message = '';
 
