@@ -2,6 +2,24 @@
 	import { page } from '$app/stores';
 	import logo from '../lib/img/favicon.ico';
 	import profile from '../lib/img/profile.png';
+	import {authenticated} from '../stores/auth.js';
+    
+	const logoutUrl = 'http://127.0.0.1:8000/users/logout/';
+	let auth = false;
+	authenticated.subscribe(value => auth= value);
+
+	const logout = async () => {
+		const res = await fetch(logoutUrl, 
+			{
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				credentials: 'include',
+			});
+         
+		  location.href = '/';
+	}
 </script>
 
 <header>
@@ -64,7 +82,7 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="#">Perfil</a>
 						<div class="dropdown-divider" />
-						<a class="dropdown-item" href="#">Cerrar Sesion</a>
+						<a class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</a>
 					</div>
 				</li>
 			</div>
