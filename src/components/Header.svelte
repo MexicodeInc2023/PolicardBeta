@@ -2,19 +2,30 @@
 	import { page } from '$app/stores';
 	import logo from '../lib/img/favicon.ico';
 	import profile from '../lib/img/profile.png';
+	import { authenticated } from '../stores/auth.js';
+
+	const logoutUrl = 'http://127.0.0.1:8000/users/logout/';
+	let auth = false;
+	authenticated.subscribe((value) => (auth = value));
+
+	const logout = async () => {
+		const res = await fetch(logoutUrl, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			credentials: 'include'
+		});
+
+		location.href = '/';
+	};
 </script>
 
 <header>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/">
-				<img
-					src={logo}
-					alt=""
-					width="50"
-					height="50"
-					class="d-inline-block align-text-top"
-				/>
+				<img src={logo} alt="" width="50" height="50" class="d-inline-block align-text-top" />
 			</a>
 
 			<button
@@ -31,7 +42,10 @@
 			<div class="collapse navbar-collapse" id="navbarColor03">
 				<ul class="navbar-nav me-auto">
 					<div class="logo">POLICARD</div>
-					<li class="nav-item" aria-current={$page.url.pathname === '/credentials' ? 'page' : undefined}>
+					<li
+						class="nav-item"
+						aria-current={$page.url.pathname === '/credentials' ? 'page' : undefined}
+					>
 						<a class="nav-link " href="/credentials">INICIO</a>
 					</li>
 					<li aria-current={$page.url.pathname === '/credentials/card' ? 'page' : undefined}>
@@ -64,7 +78,9 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="#">Perfil</a>
 						<div class="dropdown-divider" />
-						<a class="dropdown-item" href="#">Cerrar Sesion</a>
+						<form method="POST" action="/logout">
+							<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>
+						</form>
 					</div>
 				</li>
 			</div>
@@ -78,17 +94,14 @@
 		font-weight: bold;
 		color: #000;
 		margin-right: 1rem;
-	} 
+	}
 
-	li{
+	li {
 		margin-right: 1rem;
 	}
 
-	a{
+	a {
 		color: #000;
 		margin-top: 0.25rem;
-		
 	}
-
-
 </style>

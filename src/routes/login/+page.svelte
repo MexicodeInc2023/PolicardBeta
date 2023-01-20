@@ -1,4 +1,33 @@
+<script>
+   const loginUrl =   'http://127.0.0.1:8000/users/login/'
+   
+   let email,password;
+   
 
+    const submit = async () => {
+        const res = await fetch(loginUrl, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+              email,
+              password
+          })
+          
+        });
+      
+        if (res.ok) {
+          // Enviar a la pagina de credenciales
+          location.href = '/credentials';
+          // enviar la autenticacion 
+         
+        } else {
+          alert('Error en la autencacion');
+        }
+    };
+</script>
 <svelte:head>
   <title>Policard-Login</title>
 </svelte:head>
@@ -8,7 +37,7 @@
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-12 col-md-8 col-lg-6 col-xl-5">
             <div class="card" style="border-radius: 1rem;">
-              <form class="card-body p-5 text-center">
+              <form class="card-body p-5 text-center" on:submit={submit} method="POST">
                 <div class="mb-md-5 mt-md-4 pb-3">
                   <h2 class="fw-bold mb-2 text-uppercase text-primary">
                     Inicio de Sesion
@@ -19,19 +48,21 @@
                   <div class="form-group m-2">
                     <div class="form-floating mb-3">
                       <input
+                        bind:value={email}
                         type="email"
                         class="form-control"
-                        id="floatingInput"
                         placeholder="matricula@uptapachula.edu.mx"
+                        required
                       />
-                      <label for="floatingInput">Correo Electronico</label>
+                      <label for="floatingInput">Correo Institucional</label>
                     </div>
                     <div class="form-floating">
                       <input
+                        bind:value={password}
                         type="password"
                         class="form-control"
-                        id="floatingPassword"
                         placeholder="Password"
+                        required
                       />
                       <label for="floatingPassword">Contraseña</label>
                     </div>
