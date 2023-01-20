@@ -1,4 +1,3 @@
-
 <script>
     import imageDfl from "../../../lib/img/default.jpg"
     let fileInput;

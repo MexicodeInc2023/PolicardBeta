@@ -2,15 +2,20 @@
 	import {
 		customerLastnames,
 		customerMatricula,
+		customerDate,
 		lastnamesIsError,
 		matriculaIsError,
-	} from "./sharedState";
+		dateIsError
+	} from './sharedState';
 
-	$: if ($customerLastnames !== "") {
+	$: if ($customerLastnames !== '') {
 		$lastnamesIsError = false;
 	}
-	$: if ($customerMatricula !== "") {
+	$: if ($customerMatricula !== '') {
 		$matriculaIsError = false;
+	}
+	$: if ($customerDate !== '') {
+		$dateIsError = false;
 	}
 
 	let showComponent = false;
@@ -24,31 +29,32 @@
 	<p>Ingresa tus datos personales, se mostrarán en tu credencial</p>
 	<form>
 		<div>
-			<label for="nameInput"> Apellidos </label>
+			<label for="lastnamesInput"> Apellidos </label>
 			<input
 				type="text"
 				class:error={$lastnamesIsError}
-				id="nameInput"
+				id="lastnames"
 				placeholder=" Ingresa tus apellidos "
 				bind:value={$customerLastnames}
 			/>
 		</div>
 		<div>
-			<label for="emailInput"> Matricula </label>
+			<label for="matriculaInput"> Matricula </label>
 			<input
 				type="number"
 				class:error={$matriculaIsError}
-				id="emailInput"
+				id="matriculaInput"
 				placeholder=" Ingresa tu matricula escolar "
 				bind:value={$customerMatricula}
 			/>
 		</div>
 		<div>
-			<label for="phoneInput"> Fecha de nacimiento </label>
-			<input
-				type="date"
-				id="phoneInput"				
-			/>
+			<label for="dateInput"> Fecha de nacimiento </label>
+			<input 
+				type="date" 
+				class:error={$dateIsError} 
+				id="dateInput" 
+				bind:value={$customerDate} />
 		</div>
 	</form>
 </article>
@@ -127,7 +133,7 @@
 	}
 
 	/* Firefox */
-	input[type="number"] {
+	input[type='number'] {
 		-moz-appearance: textfield;
 	}
 

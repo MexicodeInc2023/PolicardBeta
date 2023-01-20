@@ -29,9 +29,8 @@
 	<p>Ingresa tus datos personales, se mostrarán en tu credencial.</p>
 	<form>
 		<div>
-			<label for="nameInput"> Grupo </label>
-			<select class="form-select group" id="nameInput">
-				<option selected> Escoje una opcion </option>
+			<label for="groupInput"> Grupo </label>
+			<select class="form-select group" class:error={$groupIsError} id="groupInput" bind:value={$customerGroup}>
 				<option> 2A </option>
 				<option> 2B </option>
 				<option> 5A </option>
@@ -40,9 +39,8 @@
 			</select>
 		</div>
 		<div>
-			<label for="nameInput"> Carrera </label>
-			<select class="form-select group" id="nameInput">
-				<option selected> Escoje una opcion </option>
+			<label for="carreerInput"> Carrera </label>
+			<select class="form-select group" class:error={$carreerIsError} id="carreerInput" bind:value={$customerCarreer}>
 				<option> Ingeniera de Software </option>
 				<option> Ingeniera en Animacion </option>
 				<option> Ingeniera Mecatronica </option>
@@ -51,11 +49,11 @@
 			</select>
 		</div>
 		<div>
-			<label for="phoneInput"> Alergia </label>
+			<label for="alergyInput"> Alergia </label>
 			<input
 				type="text"
 				class:error={$alergyIsError}
-				id="phoneInput"
+				id="alergyInput"
 				placeholder=" Ingresa alguna alergia que padeces "
 				bind:value={$customerAlergy}
 			/>

@@ -29,31 +29,31 @@
 	<p>Ingresa tus datos personales, se mostrarán en tu credencial.</p>
 	<form>
 		<div>
-			<label for="nameInput"> Alergia Extra </label>
+			<label for="alergyextraInput"> Alergia Extra </label>
 			<input
 				type="text"
 				class:error={$alergyextraIsError}
-				id="nameInput"
+				id="alergyextraInput"
 				placeholder=" Ingresa otra alergia que padezcas "
 				bind:value={$customerAlergyextra}
 			/>
 		</div>
 		<div>
-			<label for="emailInput"> Contacto de Emergencia </label>
+			<label for="contacemergencyInput"> Contacto de Emergencia </label>
 			<input
 				type="text"
 				class:error={$contactemergencyIsError}
-				id="emailInput"
+				id="contacemergencyInput"
 				placeholder=" Ingresa tu contacto de emergencia "
 				bind:value={$customerContactemergency}
 			/>
 		</div>
 		<div>
-			<label for="phoneInput"> Numero de Emergencia </label>
+			<label for="phoneemergencyInput"> Numero de Emergencia </label>
 			<input
 				type="number"
 				class:error={$phoneemergencyIsError}
-				id="phoneInput"
+				id="phoneemergencyInput"
 				placeholder=" Ingresa tu numero de emergencia "
 				bind:value={$customerPhoneEmergency}
 			/>
