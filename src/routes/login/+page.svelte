@@ -83,10 +83,10 @@
         </div>
       </div>
     </section>
-    <!-- Momentaneo -->
+    <!-- Momentaneo 
     <div class="text-center">
       <a href="/credentials" class="text-bg-dark btn">Acceder momentaneo</a>
-    </div>
+    </div> -->
   </body>
   
   <style>

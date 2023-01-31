@@ -156,7 +156,7 @@
 			<PurchaseComplete />
 		{/if}
 	</div>
-	<footer>
+	<di class="footer"> 
 		<button
 			class="previousButton"
 			on:click={() => {
@@ -178,7 +178,7 @@
 				Confirmar
 			</button>
 		{/if}
-	</footer>
+	</di>
 </main>
 
 <style>
@@ -186,7 +186,6 @@
 	main {
 		position: relative;
 		height: 100vh;
-		margin-left: 1px;
 		margin-top: -730px;
 	}
 
@@ -245,7 +244,7 @@
 		margin-right: auto;
 	}
 
-	footer {
+	.footer {
 		height: 72px;
 		width: 100%;
 		background-color: white;
@@ -296,9 +295,9 @@
 		background-color: #928cff;
 	}
 
-	@media screen and (min-width: 1366px) {
+	@media screen and (min-width: 992px) {
 		main {
-			width: 940px;
+			width: 880px;
 			height: 600px;
 			background-color: white;
 			box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.0951141);
@@ -367,7 +366,7 @@
 			padding: 0;
 		}
 
-		footer {
+		.footer {
 			position: initial;
 			margin-top: auto;
 			margin-left: 100px;
