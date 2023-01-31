@@ -32,8 +32,8 @@
 					<div class="card text-center container border-success" style="width: 18rem;">
 						<div class="card-body">
 							<h5 class="card-title htxt">¿Ya tienes tu cuenta?</h5>
-							<p class="card-text">Si tienes tu cuenta simplemente incia sesion.</p>
-							<a href="/login" class="btn btn-success">Incia Sesion</a>
+							<p class="card-text">Si tienes tu cuenta simplemente inicia sesion.</p>
+							<a href="/login" class="btn btn-success">Inicia Sesion</a>
 						</div>
 					</div>
 				</div>
