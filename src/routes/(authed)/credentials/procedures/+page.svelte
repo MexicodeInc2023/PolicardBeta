@@ -2,12 +2,12 @@
   <title>Policard-Tramites</title>
 </svelte:head>
 <div>
-  <img
+  <!-- <img
     class="fnd"
     src="https://s9.gifyu.com/images/bg-2.png"
     alt="bg-2.png"
     border="0"
-  />
+  /> -->
   <div class="container ">
     <h1 class="text-center m-1">Tramites</h1>
     <div class="row no-gutters m-5">
