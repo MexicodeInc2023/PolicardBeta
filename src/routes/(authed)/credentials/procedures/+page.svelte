@@ -2,12 +2,6 @@
   <title>Policard-Tramites</title>
 </svelte:head>
 <div>
-  <!-- <img
-    class="fnd"
-    src="https://s9.gifyu.com/images/bg-2.png"
-    alt="bg-2.png"
-    border="0"
-  /> -->
   <div class="container ">
     <h1 class="text-center m-1">Tramites</h1>
     <div class="row no-gutters m-5">
@@ -23,7 +17,9 @@
           <div class="card-body">
             <h5 class="card-title">Reposicion de credencial</h5>
             <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              ¿Perdiste tu credencial?
+              <br/>
+              Solicita una nueva ahora.
             </p>
             <a href="#" class="btn btn-danger">Solicitar</a>
           </div>
@@ -33,7 +29,7 @@
           <div class="card-body">
             <h5 class="card-title">Correcion de datos</h5>
             <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+              Solicita cambiar alguno de los datos de tu credencial.
             </p>
             <a href="#" class="btn btn-warning text-black">Solicitar</a>
           </div>
@@ -44,11 +40,5 @@
 </div>
 
 <style>
-  .fnd {
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 95%;
-    object-fit: cover;
-  }
+
 </style>
