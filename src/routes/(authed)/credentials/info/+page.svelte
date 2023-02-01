@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Policard-Extra Info</title>
+	<title>Policard-Informacion</title>
 </svelte:head>
 
 <body>
