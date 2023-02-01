@@ -55,7 +55,7 @@
 						<a class="nav-link" href="/credentials/procedures">Tramites</a>
 					</li>
 					<li aria-current={$page.url.pathname === '/credentials/info' ? 'page' : undefined}>
-						<a class="nav-link" href="/credentials/info">InfoExtra</a>
+						<a class="nav-link" href="/credentials/info">Informacion</a>
 					</li>
 				</ul>
 				<li class="nav-item dropdown d-flex dropstart">
