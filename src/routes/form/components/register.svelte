@@ -247,9 +247,9 @@
 	.footer {
 		height: 72px;
 		width: 100%;
-		background-color: white;
-		position: absolute;
-		bottom: 0;
+		background-color:white;
+		position: relative;
+		margin-top: 350px;
 		padding: 16px;
 		display: flex;
 		justify-content: space-between;
