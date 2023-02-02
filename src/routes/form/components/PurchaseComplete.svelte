@@ -52,7 +52,7 @@ p {
 	margin-bottom: 47px;
 }
 
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 992px) {
 	img {
 		width: 80px;
 		height: 80px;

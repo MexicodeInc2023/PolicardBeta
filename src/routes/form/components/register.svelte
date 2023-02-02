@@ -30,7 +30,7 @@
 		carreerIsError,
 		alergyIsError
 	} from './sharedState';
-    import {
+	import {
 		customerAlergyextra,
 		customerContactemergency,
 		customerPhoneEmergency,
@@ -77,24 +77,28 @@
 			if ($customerCarreer === '') {
 				$carreerIsError = true;
 			}
-            if ($customerAlergy === '') {
+			if ($customerAlergy === '') {
 				$alergyIsError = true;
 			}
 			if ($customerGroup !== '' && $customerCarreer !== '' && $customerAlergy !== '') {
 				$currentStep++;
 			}
 		}
-        if ($currentStep === 4) {
+		if ($currentStep === 4) {
 			if ($customerAlergyextra === '') {
 				$alergyextraIsError = true;
 			}
 			if ($customerContactemergency === '') {
 				$contactemergencyIsError = true;
 			}
-            if ($customerPhoneEmergency === '') {
+			if ($customerPhoneEmergency === '') {
 				$phoneemergencyIsError = true;
 			}
-			if ($customerAlergyextra !== '' && $customerContactemergency !== '' && $customerPhoneEmergency !== '') {
+			if (
+				$customerAlergyextra !== '' &&
+				$customerContactemergency !== '' &&
+				$customerPhoneEmergency !== ''
+			) {
 				$currentStep++;
 			}
 		}
@@ -156,7 +160,7 @@
 			<PurchaseComplete />
 		{/if}
 	</div>
-	<di class="footer"> 
+	<div class="footer">
 		<button
 			class="previousButton"
 			on:click={() => {
@@ -164,10 +168,18 @@
 			}}
 			class:show={$currentStep > 1 && $currentStep < 6}
 		>
+			<div class="arrow-wrapperr">
+				<div class="arrow back" />
+			</div>
 			Regresar
 		</button>
 		{#if $currentStep < 5}
-			<button class="nextButton" on:click={nextStep}> Siguiente </button>
+			<button class="nextButton" on:click={nextStep}>
+				Siguiente
+				<div class="arrow-wrapper">
+					<div class="arrow" />
+				</div>
+			</button>
 		{:else if $currentStep === 5}
 			<button
 				class="nextButton confirm"
@@ -178,7 +190,7 @@
 				Confirmar
 			</button>
 		{/if}
-	</di>
+	</div>
 </main>
 
 <style>
@@ -247,7 +259,7 @@
 	.footer {
 		height: 72px;
 		width: 100%;
-		background-color:white;
+		background-color: white;
 		position: relative;
 		margin-top: 350px;
 		padding: 16px;
@@ -256,43 +268,131 @@
 		align-items: center;
 	}
 
+	.nextButton {
+		--primary-color: #645bff;
+		--secondary-color: #fff;
+		--hover-color: #111;
+		--arrow-width: 10px;
+		--arrow-stroke: 2px;
+		box-sizing: border-box;
+		border: 0;
+		border-radius: 20px;
+		color: var(--secondary-color);
+		padding: 1em 1.8em;
+		background: var(--primary-color);
+		display: flex;
+		transition: 0.2s background;
+		align-items: center;
+		gap: 0.6em;
+		font-weight: bold;
+	}
+
+	.nextButton .arrow-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.nextButton .arrow {
+		margin-top: 1px;
+		width: var(--arrow-width);
+		background: var(--primary-color);
+		height: var(--arrow-stroke);
+		position: relative;
+		transition: 0.2s;
+	}
+
+	.nextButton .arrow::before {
+		content: '';
+		box-sizing: border-box;
+		position: absolute;
+		border: solid var(--secondary-color);
+		border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+		display: inline-block;
+		top: -3px;
+		right: 3px;
+		transition: 0.2s;
+		padding: 3px;
+		transform: rotate(-45deg);
+	}
+
+	.nextButton:hover {
+		background-color: var(--hover-color);
+	}
+
+	.nextButton:hover .arrow {
+		background: var(--secondary-color);
+	}
+
+	.nextButton:hover .arrow:before {
+		right: 0;
+	}
+
 	.previousButton {
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 16px;
-		color: #9699aa;
-		text-transform: capitalize;
-		cursor: pointer;
-		text-decoration: none;
-		border: none;
-		background-color: transparent;
+		--primary-color: #645bff;
+		--secondary-color: #fff;
+		--hover-color: #111;
+		--arrow-width: 10px;
+		--arrow-stroke: 2px;
+		box-sizing: border-box;
+		border: 0;
+		border-radius: 20px;
+		color: var(--secondary-color);
+		padding: 1em 1.8em;
+		background: var(--primary-color);
+		display: flex;
+		transition: 0.2s background;
+		align-items: center;
+		gap: 0.6em;
+		font-weight: bold;
+	}
+
+	.previousButton .arrow-wrapperr {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.previousButton .back {
+		margin-top: 1px;
+		width: var(--arrow-width);
+		background: var(--primary-color);
+		height: var(--arrow-stroke);
+		position: relative;
+		transition: 0.2s;
+	}
+
+	.previousButton .back::before {
+		content: '';
+		box-sizing: border-box;
+		position: absolute;
+		border: solid var(--secondary-color);
+		border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+		display: inline-block;
+		top: -3px;
+		left: 3px;
+		transition: 0.2s;
+		padding: 3px;
+		transform: rotate(135deg);
+	}
+
+	.previousButton:hover {
+		background-color: var(--hover-color);
+	}
+
+	.previousButton:hover .back {
+		background: var(--secondary-color);
+	}
+
+	.previousButton:hover .back:before {
+		left: 0;
+	}
+	.previousButton {
 		visibility: hidden;
 	}
 
 	.previousButton.show {
 		visibility: visible;
-	}
-
-	.nextButton {
-		border: none;
-		background-color: #022959;
-		border-radius: 4px;
-		font-weight: 500;
-		font-size: 14px;
-		line-height: 16px;
-		color: white;
-		text-transform: capitalize;
-		cursor: pointer;
-		width: 97px;
-		height: 40px;
-	}
-
-	.nextButton.confirm {
-		background-color: #483eff;
-	}
-
-	.nextButton.confirm:hover {
-		background-color: #928cff;
 	}
 
 	@media screen and (min-width: 992px) {
@@ -376,27 +476,125 @@
 			height: 48px;
 		}
 
-		.previousButton {
-			font-size: 16px;
-			line-height: 18px;
-			transition: 0.15;
-		}
-
-		.previousButton:hover {
-			color: #022959;
-		}
-
 		.nextButton {
-			width: 123px;
-			height: 48px;
-			border-radius: 8px;
-			font-size: 16px;
-			line-height: 18px;
-			transition: 0.15s;
+			--primary-color: #645bff;
+			--secondary-color: #fff;
+			--hover-color: #111;
+			--arrow-width: 10px;
+			--arrow-stroke: 2px;
+			box-sizing: border-box;
+			border: 0;
+			border-radius: 20px;
+			color: var(--secondary-color);
+			padding: 1em 1.8em;
+			background: var(--primary-color);
+			display: flex;
+			transition: 0.2s background;
+			align-items: center;
+			gap: 0.6em;
+			font-weight: bold;
+		}
+
+		.nextButton .arrow-wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.nextButton .arrow {
+			margin-top: 1px;
+			width: var(--arrow-width);
+			background: var(--primary-color);
+			height: var(--arrow-stroke);
+			position: relative;
+			transition: 0.2s;
+		}
+
+		.nextButton .arrow::before {
+			content: '';
+			box-sizing: border-box;
+			position: absolute;
+			border: solid var(--secondary-color);
+			border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+			display: inline-block;
+			top: -3px;
+			right: 3px;
+			transition: 0.2s;
+			padding: 3px;
+			transform: rotate(-45deg);
 		}
 
 		.nextButton:hover {
-			background-color: #164a8a;
+			background-color: var(--hover-color);
+		}
+
+		.nextButton:hover .arrow {
+			background: var(--secondary-color);
+		}
+
+		.nextButton:hover .arrow:before {
+			right: 0;
+		}
+
+		.previousButton {
+			--primary-color: #645bff;
+			--secondary-color: #fff;
+			--hover-color: #111;
+			--arrow-width: 10px;
+			--arrow-stroke: 2px;
+			box-sizing: border-box;
+			border: 0;
+			border-radius: 20px;
+			color: var(--secondary-color);
+			padding: 1em 1.8em;
+			background: var(--primary-color);
+			display: flex;
+			transition: 0.2s background;
+			align-items: center;
+			gap: 0.6em;
+			font-weight: bold;
+			margin-left: -45px;
+		}
+
+		.previousButton .arrow-wrapperr {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.previousButton .back {
+			margin-top: 1px;
+			width: var(--arrow-width);
+			background: var(--primary-color);
+			height: var(--arrow-stroke);
+			position: relative;
+			transition: 0.2s;
+		}
+
+		.previousButton .back::before {
+			content: '';
+			box-sizing: border-box;
+			position: absolute;
+			border: solid var(--secondary-color);
+			border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+			display: inline-block;
+			top: -3px;
+			left: 3px;
+			transition: 0.2s;
+			padding: 3px;
+			transform: rotate(135deg);
+		}
+
+		.previousButton:hover {
+			background-color: var(--hover-color);
+		}
+
+		.previousButton:hover .back {
+			background: var(--secondary-color);
+		}
+
+		.previousButton:hover .back:before {
+			left: 0;
 		}
 	}
 </style>
