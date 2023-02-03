@@ -8,7 +8,9 @@ window.setTimeout(()=>{showComponent = true}, 0)
 <article class:show={showComponent}>
 	<img src={thankYouImg} alt="">
 	<h3>Thank you!</h3>
-	<p>Thank you for confirming your data! We hope you have fun using our platform. If you ever need support, please feel free to email us at mexicode@gmail.com.</p>
+	<p>Thank you for confirming your data! We hope you have fun using our platform. 
+		If you ever need supp	ort, please feel free to email us at mexicode@gmail.com.</p>
+		<a href="/login" class="previousButton">Iniciar Sesion</a>
 </article>
 
 <style>
@@ -66,4 +68,22 @@ p {
 		margin-bottom: 14px;
 	}
 }
+	.previousButton {
+		--primary-color: #645bff;
+		--secondary-color: #fff;
+		--hover-color: #111;
+		--arrow-width: 10px;
+		--arrow-stroke: 2px;
+		box-sizing: border-box;
+		border: 0;
+		border-radius: 20px;
+		color: var(--secondary-color);
+		padding: 1em 1.8em;
+		background: var(--primary-color);
+		display: flex;
+		transition: 0.2s background;
+		align-items: center;
+		gap: 0.6em;
+		font-weight: bold;
+	}
 </style>
