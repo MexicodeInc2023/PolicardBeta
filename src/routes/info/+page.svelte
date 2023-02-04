@@ -112,7 +112,158 @@
     </div>
 
 
-
+    <div class="grey-bg container-fluid">
+        <section id="minimal-statistics">
+          <div class="row">
+            <div class="col-12 mt-3 mb-1">
+              <h4 class="text-uppercase">¿QUE DATOS NECESITAS PARA OBTENER LA CREDENCIAL DIGITAL?</h4>
+              <p>A continuación te presentaremos los datos a considerar:</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12"> 
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="media d-flex">
+                      <div class="align-self-center">
+                        <i class="icon-pencil primary font-large-2 float-left"></i>
+                      </div>
+                      <div class="media-body text-right">
+                        <h3>Nombre (s)</h3>
+                        <span>Obligatorio. <br> Necesitas tu nombre, en caso de tener mas de un nombre debes ponerlos</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="media d-flex">
+                      <div class="align-self-center">
+                        <i class="icon-speech warning font-large-2 float-left"></i>
+                      </div>
+                      <div class="media-body text-right">
+                        <h3>Apellidos</h3>
+                        <span>Obligatorio <br> Debe ser necesario registrar tus apellidos, paterno y materno. </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="media d-flex">
+                      <div class="align-self-center">
+                        <i class="icon-graph success font-large-2 float-left"></i>
+                      </div>
+                      <div class="media-body text-right">
+                        <h3>Matricula</h3>
+                        <span>Obligatorio. <br> Es un dato esencial para ru credencial, te identifica con tu dato escolar. </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="media d-flex">
+                      <div class="align-self-center">
+                        <i class="icon-pointer danger font-large-2 float-left"></i>
+                      </div>
+                      <div class="media-body text-right">
+                        <h3>Carrera</h3>
+                        <span>Obligatorio. <br> Dato esencial para ubicar en que programa academico estas vinculado y registrado.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="media d-flex">
+                      <div class="media-body text-left">
+                        <h3 class="danger">Fecha de Nacimiento</h3>
+                        <span>Obligatorio <br> Dato esencial para calcular tu edad, verificar datos y tramites escolares.</span>
+                      </div>
+                      <div class="align-self-center">
+                        <i class="icon-rocket danger font-large-2 float-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="media d-flex">
+                      <div class="media-body text-left">
+                        <h3 class="success">Foto de perfil</h3>
+                        <span>Obligatorio <br> Es importante identificar tu persona, saber quien eres y como eres.</span>
+                      </div>
+                      <div class="align-self-center">
+                        <i class="icon-user success font-large-2 float-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+            <div class="col-xl-3 col-sm-6 col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="media d-flex">
+                      <div class="media-body text-left">
+                        <h3 class="warning">Correo institucional</h3>
+                        <span>Obligatorio. Obtienes tu credencial registrandote con tu cuenta que te proporciono la escuela</span>
+                      </div>
+                      <div class="align-self-center">
+                        <i class="icon-pie-chart warning font-large-2 float-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="card-body">
+                    <div class="media d-flex">
+                      <div class="media-body text-left">
+                        <h3 class="primary">Adicionales</h3>
+                        <span>Opcionales <br> Datos opcionales como alergias, datos de emergencia y</span>
+                      </div>
+                      <div class="align-self-center">
+                        <i class="icon-support primary font-large-2 float-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+         
    
 
         
@@ -125,6 +276,11 @@
 
 
 <style>
+
+
+.grey-bg {  
+    background-color: #F5F7FA;
+}
 .banner{
     background-image: url('../../lib/img/background.png');
     background-size: cover;
