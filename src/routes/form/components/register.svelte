@@ -395,7 +395,7 @@
 		visibility: visible;
 	}
 
-	@media screen and (min-width: 992px) {
+	@media screen and (min-width: 1000px) {
 		main {
 			width: 880px;
 			height: 600px;
@@ -597,4 +597,5 @@
 			left: 0;
 		}
 	}
+	
 </style>

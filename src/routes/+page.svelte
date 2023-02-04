@@ -34,20 +34,26 @@
 			<br />
 			<div class="row lol">
 				<div class="col">
-					<div class="card text-center container border-success" style="width: 18rem; height: 18rem;">
+					<div
+						class="card text-center container border-success"
+						style="width: 18rem; height: 18rem;"
+					>
 						<div class="card-body">
 							<h5 class="card-title htxt">¿Ya tienes tu cuenta?</h5>
 							<p class="card-text">Si tienes tu cuenta simplemente inicia sesion.</p>
-							<a href="/login" class="login"> Iniciar Sesion </a>
+							<a href="/login" class="loginn"> Iniciar Sesion </a>
 						</div>
 					</div>
 				</div>
 				<div class="col">
-					<div class="card text-center container border-warning" style="width: 18rem; height: 18rem;">
+					<div
+						class="card text-center container border-warning"
+						style="width: 18rem; height: 18rem;"
+					>
 						<div class="card-body">
 							<h5 class="card-title htxt">Tramita tu credencial</h5>
 							<p class="card-text">Si aun, no cuentas con tu credencial, crea tu cuenta</p>
-							<a href="/form" class="login">Crear cuenta</a>
+							<a href="/form" class="loginn">Crear cuenta</a>
 						</div>
 					</div>
 				</div>
@@ -102,7 +108,6 @@
 		font-size: 1.5rem;
 		margin-top: 22px;
 		margin-bottom: 22px;
-		
 	}
 
 	.fancy {
@@ -221,67 +226,32 @@
 		font-size: 15px;
 	}
 
-	a.login {
-		font-weight: 600;
-		color: #382b22;
+	.loginn {
+		padding: 1.3em 3em;
+		margin-top: 10px;
+		font-size: 12px;
 		text-transform: uppercase;
-		padding: 1.25em 2em;
-		background: #fff0f0;
-		border: 2px solid #b18597;
-		border-radius: 0.75em;
-		-webkit-transform-style: preserve-3d;
-		transform-style: preserve-3d;
-		-webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1),
-			-webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
-		transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
-			background 150ms cubic-bezier(0, 0, 0.58, 1),
-			-webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
-	}
-	a.login::before {
-		position: absolute;
-		content: '';
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: #f9c4d2;
-		border-radius: inherit;
-		-webkit-box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
-		box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
-		-webkit-transform: translate3d(0, 0.75em, -1em);
-		transform: translate3d(0, 0.75em, -1em);
-		transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
-			box-shadow 150ms cubic-bezier(0, 0, 0.58, 1),
-			-webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1),
-			-webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+		letter-spacing: 2.5px;
+		font-weight: 500;
+		color: #000;
+		background-color: #fff;
+		border: none;
+		border-radius: 45px;
+		box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease 0s;
+		cursor: pointer;
+		outline: none;
 	}
 
-	a.login:hover {
-		background: #ffe9e9;
-		-webkit-transform: translate(0, 0.25em);
-		transform: translate(0, 0.25em);
+	.loginn:hover {
+		background-color: #23c483;
+		box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+		color: #fff;
+		transform: translateY(-7px);
 	}
 
-	a.login:hover::before {
-		-webkit-box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
-		box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
-		-webkit-transform: translate3d(0, 0.5em, -1em);
-		transform: translate3d(0, 0.5em, -1em);
-	}
-
-	a.login:active {
-		background: #ffe9e9;
-		-webkit-transform: translate(0em, 0.75em);
-		transform: translate(0em, 0.75em);
-	}
-
-	a.login:active::before {
-		-webkit-box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
-		box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
-		-webkit-transform: translate3d(0, 0, -1em);
-		transform: translate3d(0, 0, -1em);
+	.loginn:active {
+		transform: translateY(-1px);
 	}
 
 	@media screen and (max-width: 1199px) {
