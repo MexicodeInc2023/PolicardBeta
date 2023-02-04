@@ -22,16 +22,16 @@
 								<img src="../../../../../src/lib/img/1.png" class="d-block w-100" alt="" />
 							</div>
 							<div class="carousel-item">
-								<img src="../../../../../src/lib/img/2-2.gif" class="d-block w-100" alt="" />
+								<img src="../../../../../src/lib/img/2.png" class="d-block w-100" alt="" />
 							</div>
 							<div class="carousel-item">
-								<img src="../../../../../src/lib/img/3-3.gif" class="d-block w-100" alt="" />
+								<img src="../../../../../src/lib/img/3.png" class="d-block w-100" alt="" />
 							</div>
 							<div class="carousel-item">
-								<img src="../../../../../src/lib/img/4-4.gif" class="d-block w-100" alt="" />
+								<img src="../../../../../src/lib/img/4.png" class="d-block w-100" alt="" />
 							</div>
 							<div class="carousel-item">
-								<img src="../../../../../src/lib/img/5-5.gif" class="d-block w-100" alt="" />
+								<img src="../../../../../src/lib/img/5.png" class="d-block w-100" alt="" />
 							</div>
 						</div>
 						<button
