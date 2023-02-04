@@ -10,7 +10,6 @@
 </svelte:head>
 
 <body>
-	<section class="banner">
 		<div class="container">
 			<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 				<div class="carousel-inner">
@@ -48,7 +47,8 @@
 				</button>
 			</div>
 		</div>
-	</section>
+
+		
 </body>
 
 <style>
