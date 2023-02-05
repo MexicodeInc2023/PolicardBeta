@@ -33,27 +33,61 @@
 			</div>
 			<br />
 			<div class="row lol">
-				<div class="col">
-					<div
-						class="card text-center container border-success"
-						style="width: 18rem; height: 18rem;"
-					>
-						<div class="card-body">
+				<div class="col" style="padding: 50px 0 30px 0;">
+					<div class="card text-center container">
+						<div class="header">
+							<div class="img-box">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="46"
+									height="46"
+									class="bi bi-person-circle"
+									viewBox="0 0 16 16"
+								>
+									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+									<path
+										fill-rule="evenodd"
+										d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+									/>
+								</svg>
+							</div>
+							<h2 class="login_user">Iniciar Sesion</h2>
+						</div>
+
+						<div class="content">
 							<h5 class="card-title htxt">¿Ya tienes tu cuenta?</h5>
 							<p class="card-text">Si tienes tu cuenta simplemente inicia sesion.</p>
+
 							<a href="/login" class="loginn"> Iniciar Sesion </a>
 						</div>
 					</div>
 				</div>
-				<div class="col">
-					<div
-						class="card text-center container border-warning"
-						style="width: 18rem; height: 18rem;"
-					>
-						<div class="card-body">
+				<div class="col" style="padding: 50px 0 30px 0;">
+					<div class="card text-center container register">
+						<div class="header regis">
+							<div class="img-box">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="46"
+									height="46"
+									class="bi bi-person-circle"
+									viewBox="0 0 16 16"
+								>
+									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+									<path
+										fill-rule="evenodd"
+										d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+									/>
+								</svg>
+							</div>
+							<h2 class="register_user"> Registrate </h2>
+						</div>
+
+						<div class="content">
 							<h5 class="card-title htxt">Tramita tu credencial</h5>
-							<p class="card-text">Si aun, no cuentas con tu credencial, crea tu cuenta</p>
-							<a href="/form" class="loginn">Crear cuenta</a>
+							<p class="card-text">Si aun, no cuentas con tu credencial, crea tu cuenta.</p>
+
+							<a href="/form" class="loginn"> Crear cuenta </a>
 						</div>
 					</div>
 				</div>
@@ -103,13 +137,65 @@
 		color: #000;
 	}
 
+	.card {
+		width: 18rem;
+		height: 120px;
+		transition: all 0.5s;
+		box-shadow: 15px 15px 30px rgba(25, 25, 25, 0.247), -15px -15px 30px rgba(60, 60, 60, 0.082);
+		text-align: center;
+		overflow: hidden;
+	}
+
+	.card:hover {
+		height: 22rem;
+	}
+
+	.card .header {
+		padding: 30px 0 10px 0;
+		margin: -12px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background: #23c483;
+	}
+
+	.register .header {
+
+		background: #7352F3;
+
+	}
+
+	.card .header .login_user {
+		font-size: 1.2em;
+		letter-spacing: 0.1em;
+		font-weight: 600;
+		text-transform: uppercase;
+		padding: 18px 0 0 0;
+		transition: all 0.5s;
+		color: #000;
+	}
+	.register_user {
+		font-size: 1.2em;
+		letter-spacing: 0.1em;
+		font-weight: 600;
+		text-transform: uppercase;
+		padding: 18px 0 0 0;
+		transition: all 0.5s;
+		color: #000;
+	}
+	.card .content {
+		text-align: center;
+		color: #212121;
+		margin: 0 18px;
+	}
+
 	.htxt {
 		font-weight: 600;
 		font-size: 1.5rem;
-		margin-top: 22px;
-		margin-bottom: 22px;
+		margin-top: 30px;
+		margin-bottom: 22spx;
 	}
-
 	.fancy {
 		background-color: transparent;
 		border: 2px solid #000;
@@ -262,6 +348,7 @@
 	@media screen and (max-width: 1199px) and (min-width: 992px) {
 		.lol {
 			margin-top: -300px;
+			
 		}
 	}
 </style>
