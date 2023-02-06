@@ -55,27 +55,28 @@
 					</div>
 					<br />
 				</th>
-			<th scope="col"><!-- Esta parte del codigo son las Cards -->
-				<center>
+			<th scope="col">
+				<!-- Esta parte del codigo son las Cards -->
+				
 				<div class="container">
 					<div class="card" style="width: 18rem;">
-						<img src="../../../../../src/lib/img/6-6.gif" class="card-img-top" alt="...">
+						<img src="../../../../../src/lib/img/6.png" class="card-img-top" alt="...">
 						<div class="card-body">
-							<h6 class="card-subtitle mb-2 text-muted">Datos Personales</h6>
+							<h6 class="card-subtitle mb-2 text-muted">Datos Personales:</h6>
+							<ul class="list-group list-group-flush">
+								<li class="list-group">Nombres</li>
+								<li class="list-group">Apellidos</li>
+								<li class="list-group">Matricula</li>
+								<li class="list-group">Carrera</li>
+								<li class="list-group">Fecha de Nacimiento</li>
+								<li class="list-group">Foto de Perfil</li>
+								<li class="list-group">Correo Institucional</li>
+								<li class="list-group">Opcionales (Alergias)</li>
+							</ul>
 						</div>
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item" type="disc">- Nombres</li>
-							<li class="list-group-item" type="disc">- Apellidos</li>
-							<li class="list-group-item" type="disc">- Matricula</li>
-							<li class="list-group-item" type="disc">- Carrera</li>
-							<li class="list-group-item" type="disc">- Fecha de Nacimiento</li>
-							<li class="list-group-item" type="disc">- Foto de Perfil</li>
-							<li class="list-group-item" type="disc">- Correo Institucional</li>
-							<li class="list-group-item" type="disc">- Opcionales (Alergias)</li>
-						</ul>
 						</div>
 					  </div>
-					</center>
+					
 				
 			</th>
 		</thead>
