@@ -3,6 +3,9 @@
 	import logo1 from '../../../src/lib/img/favicon.ico';
 	import datosp from '../../../src/lib/img/datosp.png';
 	import requisitos from '../../../src/lib/img/requisitos.png';
+  import imagen1 from '../../../src/lib/img/5.png'
+  import imagen2 from '../../../src/lib/img/2.png'
+  import imagen3 from '../../../src/lib/img/1.png'
 </script>
 
 <body>
@@ -13,7 +16,23 @@
 
 		<br />
 
-		<div class="container">
+		
+    <div class="container">
+
+      <div id="carrusel-contenido">
+        <div id="carrusel-caja">
+            <div class="carrusel-elemento">
+                <img class="imagen1" src={imagen1} alt="imagen1">
+            </div>
+            <div class="carrusel-elemento">   
+                <img class="imagen2" src={imagen2} alt="imagen2">
+            </div>
+            <div class="carrusel-elemento">   
+                <img class="imagen3" src={imagen3} alt="imagen3">                        
+            </div>
+        </div>
+    </div>
+
 			<div class="row lol">
 				<div class="col-xs-4 col-sm-6 col-md-6">
 					<h1 class="infoex">Policard</h1>
@@ -371,4 +390,113 @@
 		background-clip: text;
 		position: relative;
 	}
+
+  #carrusel-caja {
+    -moz-animation: automatizacion 15s infinite linear;
+    -o-animation: automatizacion 15s infinite linear;
+    -webkit-animation: automatizacion 15s infinite linear;
+    animation: automatizacion 15s infinite linear;
+    -webkit-transition: all 0.75s ease;
+    -moz-transition: all 0.75s ease;
+    -ms-transition: all 0.75s ease;
+    -o-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+    height: 500px;
+    width: 300%;
+}
+#carrusel-contenido {
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: left;
+}
+.imagen1{
+    height: 600px;
+    width: 100%;
+}
+
+.imagen2{
+    height: 600px;
+    width: 100%;
+}
+
+.imagen3{
+    height: 600px;
+    width: 100%;
+}
+.carrusel-elemento {
+    float: left;
+    width: 33.333%;
+}
+@-moz-keyframes automatizacion {
+    0% {
+        margin-left: 0;
+    }
+    30% {
+        margin-left: 0;
+    }
+    35% {
+        margin-left: -100%;
+    }
+    65% {
+        margin-left: -100%;
+    }
+    70% {
+        margin-left: -200%;
+    }
+    95% {
+        margin-left: -200%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+@-webkit-keyframes automatizacion {
+    0% {
+        margin-left: 0;
+    }
+    30% {
+        margin-left: 0;
+    }
+    35% {
+        margin-left: -100%;
+    }
+    65% {
+        margin-left: -100%;
+    }
+    70% {
+        margin-left: -200%;
+    }
+    95% {
+        margin-left: -200%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+@keyframes automatizacion {
+    0% {
+        margin-left: 0;
+    }
+    30% {
+        margin-left: 0;
+    }
+    35% {
+        margin-left: -100%;
+    }
+    65% {
+        margin-left: -100%;
+    }
+    70% {
+        margin-left: -200%;
+    }
+    95% {
+        margin-left: -200%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+ 
+
 </style>
