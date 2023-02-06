@@ -1,5 +1,4 @@
 <script>
-	import XD2 from '../../../src/lib/img/credentialization.png';
 	import logo1 from '../../../src/lib/img/favicon.ico';
   import imagen1 from '../../../src/lib/img/5.png'
   import imagen2 from '../../../src/lib/img/2.png'
@@ -34,33 +33,11 @@
         </div>
     </div>
 
-			<div class="row lol">
-				<div class="col-xs-4 col-sm-6 col-md-6">
-					<h1 class="infoex">Policard</h1>
-					<p class="infoexx">
-						Toda la información que necesites. <br />
-						Te explicamos los detalles sobre esta credencial, en esta sección.
-					</p>
-				</div>
-
-				<div class="col-xs-4 col-sm-6 col-md-1" />
-
-				<div class="col-xs-4 col-sm-6 col-md-5">
-					<div class="col-lg-6 d-none d-lg-block lol">
-						<img src={XD2} class="imgpolicard" alt="policard" />
-					</div>
-				</div>
-			</div>
-			<br />
-			<br />
-
-			
-
 		<div class="grey-bg container-fluid">
 			<section id="minimal-statistics">
 				<div class="row">
 					<div class="col-12 mt-3 mb-1">
-						<h4 class="text-uppercase">DUDAS Y MAS INFORMACIÓN</h4>
+						<h4 class="text-uppercase">PREGUNTAS SOBRE POLICARD</h4>
 					</div>
 				</div>
 				<div class="row">
@@ -74,9 +51,10 @@
 										</div>
 										<div class="media-body text-right">
                       <img src={funcionalidad} class="imgc" alt="funcionalidad">
-											<h5 class="titlecard">¿COMO FUNCIONA LA CREDENCIAL?</h5>
-											<span
-												> <br /> Necesitas tu nombre, en caso de tener mas de un nombre debesponerlos</span
+											<h5 class="titlecard">¿Que es POLICARD?</h5>
+											<span class="pcard"
+												> <br /> POLICARD es un Sistema de credencialización digitalizado, que se encarga de
+                        llevar acabo del control de los recursos otorgados como la identidad en la institución  hacia los alumnos de la Universidad Politecnica de Tapachula</span
 											>
 										</div>
 									</div>
@@ -95,9 +73,12 @@
 										<div class="media-body text-right">
                       <img src={beneficios} class="imgc" alt="beneficios">
 											<h5 class="titlecard">¿QUE BENEFICIOS OBTENDRÉ CON LA CREDENCIAL?</h5>
-											<span
-												>Obligatorio <br /> Debe ser necesario registrar tus apellidos, paterno y materno.
-											</span>
+											<span class="pcard">  Con tu credencial digitalizada puedes obtener los siguientes beneficios. <br> </span> 
+                      <br/>
+                      <li class="pcard1">Visualización de perfil mediante Código QR</li>
+                      <li class="pcard1">Visualización 24/7 365 dias</li>
+                      <li class="pcard1">Podrás hacer tramites escolares</li>
+                      <li class="pcard1">Tambien puedes identificarte con personal de seguridad</li>
 										</div>
 									</div>
 								</div>
@@ -115,10 +96,10 @@
 										<div class="media-body text-right">
                       <img src={funcionalidad} class="imgc" alt="funcionalidad">
 											<h5 class="titlecard">¿PARA QUE SIRVE LA CREDENCIAL DIGITAL?</h5>
-											<span
-												>Obligatorio. <br /> Es un dato esencial para ru credencial, te identifica con
-												tu dato escolar.
-											</span>
+											<span class="pcard"
+												> <br/>Esta credencial servirá para identificar a los alumnos de la Universidad Politecnica de Tapachula, mediante 
+                        una plataforma creada por Mexi-Code. Esto basandonos en las normas establecidas por la institución.  <br/>   </span
+											>
 										</div>
 									</div>
 								</div>
@@ -137,11 +118,14 @@
 										<div class="media-body text-right">
                      
                       <img src={logo1} class="imgc" alt="lgo1">
-											<h5 class="titlecard">¿COMO SE HIZO POLICARD?</h5>
-											<span
-												>Obligatorio. <br /> Dato esencial para ubicar en que programa academico estas
-												vinculado y registrado.</span
-											>
+                      <h5 class="titlecard">¿CÓMO SE DESARROLLO POLICARD?</h5>
+											<span class="pcard">  POLICARD fue creada en relación a las normas y reglas establecidas por el 
+                        comite de proyectos integradores, el cual decidieron que el desarrollo fuera con las siguientes tecnologias. <br> </span> 
+                      <br/>
+                      <li class="pcard1">Svelte</li>
+                      <li class="pcard1">Django</li>
+                      <li class="pcard1">Postgres SQL</li>
+                      <li class="pcard1">Bootstrap</li>
 										</div>
 									</div>
 								</div>
@@ -149,6 +133,107 @@
 						</div>
 					</div>
 				</div>
+
+        <div class="grey-bg container-fluid">
+          <section id="minimal-statistics">
+            <div class="row">
+              <div class="col-12 mt-3 mb-1">
+                <h4 class="text-uppercase">Aun veré que pongo aca</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="card-body">
+                      <div class="media d-flex">
+                        <div class="align-self-center">
+                          <i class="icon-pencil primary font-large-2 float-left" />
+                        </div>
+                        <div class="media-body text-right">
+                          <img src={funcionalidad} class="imgc" alt="funcionalidad">
+                          <h5 class="titlecard">¿Que es POLICARD?</h5>
+                          <span class="pcard"
+                            > <br /> POLICARD es un Sistema de credencialización digitalizado, que se encarga de
+                            llevar acabo del control de los recursos otorgados como la identidad en la institución  hacia los alumnos de la Universidad Politecnica de Tapachula</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="card-body">
+                      <div class="media d-flex">
+                        <div class="align-self-center">
+                          <i class="icon-speech warning font-large-2 float-left" />
+                        </div>
+                        <div class="media-body text-right">
+                          <img src={beneficios} class="imgc" alt="beneficios">
+                          <h5 class="titlecard">¿QUE BENEFICIOS OBTENDRÉ CON LA CREDENCIAL?</h5>
+                          <span class="pcard">  Con tu credencial digitalizada puedes obtener los siguientes beneficios. <br> </span> 
+                          <br/>
+                          <li class="pcard1">Visualización de perfil mediante Código QR</li>
+                          <li class="pcard1">Visualización 24/7 365 dias</li>
+                          <li class="pcard1">Podrás hacer tramites escolares</li>
+                          <li class="pcard1">Tambien puedes identificarte con personal de seguridad</li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="card-body">
+                      <div class="media d-flex">
+                        <div class="align-self-center">
+                          <i class="icon-graph success font-large-2 float-left" />
+                        </div>
+                        <div class="media-body text-right">
+                          <img src={funcionalidad} class="imgc" alt="funcionalidad">
+                          <h5 class="titlecard">¿PARA QUE SIRVE LA CREDENCIAL DIGITAL?</h5>
+                          <span class="pcard"
+                            > <br/>Esta credencial servirá para identificar a los alumnos de la Universidad Politecnica de Tapachula, mediante 
+                            una plataforma creada por Mexi-Code. Esto basandonos en las normas establecidas por la institución.  <br/>   </span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="card-body">
+                      <div class="media d-flex">
+                        <div class="align-self-center">
+                          <i class="icon-pointer danger font-large-2 float-left" />
+                        </div>
+                        
+                        <div class="media-body text-right">
+                         
+                          <img src={logo1} class="imgc" alt="lgo1">
+                          <h5 class="titlecard">¿CÓMO SE DESARROLLO POLICARD?</h5>
+                          <span class="pcard">  POLICARD fue creada en relación a las normas y reglas establecidas por el 
+                            comite de proyectos integradores, el cual decidieron que el desarrollo fuera con las siguientes tecnologias. <br> </span> 
+                          <br/>
+                          <li class="pcard1">Svelte</li>
+                          <li class="pcard1">Django</li>
+                          <li class="pcard1">Postgres SQL</li>
+                          <li class="pcard1">Bootstrap</li>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 			</section>
 		</div>
 	
@@ -166,7 +251,7 @@
 		padding: 100px 0;
 	}
 
-  
+ 
   
 	.text-uppercase{
     font-size: 3em;
@@ -192,43 +277,28 @@
     color: #5a40c0;
   }
 
-	h1 {
-		font-style: normal;
-		font-weight: 700;
-		font-size: 5rem;
-		background: linear-gradient(180deg, #7352f3 0%, #5a40c0 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		background-image: url('../../lib/img/bg-sidebar-mobile.svg');
-	}
+  .pcard{
+    font-size: 1.2em;
+		
+		font-weight: 600;
+		text-transform: none;
+		padding: 18px 0 0 0;
+		transition: all 0.5s;
+    text-align:justify;
+    color: #000;
+  }
 
+
+  .pcard1{
+    font-size: 1em;
+		font-weight: 600;
+		text-transform: none;
+		transition: all 0.5s;
+    text-align:justify;
+    color: #000;
+  }
 	
 
-	.infoex {
-		font-style: normal;
-		font-weight: 700;
-		font-size: 5rem;
-		background: linear-gradient(180deg, #7352f3 0%, #5a40c0 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-
-	.infoexx {
-		font-style: normal;
-		font-weight: 600;
-		font-size: 2rem;
-		background: black;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		position: relative;
-	}
-
-	.imgpolicard {
-		position: relative;
-	}
 
 	.logo {
 		position: absolute;
