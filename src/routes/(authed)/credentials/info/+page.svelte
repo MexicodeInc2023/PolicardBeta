@@ -13,7 +13,8 @@
 	<table class="table">
 		<thead>
 		  <tr>
-			<th scope="col"><!-- Esta parte va el carrousel de información -->
+			<th scope="col">
+				<!-- Esta parte va el carrousel de información -->
 				
 					<div class="row lol">
 					<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
