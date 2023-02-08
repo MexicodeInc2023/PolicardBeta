@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '../lib/img/favicon.ico';
-	import profile from '../lib/img/profile.png';
+	import profile from '../lib/img/perfil.jpg';
 	import { authenticated } from '../stores/auth.js';
 
 	const logoutUrl = 'http://127.0.0.1:8000/users/logout/';
@@ -46,7 +46,7 @@
 						class="nav-item"
 						aria-current={$page.url.pathname === '/credentials' ? 'page' : undefined}
 					>
-						<a class="nav-link " href="/credentials">INICIO</a>
+						<a class="nav-link " href="/credentials">Inicio</a>
 					</li>
 					<li aria-current={$page.url.pathname === '/credentials/card' ? 'page' : undefined}>
 						<a class="nav-link" href="/credentials/card">Mi Credencial</a>
