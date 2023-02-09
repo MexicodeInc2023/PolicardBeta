@@ -75,8 +75,60 @@
 							class="d-inline-block align-text-middle"
 						/>
 					</a>
+					<!-- Modal -->
+					<div
+						class="modal fade"
+						id="staticBackdrop1"
+						data-bs-backdrop="static"
+						data-bs-keyboard="false"
+						tabindex="-1"
+						aria-labelledby="staticBackdropLabel"
+						aria-hidden="true"
+					>
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel">Perfil</h5>
+									<button 
+										type="button"
+										class="btn-close"
+										data-bs-dismiss="modal"
+										aria-label="Close"
+									/>
+								</div>
+								<div class="modal-body">
+									<div class="form-group">
+										<form class="row g-3 needs-validation" novalidate>
+											<div class="col-md-4 position-relative">
+											  <label for="validationTooltip01" class="form-label">Nombre:</label>
+											  <input type="text" class="form-control" id="validationTooltip01" required>
+											</div>
+											<div class="col-md-4 position-relative">
+											  <label for="validationTooltip02" class="form-label">Apellido:</label>
+											  <input type="text" class="form-control" id="validationTooltip02" required>
+											</div>
+											<div class="col-md-4 position-relative">
+											  <label for="validationTooltipUsername" class="form-label">Correo:</label>
+											  <div class="input-group has-validation">
+												<span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+												<input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+											  </div>
+											</div>
+											<div class="col-12">
+											</div>
+										  </form>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+										>Close</button
+									>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Perfil</a>
+						<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Perfil</a>
 						<div class="dropdown-divider" />
 						<form method="POST" action="/logout">
 							<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>
