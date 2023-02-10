@@ -9,16 +9,14 @@
 </script>
 
 <body>
-	<section class="banner">
+	<div class="banner">
 		<div>
 			<img src={logo1} alt="Logo" class="logo" />
 		</div>
-
-		<br />
-
+  </div>
 		
-    <div class="container">
-
+    <div class="container grey-bg container-fluid">
+      <h4 class="text-uppercase">MAS INFORMACIÓN</h4>
       <div id="carrusel-contenido">
         <div id="carrusel-caja">
             <div class="carrusel-elemento">
@@ -29,11 +27,14 @@
             </div>
             <div class="carrusel-elemento">   
                 <img class="imagen3" src={imagen3} alt="imagen3">                        
-            </div>
-        </div>
+            </div> 
+        </div><br/>
+    </div>
     </div>
 
-		<div class="grey-bg container-fluid">
+    <br/>
+
+		<div class="container grey-bg container-fluid">
 			<section id="minimal-statistics">
 				<div class="row">
 					<div class="col-12 mt-3 mb-1">
@@ -62,6 +63,9 @@
 							</div>
 						</div>
 					</div>
+
+          
+
 					<div class="col-xl-3 col-sm-6 col-12">
 						<div class="card">
 							<div class="card-content">
@@ -133,12 +137,15 @@
 						</div>
 					</div>
 				</div>
+      </div>
+      <br/>    
 
+      <div class="container">
         <div class="grey-bg container-fluid">
           <section id="minimal-statistics">
             <div class="row">
               <div class="col-12 mt-3 mb-1">
-                <h4 class="text-uppercase">Aun veré que pongo aca</h4>
+                <h4 class="text-uppercase">VENTAJAS DE LA CREDENCIAL</h4>
               </div>
             </div>
             <div class="row">
@@ -228,14 +235,19 @@
                           <li class="pcard1">Postgres SQL</li>
                           <li class="pcard1">Bootstrap</li>
                         </div>
+                        
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            
+          
 			</section>
 		</div>
+  </div>
 	
 </body>
 
@@ -251,7 +263,32 @@
 		padding: 100px 0;
 	}
 
- 
+  .card {
+		width: 17rem;
+		height: 120px;
+		transition: all 0.5s;
+		box-shadow: 30px 15px 30px rgba(25, 25, 25, 0.247), -15px -15px 30px rgba(60, 60, 60, 0.082);
+		text-align: center;
+		overflow: hidden;
+	}
+
+	.cardp {
+		width: 18rem;
+		height: 120px;
+		transition: all 0.5s;
+		box-shadow: 15px 15px 30px rgba(25, 25, 25, 0.247), -15px -15px 30px rgba(60, 60, 60, 0.082);
+		text-align: center;
+		overflow: hidden;
+	}
+
+	.cardp:hover {
+		height: 22rem;
+	}
+
+
+
+
+	
   
 	.text-uppercase{
     font-size: 3em;
