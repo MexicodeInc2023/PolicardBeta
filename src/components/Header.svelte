@@ -105,7 +105,7 @@
 											</div>
 											<div class="col-md-4 position-relative">
 											  <label for="validationTooltip02" class="form-label">Apellido:</label>
-											  <input type="text" class="form-control" id="validationTooltip02" required>
+											  <input type="text" class="form-control" id="validationTooltip02"  required>
 											</div>
 											<div class="col-md-4 position-relative">
 											  <label for="validationTooltipUsername" class="form-label">Correo:</label>

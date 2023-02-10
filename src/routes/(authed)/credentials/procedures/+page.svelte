@@ -1,5 +1,17 @@
 <script>
+	let motivo_reposicion = { 
+		motivo_r: ''
+	};
 
+	let motivo_changename = {
+		dato: '', 
+		motivo_c: '' 
+	};
+
+	const onSubmitHandler = e => {
+		e.preventDefault();
+		console.log(e)
+	}
 </script>
 
 <svelte:head>
@@ -48,7 +60,9 @@
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="staticBackdropLabel">Tramitar Reposición de la credencial</h5>
+										<h5 class="modal-title" id="staticBackdropLabel">
+											Tramitar Reposición de la credencial
+										</h5>
 										<button
 											type="button"
 											class="btn-close"
@@ -57,25 +71,26 @@
 										/>
 									</div>
 									<div class="modal-body">
-										<form>
+										<form on:submit={onSubmitHandler}>
 											<div class="mb-3">
 												<label for="message-text" class="col-form-label">Escribe tu motivo:</label>
-												<textarea
+												<textarea bind:value={motivo_reposicion.motivo_r}
 													class="form-control"
-													id="message-text"
+													id="motivo_r"
 													placeholder="Explica tus razones"
 												/>
 											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+													>Cerrar</button
+												>
+												<button class="btn btn-success"
+													>Enviar</button
+												>
+											</div>
 										</form>
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-											>Cerrar</button
-										>
-										<button type="button" class="btn btn-success" data-bs-dismiss="modal"
-											>Enviar</button
-										>
-									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -113,36 +128,37 @@
 										/>
 									</div>
 									<div class="modal-body">
-										<form>
+										<form on:submit={onSubmitHandler}>
 											<div class="mb-3">
 												<label for="recipient-name" class="col-form-label"
 													>¿Que dato de tu credencial quieres cambiar?</label
 												>
-												<input
+												<input bind:value={motivo_changename.dato}
 													type="text"
 													class="form-control"
-													id="recipient-name"
+													id="dato"
 													placeholder="Ej. Mi nombre 'Eduardo'"
 												/>
 											</div>
 											<div class="mb-3">
 												<label for="message-text" class="col-form-label">Motivo:</label>
-												<textarea
+												<textarea bind:value={motivo_changename.motivo_c}
 													class="form-control"
-													id="message-text"
+													id="motivo_c"
 													placeholder="Explica tus razones"
 												/>
 											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+													>Cerrar</button
+												>
+												<button class="btn btn-success"
+													>Enviar</button
+												>
+											</div>
 										</form>
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-											>Cerrar</button
-										>
-										<button type="button" class="btn btn-success" data-bs-dismiss="modal"
-											>Enviar</button
-										>
-									</div>
+									
 								</div>
 							</div>
 						</div>
