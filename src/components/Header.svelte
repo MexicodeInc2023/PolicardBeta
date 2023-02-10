@@ -3,6 +3,14 @@
 	import logo from '../lib/img/favicon.ico';
 	import profile from '../lib/img/perfil.jpg';
 	import { authenticated } from '../stores/auth.js';
+	import {
+		customerEmail,
+		customerName,
+	} from '../routes/form/components/sharedState';
+	
+	import {
+		customerDate
+	} from '../routes/form/components/sharedState'
 
 	const logoutUrl = 'http://127.0.0.1:8000/users/logout/';
 	let auth = false;
@@ -19,6 +27,12 @@
 
 		location.href = '/';
 	};
+	let name = customerName;
+	
+	let correo = customerEmail;
+
+	let fecha = customerDate;
+
 </script>
 
 <header>
@@ -98,20 +112,22 @@
 								</div>
 								<div class="modal-body">
 									<div class="form-group">
-										<form class="row g-3 needs-validation" novalidate>
-											<div class="col-md-4 position-relative">
+										<form class="row g-20 w-10 needs-validation" novalidate>
+											<div class="col-md-10 position-relative">
 											  <label for="validationTooltip01" class="form-label">Nombre:</label>
-											  <input type="text" class="form-control" id="validationTooltip01" required>
+											  <input  class="form-control" id="validationTooltip01" value={name} readonly>
 											</div>
-											<div class="col-md-4 position-relative">
-											  <label for="validationTooltip02" class="form-label">Apellido:</label>
-											  <input type="text" class="form-control" id="validationTooltip02"  required>
+											<br/>
+											<div class="col-md-10 position-relative">
+											  <label for="validationTooltip02" class="form-label">Fecha de Creación:</label>
+											  <input type="text" class="form-control" id="validationTooltip02" value={fecha} readonly>
 											</div>
-											<div class="col-md-4 position-relative">
+											<br/>
+											<div class="col-md-10 position-relative">
 											  <label for="validationTooltipUsername" class="form-label">Correo:</label>
 											  <div class="input-group has-validation">
 												<span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-												<input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+												<input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" value={correo} readonly>
 											  </div>
 											</div>
 											<div class="col-12">
