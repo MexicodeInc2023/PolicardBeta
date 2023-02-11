@@ -398,7 +398,7 @@
          
                     <img src={cross} class="imgc" alt="lgo1">
 
-                          <h5 class="titlecard">CrossPlatform</h5>
+                          <h5 class="titlecard">Cross Platform</h5>
 
                           <span class="pcard"> Puedes acceder a tu cuenta de SCD desde cualquier dispositivo. </span> 
                   
@@ -490,7 +490,7 @@
 	}
 
   .card {
-		height: 300px;
+		height: 325px;
 		transition: all 0.5s;
 		box-shadow: px 15px 30px rgba(25, 25, 25, 0.247), -15px -15px 30px rgba(60, 60, 60, 0.082);
 	  text-align: center;
