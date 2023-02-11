@@ -29,30 +29,42 @@
           
         <h4 class="text-uppercase">MAS INFORMACIÓN</h4>
            
-        <div id="carrusel-contenido">
-               
-          <div id="carrusel-caja">
-                   
-            <div class="carrusel-elemento">
-                    
-              <img class="imagen1" src={imagen1} alt="imagen1">
-                   
+        <div class="row lol">
+          <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src={imagen1} class="d-block w-100" alt="" />
+              </div>
+              <div class="carousel-item">
+                <img src={imagen2} class="d-block w-100" alt="" />
+              </div>
+              <div class="carousel-item">
+                <img src={imagen3} class="d-block w-100" alt="" />
+              </div>
+              <div class="carousel-item">
+                <img src={imagen1} class="d-block w-100" alt="" />
+              </div>
+              <div class="carousel-item">
+                <img src={imagen2} class="d-block w-100" alt="" />
+              </div>
             </div>
-                  
-            <div class="carrusel-elemento">   
-                    
-              <img class="imagen2" src={imagen2} alt="imagen2">
-                  
-            </div>
-                   
-            <div class="carrusel-elemento">   
-                      
-              <img class="imagen3" src={imagen3} alt="imagen3">                        
-                  
-            </div> 
-                
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleInterval"
+              data-bs-slide="prev"
+            >
+              <span class="carousel-control-prev-icon" aria-hidden="true" />
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleInterval"
+              data-bs-slide="next"
+            >
+              <span class="carousel-control-next-icon" aria-hidden="true" />
+            </button>
           </div>
-              
         </div>
        
       </div>
@@ -537,47 +549,21 @@
     width: 100px;
   }
 
-  
-
-
-  /*   CARRUSEL  CSS   */
-  #carrusel-caja {
-    -moz-animation: automatizacion 15s infinite linear;
-    -o-animation: automatizacion 15s infinite linear;
-    -webkit-animation: automatizacion 15s infinite linear;
-    animation: automatizacion 15s infinite linear;
+  .carousel-item {
+		-moz-animation: automatizacion 3s infinite linear;
+    -o-animation: automatizacion 3s infinite linear;
+    -webkit-animation: automatizacion 3s infinite linear;
+    animation: automatizacion 3s infinite linear;
     -webkit-transition: all 0.75s ease;
     -moz-transition: all 0.75s ease;
     -ms-transition: all 0.75s ease;
     -o-transition: all 0.75s ease;
     transition: all 0.75s ease;
-    height: 500px;
-    width: 300%;
-}
-#carrusel-contenido {
-    margin: 0 auto;
-    overflow: hidden;
-    text-align: left;
-}
-.imagen1{
-    height: 600px;
-    width: 100%;
-}
+	}
 
-.imagen2{
-    height: 600px;
-    width: 100%;
-}
 
-.imagen3{
-    height: 600px;
-    width: 100%;
-}
-.carrusel-elemento {
-    float: left;
-    width: 33.333%;
-}
- 
+
+
   /*responsive*/
 
   @media screen and (max-width: 630px) {
