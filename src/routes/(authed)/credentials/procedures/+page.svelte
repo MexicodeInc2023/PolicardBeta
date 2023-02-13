@@ -133,7 +133,7 @@
 												<label for="recipient-name" class="col-form-label"
 													>¿Que dato de tu credencial quieres cambiar?</label
 												>
-												<input bind:value={motivo_changename.dato}
+												<input required="" bind:value={motivo_changename.dato}
 													type="text"
 													class="form-control"
 													id="dato"
@@ -146,6 +146,7 @@
 													class="form-control"
 													id="motivo_c"
 													placeholder="Explica tus razones"
+													required
 												/>
 											</div>
 											<div class="modal-footer">
