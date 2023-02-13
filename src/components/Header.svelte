@@ -44,6 +44,7 @@
 			</a>
 
 			<button
+				id= "Modal"
 				class="navbar-toggler"
 				type="button"
 				data-bs-toggle="collapse"
@@ -112,8 +113,14 @@
 									/>
 								</div>
 								<div class="modal-body">
-									<div class="form-group">
-										<form class="row g-20 w-10 needs-validation" novalidate>
+									<div class="position-relative">
+										<center>
+											<img class ="img-fluid" src={logo}>
+										</center>
+									</div>
+									<div class="form-group">										
+										<form class=" needs-validation" novalidate>
+											
 											<div class="col-md-10 position-relative">
 											  <label for="validationTooltip01" class="form-label">Nombre:</label>
 											  <input  class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled readonly>
@@ -148,7 +155,7 @@
 						</div>
 					</div>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" data-bs-toggle="modal" data-bs-target={ModalProfile} >Perfil</a>
+						<button class="dropdown-item" data-bs-toggle="modal" data-bs-target={'#staticBackdrop1'}>Perfil</button>
 						<div class="dropdown-divider" />
 						<form method="POST" action="/logout">
 							<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>

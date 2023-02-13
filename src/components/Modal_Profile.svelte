@@ -1,3 +1,6 @@
+<script>
+    import logo from '../lib/img/favicon.ico';
+</script>
 <div class="modal fade" id="staticBackdrop1" 
 role="dialog" 
 data-bs-backdrop="static"
@@ -8,10 +11,10 @@ aria-hidden="true">
     <div class="modal-dialog">
         <div class="card">
                <div class="card-img">
-                   <img class ="img-fluid" src="https://i.imgur.com/4niebFr.jpg">
+                   <img class ="img-fluid" src={logo}>
                </div>
                <div class="card-title">
-                   <p>Porno!</p>
+                   <p>xd!</p>
                </div>
                <div class="card-text">
                    <p>Yay! It's a nice order! <br>It will arrive soon.</p>
