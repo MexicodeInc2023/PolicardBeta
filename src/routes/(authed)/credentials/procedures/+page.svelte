@@ -10,13 +10,8 @@
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		console.log(e)
+		console.log(e);
 	};
-	let limpiar = () => {
-		limpiars.value = ''
-		motivo_r.value = ''
-	};
-	
 </script>
 
 <svelte:head>
@@ -111,7 +106,7 @@
 												<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
 													>Cerrar</button
 												>
-												<button id='limpiar' class="btn btn-success" data-bs-dismiss="modal"
+												<button class="btn btn-success"
 													>Enviar</button
 												>
 											</div>
@@ -200,7 +195,7 @@
 												<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
 													>Cerrar</button
 												>
-												<button id='limpiars' class="btn btn-success" data-bs-dismiss="modal"
+												<button class="btn btn-success"
 													>Enviar</button
 												>
 											</div>
