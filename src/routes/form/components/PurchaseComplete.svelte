@@ -10,7 +10,7 @@ window.setTimeout(()=>{showComponent = true}, 0)
 	<h3>Thank you!</h3>
 	<p>Thank you for confirming your data! We hope you have fun using our platform. 
 		If you ever need supp	ort, please feel free to email us at mexicode@gmail.com.</p>
-		<a href="/login" class="loginn">Iniciar Sesion</a>
+		
 </article>
 
 <style>
@@ -69,49 +69,5 @@ p {
 		margin-bottom: 14px;
 	}
 }
-	.previousButton {
-		--primary-color: #645bff;
-		--secondary-color: #fff;
-		--hover-color: #111;
-		--arrow-width: 10px;
-		--arrow-stroke: 2px;
-		box-sizing: border-box;
-		border: 0;
-		border-radius: 20px;
-		color: var(--secondary-color);
-		padding: 1em 1.8em;
-		background: var(--primary-color);
-		display: flex;
-		transition: 0.2s background;
-		align-items: center;
-		gap: 0.6em;
-		font-weight: bold;
-	}
-	.loginn {
-		padding: 1.3em 3em;
-		margin-top: 10px;
-		font-size: 12px;
-		text-transform: uppercase;
-		letter-spacing: 2.5px;
-		font-weight: 500;
-		color: #000;
-		background-color: #fff;
-		border: none;
-		border-radius: 45px;
-		box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-		transition: all 0.3s ease 0s;
-		cursor: pointer;
-		outline: none;
-	}
 
-	.loginn:hover {
-		background-color: #23c483;
-		box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-		color: #fff;
-		transform: translateY(-7px);
-	}
-
-	.loginn:active {
-		transform: translateY(-1px);
-		}
 </style>
