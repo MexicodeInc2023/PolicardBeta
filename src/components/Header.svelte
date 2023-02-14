@@ -34,6 +34,8 @@
 
 	let fecha = customerDate; */
 
+	
+
 </script>
 
 <header>
@@ -103,7 +105,7 @@
 					>
 						<div class="modal-dialog">
 							<div class="modal-content">
-								<div class="modal-header">
+								<!-- <div class="modal-header">
 									<h5 class="modal-title" id="staticBackdropLabel">Perfil</h5>
 									<button 
 										type="button"
@@ -111,7 +113,7 @@
 										data-bs-dismiss="modal"
 										aria-label="Close"
 									/>
-								</div>
+								</div> -->
 								<div class="modal-body">
 									<div class="position-relative">
 										<center>
@@ -120,34 +122,34 @@
 									</div>
 									<div class="form-group">										
 										<form class=" needs-validation" novalidate>
-											
-											<div class="col-md-10 position-relative">
-											  <label for="validationTooltip01" class="form-label">Nombre:</label>
-											  <input  class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled readonly>
+											<center>
+											<div class="col-md-8 position-relative">
+											  <label for="validationTooltip01" class="form-label">Nombre</label>
+											  <input  class="form-control" type="text" placeholder="undefined" aria-label="Disabled input example" disabled readonly>
 											<!-- value={nombre} -->
 											</div>
 											<br/>
-											<div class="col-md-10 position-relative">
-											  <label for="validationTooltip02" class="form-label">Fecha de Creación:</label>
-											  <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled  readonly>
+											<div class="col-md-6 position-relative">
+											  <label for="validationTooltip02" class="form-label">Fecha de Creación</label>
+											  <input class="form-control" type="text" placeholder="undefined" aria-label="Disabled input example" disabled  readonly>
 											  <!-- value={fecha} -->
 											</div>
 											<br/>
-											<div class="col-md-10 position-relative">
-											  <label for="validationTooltipUsername" class="form-label">Correo:</label>
+											<div class="col-md-8 position-relative">
+											  <label for="validationTooltipUsername" class="form-label">Correo</label>
 											  <div class="input-group has-validation">
 												<span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-												<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled readonly>
+												<input class="form-control" type="text" placeholder="undefined" aria-label="Disabled input example" disabled readonly>
 												<!-- value={correo} -->  
 											</div>
 											</div>
 											<div class="col-12">
 											</div>
-										  </form>
+										</center>
 									</div>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+									<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
 										>Close</button
 									>
 								</div>
