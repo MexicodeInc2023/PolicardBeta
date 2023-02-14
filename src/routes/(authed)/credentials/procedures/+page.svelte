@@ -106,7 +106,7 @@
 												<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
 													>Cerrar</button
 												>
-												<button class="btn btn-success"
+												<button class="btn btn-success" data-bs-dismiss="modal"
 													>Enviar</button
 												>
 											</div>
@@ -195,7 +195,7 @@
 												<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
 													>Cerrar</button
 												>
-												<button class="btn btn-success"
+												<button class="btn btn-success" data-bs-dismiss="modal"
 													>Enviar</button
 												>
 											</div>
