@@ -22,7 +22,7 @@
 					</p>
 					<a href="/info" class="fancy">
 						<span class="top-key" />
-						<span class="text"> Más informacion </span>
+						<span class="text"> Más información </span>
 						<span class="bottom-key-1" />
 						<span class="bottom-key-2" />
 					</a>
@@ -198,10 +198,10 @@
 	}
 	.fancy {
 		background-color: transparent;
-		border: 2px solid #000;
-		border-radius: 0;
-		box-sizing: border-box;
-		color: #fff;
+		border: 2px solid #7352F3;
+		border-radius: 30px;
+		
+		color: #18BE78;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 700;
@@ -223,7 +223,7 @@
 		content: ' ';
 		width: 1.5625rem;
 		height: 2px;
-		background: black;
+		background: #18BE78;
 		top: 50%;
 		left: 1.5em;
 		position: absolute;
@@ -241,7 +241,7 @@
 		transition: all 0.3s ease-in-out;
 		text-transform: uppercase;
 		text-decoration: none;
-		color: black;
+		color: #5a40c0;
 	}
 
 	.fancy .top-key {
@@ -275,8 +275,8 @@
 	}
 
 	.fancy:hover {
-		color: white;
-		background: black;
+		color: #5a40c0;
+		background: #23c483;
 	}
 
 	.fancy:hover::before {

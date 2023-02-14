@@ -3,6 +3,15 @@
 	import logo from '../lib/img/favicon.ico';
 	import profile from '../lib/img/perfil.jpg';
 	import { authenticated } from '../stores/auth.js';
+	import ModalProfile from './Modal_Profile.svelte';
+	/* import {
+		customerEmail,
+		customerName,
+	} from '../routes/form/components/sharedState';
+	
+	import {
+		customerDate
+	} from '../routes/form/components/sharedState' */
 
 	const logoutUrl = 'http://127.0.0.1:8000/users/logout/';
 	let auth = false;
@@ -19,6 +28,12 @@
 
 		location.href = '/';
 	};
+	/* let name = customerName.name;
+	
+	let correo = customerEmail;
+
+	let fecha = customerDate; */
+
 </script>
 
 <header>
@@ -29,6 +44,7 @@
 			</a>
 
 			<button
+				id= "Modal"
 				class="navbar-toggler"
 				type="button"
 				data-bs-toggle="collapse"
@@ -97,22 +113,33 @@
 									/>
 								</div>
 								<div class="modal-body">
-									<div class="form-group">
-										<form class="row g-3 needs-validation" novalidate>
-											<div class="col-md-4 position-relative">
+									<div class="position-relative">
+										<center>
+											<img class ="img-fluid" src={logo}>
+										</center>
+									</div>
+									<div class="form-group">										
+										<form class=" needs-validation" novalidate>
+											
+											<div class="col-md-10 position-relative">
 											  <label for="validationTooltip01" class="form-label">Nombre:</label>
-											  <input type="text" class="form-control" id="validationTooltip01" required>
+											  <input  class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled readonly>
+											<!-- value={nombre} -->
 											</div>
-											<div class="col-md-4 position-relative">
-											  <label for="validationTooltip02" class="form-label">Apellido:</label>
-											  <input type="text" class="form-control" id="validationTooltip02"  required>
+											<br/>
+											<div class="col-md-10 position-relative">
+											  <label for="validationTooltip02" class="form-label">Fecha de Creación:</label>
+											  <input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled  readonly>
+											  <!-- value={fecha} -->
 											</div>
-											<div class="col-md-4 position-relative">
+											<br/>
+											<div class="col-md-10 position-relative">
 											  <label for="validationTooltipUsername" class="form-label">Correo:</label>
 											  <div class="input-group has-validation">
 												<span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-												<input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-											  </div>
+												<input class="form-control" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled readonly>
+												<!-- value={correo} -->  
+											</div>
 											</div>
 											<div class="col-12">
 											</div>
@@ -128,7 +155,7 @@
 						</div>
 					</div>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">Perfil</a>
+						<button class="dropdown-item" data-bs-toggle="modal" data-bs-target={'#staticBackdrop1'}>Perfil</button>
 						<div class="dropdown-divider" />
 						<form method="POST" action="/logout">
 							<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>

@@ -106,7 +106,9 @@
 												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
 													>Cerrar</button
 												>
-												<button class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
+												<button class="btn btn-success"
+													>Enviar</button
+												>
 											</div>
 										</form>
 									</div>
@@ -186,14 +188,16 @@
 													bind:value={motivo_changename.motivo_c}
 													class="form-control"
 													id="motivo_c"
-													placeholder="Explica tus razones"
+													placeholder="Explica tus razones"	
 												/>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
 													>Cerrar</button
 												>
-												<button class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
+												<button class="btn btn-success"
+													>Enviar</button
+												>
 											</div>
 										</form>
 									</div>
