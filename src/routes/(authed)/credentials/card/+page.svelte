@@ -3,7 +3,7 @@
 	let Datos = [];
 	let OnError;
 	// usen una api fake para ver como funciona, no usen la url de abajo porque solo tengo 500 peticiones al mes y ya como por la 400
-	const url = 'http://localhost:3001/Policard'; //https://api.steinhq.com/v1/storages/6338ad24eced9b09e99d7c7f/creden
+	const url = 'https://api.steinhq.com/v1/storages/6338ad24eced9b09e99d7c7f/creden'; //https://api.steinhq.com/v1/storages/6338ad24eced9b09e99d7c7f/creden
 
 	const options = { method: 'GET' };
 	const Datapromise = fetch(url, options) // fetch the data
@@ -22,7 +22,7 @@
 	<title>Policard-Credencial</title>
 </svelte:head>
 {#if OnError}
-	<div class="card text-white bg-danger " style="max-width: 18rem; margin-top: 3rem;">
+	<div class="card text-white bg-danger  " style="max-width: 18rem; margin-top: 3rem;">
 		<div class="card-header">Error Insesperado</div>
 		<div class="card-body">
 			<h4 class="card-title">Intente de nuevo</h4>
@@ -43,14 +43,16 @@
 {:else}
 	{#await Datapromise then Data}
 		<div style="text-align: center;"><h1 style="color:#1a1423">Credencial UPTAP</h1></div>
-
+		<div class="m-auto">
+			<button class="btn btn-primary" on:click={() => window.print()}>Imprimir</button>
+		</div>
 		<div class="container">
 			<div class="father">
 				<div class="front">
 					<header>
 						<div class="bkg" />
 						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
-						<h3 style="font-size: 1.5rem;">{Data.nombre}</h3>
+						<h3 style="font-size: 1.4rem;">{Data.nombre}</h3>
 					</header>
 					<div class="experiences" style="text-align: center;">
 						<p style="font-weight: bold; color: #7352F2">Universidad Politecnica de Tapachula</p>
@@ -72,10 +74,10 @@
 					<header>
 						<div class="bkg" />
 						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
-						<h3 style="font-size: 1.5rem;">{Data.nombre}</h3>
+						<h3 style="font-size: 1.4rem;">{Data.nombre}</h3>
 					</header>
 					<div class="experiences" style="text-align: center;">
-						<p style="font-weight: bold; color: #7352F2"> {Data.alergia} </p>
+						<p style="font-weight: bold; color: #7352F2">{Data.alergia}</p>
 						<p style="font-weight: bold; color: #18BE78">
 							{Data.carrera}
 						</p>
@@ -90,22 +92,26 @@
 {/if}
 
 <style>
-	h2 {
-		color: #1a1423 !important;
+	h3 {
+		margin-top: 10px;
+		padding: 2px;
 	}
-
+	p {
+		font-size: 1.3rem;
+		margin: 20px;
+	}
 	.container {
-		font-family: 'Roboto', sans-serif;
 		background-size: cover;
+		border-radius: 5px;
 		perspective: 1000px;
 		height: 100vh;
 	}
 	.father {
 		text-align: center;
 		width: 400px;
-		height: 520px;
+		height: 620px;
 		margin: auto;
-		top: 20%;
+		top: 5%;
 		position: relative;
 		transition: all 1s ease-in-out;
 		transform-style: preserve-3d;
@@ -126,6 +132,7 @@
 		z-index: 2;
 		background-color: #f7fafa;
 		backface-visibility: hidden;
+		border: 2px solid #212122;
 		/* display: none; */
 	}
 
@@ -143,10 +150,7 @@
 		color: #0f2105;
 		margin-top: 10px;
 	}
-	.father .front .experience {
-		text-align: left;
-		margin-left: 38px;
-	}
+
 	.father .front .experience h3:first-of-type {
 		font-size: 16px;
 		padding: 6px 6px;
@@ -169,27 +173,6 @@
 		font-weight: 400;
 	}
 
-	.father .front .skills {
-		text-align: left;
-		overflow: hidden;
-		margin-left: 38px;
-	}
-	.father .front .skills > h3 {
-		font-size: 16px;
-		padding: 5px 6px;
-		background-color: #00a0ff;
-		color: #f7fafa;
-		font-weight: 700;
-		border-radius: 5px;
-		width: 10%;
-		margin-bottom: 10px;
-		margin-top: 15px;
-	}
-	.father .front .skills .grid-3 {
-		width: 33.3333%;
-		float: left;
-		margin: 0 auto;
-	}
 	.father .front .skills .grid-3 h3 {
 		color: #0f2105;
 		margin-top: 0;
@@ -226,18 +209,7 @@
 		margin-top: 10px;
 		text-align: center;
 	}
-	.father .back > h3 {
-		padding: 6px;
-		color: #f7fafa;
-		background-color: #00a0ff;
-		width: 25%;
-		border-radius: 5px;
-		margin: 20px 0 20px;
-	}
-	.father .back > h3,
-	.father .back .social {
-		margin-left: 38px;
-	}
+
 	.father .back .social h3 {
 		margin: 10px 0 5px;
 		font-size: 16px;
@@ -247,23 +219,5 @@
 		padding: 2px 7px;
 		border-radius: 3px;
 		margin-right: 2px;
-	}
-	.father .back .social .facebook::first-letter {
-		background-color: #4267b2;
-	}
-	.father .back .social .twitter::first-letter {
-		background-color: #1da1f2;
-	}
-	.father .back .social .youtube::first-letter {
-		background-color: #ff0000;
-	}
-	.father .back .social .linkedin::first-letter {
-		background-color: #0077b5;
-	}
-	.father .back .social a {
-		color: #2c2c2c;
-		text-decoration: none;
-		font-size: 16px;
-		margin-top: 3px;
 	}
 </style>

@@ -35,6 +35,6 @@
 	<title>Bienvenido</title>
 </svelte:head>
 <div class="container">
-	<h1 class="text-center m-1">Bienvenido {message.name}</h1>
+	<h1 class="text-center m-1">Bienvenido!</h1>
 	<Status subject="Solicitud de credencial" />
 </div>

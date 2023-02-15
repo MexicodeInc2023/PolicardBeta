@@ -33,20 +33,17 @@
 	let correo = customerEmail;
 
 	let fecha = customerDate; */
-
-	
-
 </script>
 
 <header>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg start-header">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/">
 				<img src={logo} alt="" width="50" height="50" class="d-inline-block align-text-top" />
 			</a>
 
 			<button
-				id= "Modal"
+				id="Modal"
 				class="navbar-toggler"
 				type="button"
 				data-bs-toggle="collapse"
@@ -61,18 +58,29 @@
 				<ul class="navbar-nav me-auto">
 					<div class="logo">POLICARD</div>
 					<li
-						class="nav-item"
+						class={$page.url.pathname === '/credentials' ? 'nav-item active' : 'nav-item '}
 						aria-current={$page.url.pathname === '/credentials' ? 'page' : undefined}
 					>
 						<a class="nav-link " href="/credentials">Inicio</a>
 					</li>
-					<li aria-current={$page.url.pathname === '/credentials/card' ? 'page' : undefined}>
+					<li
+						class={$page.url.pathname === '/credentials/card' ? 'nav-item active' : 'nav-item '}
+						aria-current={$page.url.pathname === '/credentials/card' ? 'page' : undefined}
+					>
 						<a class="nav-link" href="/credentials/card">Mi Credencial</a>
 					</li>
-					<li aria-current={$page.url.pathname === '/credentials/procedures' ? 'page' : undefined}>
+					<li
+						class={$page.url.pathname === '/credentials/procedures'
+							? 'nav-item active'
+							: 'nav-item '}
+						aria-current={$page.url.pathname === '/credentials/procedures' ? 'page' : undefined}
+					>
 						<a class="nav-link" href="/credentials/procedures">Tramites</a>
 					</li>
-					<li aria-current={$page.url.pathname === '/credentials/info' ? 'page' : undefined}>
+					<li
+						class={$page.url.pathname === '/credentials/info' ? 'nav-item active' : 'nav-item '}
+						aria-current={$page.url.pathname === '/credentials/procedures' ? 'page' : undefined}
+					>
 						<a class="nav-link" href="/credentials/info">Informacion</a>
 					</li>
 				</ul>
@@ -85,79 +93,29 @@
 						aria-haspopup="true"
 						aria-expanded="false"
 					>
-						<img
-							src={profile}
-							alt=""
-							width="50"
-							height="50"
-							class="d-inline-block align-text-middle"
-						/>
+						Perfil
 					</a>
 					<!-- Modal -->
-					<div
-						class="modal fade"
-						id="staticBackdrop1"
-						data-bs-backdrop="static"
-						data-bs-keyboard="false"
-						tabindex="-1"
-						aria-labelledby="staticBackdropLabel"
-						aria-hidden="true"
-					>
+					<div class="modal fade" id="myModal" role="dialog">
 						<div class="modal-dialog">
-							<div class="modal-content">
-								<!-- <div class="modal-header">
-									<h5 class="modal-title" id="staticBackdropLabel">Perfil</h5>
-									<button 
-										type="button"
-										class="btn-close"
-										data-bs-dismiss="modal"
-										aria-label="Close"
-									/>
-								</div> -->
-								<div class="modal-body">
-									<div class="position-relative">
-										<center>
-											<img class ="img-fluid" src={logo}>
-										</center>
-									</div>
-									<div class="form-group">										
-										<form class=" needs-validation" novalidate>
-											<center>
-											<div class="col-md-8 position-relative">
-											  <label for="validationTooltip01" class="form-label">Nombre</label>
-											  <input  class="form-control" type="text" placeholder="undefined" aria-label="Disabled input example" disabled readonly>
-											<!-- value={nombre} -->
-											</div>
-											<br/>
-											<div class="col-md-6 position-relative">
-											  <label for="validationTooltip02" class="form-label">Fecha de Creación</label>
-											  <input class="form-control" type="text" placeholder="undefined" aria-label="Disabled input example" disabled  readonly>
-											  <!-- value={fecha} -->
-											</div>
-											<br/>
-											<div class="col-md-8 position-relative">
-											  <label for="validationTooltipUsername" class="form-label">Correo</label>
-											  <div class="input-group has-validation">
-												<span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-												<input class="form-control" type="text" placeholder="undefined" aria-label="Disabled input example" disabled readonly>
-												<!-- value={correo} -->  
-											</div>
-											</div>
-											<div class="col-12">
-											</div>
-										</center>
-									</div>
+							<div class="card">
+								<div class="card-img">
+									<img class="img-fluid" src={logo} />
 								</div>
-								<div class="modal-footer">
-									<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
-										>Close</button
-									>
+								<div class="card-title">
+									<p>Enrique Aguilar</p>
 								</div>
+								<div class="card-text">
+									<p>enagar@uptapachula.edu.mx</p>
+								</div>
+								<button class="btn">Cerrar</button>
 							</div>
 						</div>
 					</div>
 					<div class="dropdown-menu">
-						<button class="dropdown-item" data-bs-toggle="modal" data-bs-target={'#staticBackdrop1'}>Perfil</button>
+						<button class="dropdown-item" data-bs-toggle="modal" data-bs-target={'#myModal'}
+							>Perfil</button
+						>
 						<div class="dropdown-divider" />
 						<form method="POST" action="/logout">
 							<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>
@@ -177,6 +135,14 @@
 		margin-right: 1rem;
 	}
 
+	.start-header {
+		opacity: 1;
+		padding: 15px 0;
+		box-shadow: 0 10px 30px 0 rgba(138, 155, 165, 0.15);
+		-webkit-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+	}
+
 	li {
 		margin-right: 1rem;
 	}
@@ -184,5 +150,96 @@
 	a {
 		color: #000;
 		margin-top: 0.25rem;
+		font-size: 1.1rem;
+	}
+
+	.nav-link {
+		color: #212121 !important;
+		font-weight: 500;
+		transition: all 200ms linear;
+	}
+	.nav-item:hover .nav-link {
+		color: #8167a9 !important;
+	}
+	.nav-item.active .nav-link {
+		color: #249434 !important;
+	}
+	.nav-link {
+		position: relative;
+		padding: 5px 0 !important;
+		display: inline-block;
+	}
+	.nav-item:after {
+		position: absolute;
+		bottom: -5px;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		content: '';
+		background-color: #8167a9;
+		opacity: 0;
+		transition: all 200ms linear;
+	}
+	.nav-item:hover:after {
+		bottom: 0;
+		opacity: 1;
+	}
+	.nav-item.active:hover:after {
+		opacity: 0;
+	}
+	.nav-item {
+		position: relative;
+		transition: all 200ms linear;
+	}
+
+	/* Modal */
+
+	.btn {
+		background-color: #23c483;
+		border-color: #23c483;
+		border-radius: 6px;
+		color: white;
+		font-size: 17px;
+		padding-right: 76px;
+		padding-left: 76px;
+	}
+
+	.card {
+		border-radius: 3vh;
+		margin: auto;
+		max-width: 380px;
+		padding: 7vh 6vh;
+		align-items: center;
+		box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+
+	@media (max-width: 767px) {
+		.card {
+			width: 90vw;
+		}
+	}
+	.card-img {
+		padding: 20px 0;
+		width: 40%;
+	}
+
+	.card-img img {
+		opacity: 0.7;
+	}
+	.card-title {
+		margin-bottom: unset;
+	}
+	.card-title p {
+		color: #6c63ff;
+		font-weight: 900;
+		font-size: 30px;
+		margin-bottom: unset;
+	}
+	.card-text p {
+		color: grey;
+		font-size: 25px;
+		text-align: center;
+		padding: 3vh 0;
+		font-weight: lighter;
 	}
 </style>

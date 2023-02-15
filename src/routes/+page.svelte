@@ -80,7 +80,7 @@
 									/>
 								</svg>
 							</div>
-							<h2 class="register_user"> Registrate </h2>
+							<h2 class="register_user">Registrate</h2>
 						</div>
 
 						<div class="content">
@@ -144,6 +144,7 @@
 		box-shadow: 15px 15px 30px rgba(25, 25, 25, 0.247), -15px -15px 30px rgba(60, 60, 60, 0.082);
 		text-align: center;
 		overflow: hidden;
+		border: #23c483 3px solid;
 	}
 
 	.card:hover {
@@ -157,13 +158,11 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		background: #23c483;
+		background: #feffff;
 	}
 
-	.register .header {
-
-		background: #7352F3;
-
+	.register {
+		border: #8123c4 3px solid !important;
 	}
 
 	.card .header .login_user {
@@ -173,7 +172,7 @@
 		text-transform: uppercase;
 		padding: 18px 0 0 0;
 		transition: all 0.5s;
-		color: #000;
+		color: #000000;
 	}
 	.register_user {
 		font-size: 1.2em;
@@ -198,10 +197,10 @@
 	}
 	.fancy {
 		background-color: transparent;
-		border: 2px solid #7352F3;
+		border: 2px solid #7352f3;
 		border-radius: 30px;
-		
-		color: #18BE78;
+
+		color: #18be78;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 700;
@@ -223,7 +222,7 @@
 		content: ' ';
 		width: 1.5625rem;
 		height: 2px;
-		background: #18BE78;
+		background: #7050ee;
 		top: 50%;
 		left: 1.5em;
 		position: absolute;
@@ -275,8 +274,8 @@
 	}
 
 	.fancy:hover {
-		color: #5a40c0;
-		background: #23c483;
+		color: #ffffff;
+		background: #7050ee;
 	}
 
 	.fancy:hover::before {
@@ -346,13 +345,13 @@
 	}
 	.loginn:hover {
 		background-color: #23c483;
-		
+
 		color: #fff;
 		transform: translateY(-7px);
 	}
 
 	.register_count:hover {
-		background-color: #7352F3;
+		background-color: #7352f3;
 		color: #fff;
 		transform: translateY(-7px);
 	}
@@ -371,7 +370,6 @@
 	@media screen and (max-width: 1199px) and (min-width: 992px) {
 		.lol {
 			margin-top: -300px;
-			
 		}
 	}
 </style>
