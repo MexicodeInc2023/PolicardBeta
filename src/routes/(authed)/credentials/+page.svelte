@@ -36,5 +36,6 @@
 </svelte:head>
 <div class="container">
 	<h1 class="text-center m-1">Bienvenido!</h1>
+  <h1 class="text-center m-1" style="font-weight: bold; color: #7352F2">Enrique Aguilar Armenta</h1>
 	<Status subject="Solicitud de credencial" />
 </div>

@@ -3,7 +3,7 @@
 	let Datos = [];
 	let OnError;
 	// usen una api fake para ver como funciona, no usen la url de abajo porque solo tengo 500 peticiones al mes y ya como por la 400
-	const url = 'https://api.steinhq.com/v1/storages/6338ad24eced9b09e99d7c7f/creden'; //https://api.steinhq.com/v1/storages/6338ad24eced9b09e99d7c7f/creden
+	const url = 'http://localhost:3001/Policard'; //https://api.steinhq.com/v1/storages/6338ad24eced9b09e99d7c7f/creden
 
 	const options = { method: 'GET' };
 	const Datapromise = fetch(url, options) // fetch the data
@@ -52,7 +52,7 @@
 					<header>
 						<div class="bkg" />
 						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
-						<h3 style="font-size: 1.4rem;">{Data.nombre}</h3>
+						<h3 style="font-size: 1.4rem;">{Data.nombre} {Data.apellidos}</h3>
 					</header>
 					<div class="experiences" style="text-align: center;">
 						<p style="font-weight: bold; color: #7352F2">Universidad Politecnica de Tapachula</p>
@@ -65,7 +65,7 @@
 					</div>
 					<div style="margin-left: 90px;">
 						<QRCode
-							codeValue="Nombre: {Data.nombre}|Carrera:{Data.carrera}|Matricula:{Data.matricula}|Cuatrimestre: {Data.cuatrimestre} "
+							codeValue="Nombre: {Data.nombre} {Data.apellidos}|Carrera:{Data.carrera}|Matricula:{Data.matricula}|Cuatrimestre: {Data.cuatrimestre} "
 							squareSize="200"
 						/>
 					</div>
@@ -74,15 +74,20 @@
 					<header>
 						<div class="bkg" />
 						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
-						<h3 style="font-size: 1.4rem;">{Data.nombre}</h3>
+						<h3 style="font-size: 1.4rem;">{Data.cuatrimestre}°{Data.grupo}</h3>
 					</header>
 					<div class="experiences" style="text-align: center;">
-						<p style="font-weight: bold; color: #7352F2">{Data.alergia}</p>
-						<p style="font-weight: bold; color: #18BE78">
-							{Data.carrera}
-						</p>
 						<p style="color: #1a1423 !important;">
-							Matricula: {Data.matricula}
+							Alergia: {Data.alergia}
+						</p>
+						<p style="color: #1a1423 ;">
+							Alergia extra: {Data.alergia_extra}
+						</p>
+						<p style="color: #1a1423 ;">
+							Contacto de emergencia: {Data.contacto_de_emergencia}
+						</p>
+						<p style="color: #1a1423 ;">
+							Numero de emergencia: {Data.numero_de_emergencia}
 						</p>
 					</div>
 				</div>
@@ -132,12 +137,12 @@
 		z-index: 2;
 		background-color: #f7fafa;
 		backface-visibility: hidden;
-		border: 2px solid #212122;
+		border: 1px solid #212122;
 		/* display: none; */
 	}
 
 	.father .front header .bkg {
-		background-color: #2bde73;
+		background-color: #18BE78;
 		height: 80px;
 		border-radius: 10px 10px 0 0;
 	}
@@ -193,9 +198,10 @@
 		background-color: #f7fafa;
 		backface-visibility: hidden;
 		text-align: left;
+		border: 1px solid #212122;
 	}
 	.father .back header .bkg {
-		background-color: #fe2370;
+		background-color: #7352F3;
 		height: 80px;
 		border-radius: 10px 10px 0 0;
 	}

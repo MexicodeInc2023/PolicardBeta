@@ -1,7 +1,7 @@
 <script>
   const tramite = {
-    id: 1,
-    approve: 1,
+    id: 2,
+    approve: 2,
   };
   export let subject;
 </script>
@@ -23,12 +23,12 @@
               <div
                 class="d-flex flex-row justify-content-between align-items-center align-content-center"
               >
-                <span class="dot big-dot" />
+                <span class="dot" />
                 <hr class="flex-fill track-line" />
                 <span class="dot" />
                 <hr class="flex-fill track-line" />
                 <span
-                  class="d-flex justify-content-center align-items-center  dot"
+                  class="d-flex justify-content-center align-items-center  dot big-dot"
                 >
                   <i class="fa fa-check text-white" /></span
                 >

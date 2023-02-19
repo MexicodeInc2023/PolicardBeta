@@ -7,10 +7,15 @@ window.setTimeout(()=>{showComponent = true}, 0)
 
 <article class:show={showComponent}>
 	<img src={thankYouImg} alt="">
-	<h3>Thank you!</h3>
-	<p>Thank you for confirming your data! We hope you have fun using our platform. 
-		If you ever need supp	ort, please feel free to email us at mexicode@gmail.com.</p>
-		
+	<h3>Gracias!</h3>
+	<p>Gracias por confirmar sus datos. Esperamos que te diviertas utilizando nuestra plataforma. 
+		Si alguna vez necesita ayuda, no dude en enviarnos un correo electrónico a mexicode@gmail.com.</p>
+		<button class="nextButton">
+			<a href="/login"> Iniciar Sesion </a>
+			<div class="arrow-wrapper">
+				<div class="arrow" />
+			</div>
+		</button>
 </article>
 
 <style>
@@ -69,5 +74,75 @@ p {
 		margin-bottom: 14px;
 	}
 }
+a {
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+		outline: none;
+		border: 0;
+		vertical-align: middle;
+		text-decoration: none;
+		font-family: inherit;
+		font-size: 15px;
+		color: #fff;
+	}
+.nextButton {
+		--primary-color: #645bff;
+		--secondary-color: #fff;
+		--hover-color: #111;
+		--arrow-width: 10px;
+		--arrow-stroke: 2px;
+		box-sizing: border-box;
+		border: 0;
+		border-radius: 20px;
+		color: var(--secondary-color);
+		padding: 1em 1.8em;
+		background: var(--primary-color);
+		display: flex;
+		transition: 0.2s background;
+		align-items: center;
+		gap: 0.6em;
+		font-weight: bold;
+	}
 
+	.nextButton .arrow-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.nextButton .arrow {
+		margin-top: 1px;
+		width: var(--arrow-width);
+		background: var(--primary-color);
+		height: var(--arrow-stroke);
+		position: relative;
+		transition: 0.2s;
+	}
+
+	.nextButton .arrow::before {
+		content: '';
+		box-sizing: border-box;
+		position: absolute;
+		border: solid var(--secondary-color);
+		border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+		display: inline-block;
+		top: -3px;
+		right: 3px;
+		transition: 0.2s;
+		padding: 3px;
+		transform: rotate(-45deg);
+	}
+
+	.nextButton:hover {
+		background-color: var(--hover-color);
+	}
+
+	.nextButton:hover .arrow {
+		background: var(--secondary-color);
+	}
+
+	.nextButton:hover .arrow:before {
+		right: 0;
+	}
 </style>

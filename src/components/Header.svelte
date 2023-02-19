@@ -106,7 +106,7 @@
 									<p>Enrique Aguilar</p>
 								</div>
 								<div class="card-text">
-									<p>enagar@uptapachula.edu.mx</p>
+									<p>203418@uptapachula.edu.mx</p>
 								</div>
 								<button class="btn">Cerrar</button>
 							</div>

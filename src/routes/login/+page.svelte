@@ -86,7 +86,7 @@
 							<label for="exampleInputEmail1" class="form-label font-weight-bold">Email</label>
 							<input
 								type="email"
-								class="form-control bg-dark-x border-0"
+								class="form-control  border-0"
 								bind:value={email}
 								id="exampleInputEmail1"
 								placeholder="Ingresa tu email"
@@ -99,7 +99,7 @@
 							>
 							<input
 								type="password"
-								class="form-control bg-dark-x border-0 mb-2"
+								class="form-control border-0 mb-2"
 								bind:value={password}
 								placeholder="Ingresa tu contraseña"
 								id="exampleInputPassword1"
@@ -152,9 +152,9 @@
     background-color: var(--dark¿) !important;
 	} */
 
-	.bg-dark-x {
+	/* .bg-dark-x {
 		background-color: var(--dark-x);
-	}
+	} */
 
 	.bg-light {
 		background-color: #ffffff;
@@ -175,7 +175,7 @@
 		line-height: initial;
 	}
 	.form-control:focus {
-		background-color: var(--dark-x);
+		background-color: var(--light);
 		outline: none;
 	}
 
