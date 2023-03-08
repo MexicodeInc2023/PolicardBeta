@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
   import { authenticated } from '../../../stores/auth.js'
 
-  let message = '';
+ /*  let message = '';
 
 	let headersList = {
 		'Content-Type': 'application/json',
@@ -28,7 +28,7 @@
     }
   
   });
-
+ */
 </script>
 
 <svelte:head>
