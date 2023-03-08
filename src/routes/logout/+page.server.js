@@ -1,8 +1,8 @@
-import { redirect } from '@sveltejs/kit';
+/* import { redirect } from '@sveltejs/kit';
 
 export const actions = {
 	default: ({ cookies }) => {
 		cookies.delete('logged_in', { path: '/credentials' });
 		throw redirect(307, '/');
 	}
-};
+}; */

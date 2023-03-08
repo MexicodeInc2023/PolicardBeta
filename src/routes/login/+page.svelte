@@ -3,30 +3,45 @@
 	import Image_2 from '../../lib/img/img-2.jpg';
 	import Policard from '../../lib/img/policard-wt-sf.png';
 
-	const loginUrl = 'http://127.0.0.1:8000/users/login/';
-
+	const loginUrl = 'http://localhost:3000/api/auth/signin/';
 	let email, password;
+	console.log(email, password);
+	let errorVisible = false;
+	let successVisible = false;
 
+	function hideError() {
+		errorVisible = ' ';
+	}
+
+	function hideSuccess() {
+		successVisible = ' ';
+	}
 	const submit = async () => {
 		const res = await fetch(loginUrl, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			credentials: 'include',
 			body: JSON.stringify({
 				email,
 				password
 			})
+		}).catch((err) => {
+			console.log(err);
+			if (err) {
+				successVisible = 'show';
+			}
 		});
 
-		if (res.ok) {
-			// Enviar a la pagina de credenciales
-			location.href = '/credentials';
-			// enviar la autenticacion
+		// Si La respuesta es 200 enviamos una alerta de que se ha iniciado sesion , si no enviamos una alerta de que no se ha iniciado sesion
+		if (res.status === 200) {
+			successVisible = 'show';
 		} else {
-			alert('Error en la autencacion');
+			errorVisible = 'show';
 		}
+
+		const data = await res.text();
+		console.log(data);
 	};
 </script>
 
@@ -35,6 +50,31 @@
 </svelte:head>
 
 <body class="bg-light">
+	<div class="alert alert-danger alert-dismissible fade {errorVisible} " role="alert">
+		Error al iniciar sesión. Por favor, comprueba tus credenciales e intenta de nuevo.
+		<button
+			type="button"
+			class="btn-close"
+			data-bs-dismiss="alert"
+			aria-label="Close"
+			on:click={hideError}
+		/>
+	</div>
+
+	<div
+		class="alert alert-success alert-dismissible fade {successVisible}"
+		role="alert"
+		class:successVisible
+	>
+		Sesión iniciada correctamente.
+		<button
+			type="button"
+			class="btn-close"
+			data-bs-dismiss="alert"
+			aria-label="Close"
+			on:click={hideSuccess}
+		/>
+	</div>
 	<section>
 		<div class="row g-0">
 			<div class="col-lg-7 d-none d-lg-block">
@@ -81,7 +121,7 @@
 				</div>
 				<div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
 					<h1 class="font-weight-bold mb-4">Bienvenido, Inicia Sesion</h1>
-					<form class="mb-5" on:submit={submit} method="POST">
+					<form class="mb-5" on:submit={submit}>
 						<div class="mb-4">
 							<label for="exampleInputEmail1" class="form-label font-weight-bold">Email</label>
 							<input
@@ -99,7 +139,7 @@
 							>
 							<input
 								type="password"
-								class="form-control border-0 mb-2"
+								class="form-control  border-0 mb-2"
 								bind:value={password}
 								placeholder="Ingresa tu contraseña"
 								id="exampleInputPassword1"
@@ -151,6 +191,11 @@
 	/* .bg-dark {
     background-color: var(--dark¿) !important;
 	} */
+
+	/* 	.bg-dark-x {
+		background-color: var(--dark-x);
+	}
+ */
 
 	/* .bg-dark-x {
 		background-color: var(--dark-x);
