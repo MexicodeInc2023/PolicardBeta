@@ -3,7 +3,7 @@
 	let Datos = [];
 	let OnError;
 	// usen una api fake para ver como funciona, no usen la url de abajo porque solo tengo 500 peticiones al mes y ya como por la 400
-	const url = 'http://localhost:3001/Policard'; //https://api.steinhq.com/v1/storages/6338ad24eced9b09e99d7c7f/creden
+	const url = 'https://api.steinhq.com/v1/storages/6338ad24eced9b09e99d7c7f/creden'; // http://localhost:3001/Policard
 
 	const options = { method: 'GET' };
 	const Datapromise = fetch(url, options) // fetch the data
@@ -88,6 +88,9 @@
 						</p>
 						<p style="color: #1a1423 ;">
 							Numero de emergencia: {Data.numero_de_emergencia}
+						</p>
+						<p style="color: #1a1423 ;">
+							Tipo de Sangre: {Data.blood_type}
 						</p>
 					</div>
 				</div>
