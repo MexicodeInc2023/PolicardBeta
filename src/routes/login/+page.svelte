@@ -1,47 +1,69 @@
 <script>
-	import Image_1 from '../../lib/img/img-1.jpg';
-	import Image_2 from '../../lib/img/img-2.jpg';
 	import Policard from '../../lib/img/policard-wt-sf.png';
+	import { BaseUrl } from '../../stores/apiUrl';
+	import { goto } from '$app/navigation';
+	import { fade, fly } from 'svelte/transition';
+	import { jwt } from '../../stores/auth';
 
-	const loginUrl = 'http://localhost:3000/api/auth/signin/';
+	const loginUrl = BaseUrl + 'login/';
 	let email, password;
-	console.log(email, password);
-	let errorVisible = false;
-	let successVisible = false;
+	let errorVisible = 'none';
+	let successVisible = 'none';
 
 	function hideError() {
-		errorVisible = ' ';
+		errorVisible = 'none';
 	}
 
 	function hideSuccess() {
-		successVisible = ' ';
+		successVisible = 'none';
 	}
+
+	function setCookie(name, value, days) {
+		const date = new Date();
+		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+		const expires = '; expires=' + date.toUTCString();
+		document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/';
+	}
+
 	const submit = async () => {
-		const res = await fetch(loginUrl, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				email,
-				password
-			})
-		}).catch((err) => {
-			console.log(err);
-			if (err) {
-				successVisible = 'show';
+		try {
+			const res = await fetch(loginUrl, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					email,
+					password
+				})
+			});
+
+			if (!res.ok) {
+				authenticated.set(false);
+				throw new Error('No se pudo iniciar sesión');
 			}
-		});
 
-		// Si La respuesta es 200 enviamos una alerta de que se ha iniciado sesion , si no enviamos una alerta de que no se ha iniciado sesion
-		if (res.status === 200) {
-			successVisible = 'show';
-		} else {
-			errorVisible = 'show';
+			const data = await res.json();
+
+			if (!data.tokens) {
+				authenticated.set(false);
+				throw new Error('No se encontraron tokens de acceso');
+			}
+
+			// Establecer las cookies de acceso y actualización con los valores de los tokens correspondientes
+			jwt.set(data.tokens.access);
+			setCookie('access_token', data.tokens.access, 7);
+			setCookie('refresh_token', data.tokens.refresh, 14);
+
+			successVisible = 'block';
+
+			// navegar a la página deseada después de autenticarse
+			goto('/credentials');
+		} catch (err) {
+			console.error(err);
+			errorVisible = 'block';
+			authenticated.set(false);
 		}
-
-		const data = await res.text();
-		console.log(data);
 	};
 </script>
 
@@ -50,7 +72,12 @@
 </svelte:head>
 
 <body class="bg-light">
-	<div class="alert alert-danger alert-dismissible fade {errorVisible} " role="alert">
+	<div
+		class="alert alert-danger alert-dismissible fade show"
+		style="display: {errorVisible}"
+		role="alert"
+		transition:fade
+	>
 		Error al iniciar sesión. Por favor, comprueba tus credenciales e intenta de nuevo.
 		<button
 			type="button"
@@ -62,9 +89,11 @@
 	</div>
 
 	<div
-		class="alert alert-success alert-dismissible fade {successVisible}"
+		class="alert alert-success alert-dismissible fade show"
+		style="display: {successVisible}"
 		role="alert"
 		class:successVisible
+		transition:fade
 	>
 		Sesión iniciada correctamente.
 		<button
@@ -75,7 +104,7 @@
 			on:click={hideSuccess}
 		/>
 	</div>
-	<section>
+	<section in:fly={{ x: -100, duration: 500, delay: 500 }} out:fly={{ duration: 500 }}>
 		<div class="row g-0">
 			<div class="col-lg-7 d-none d-lg-block">
 				<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -173,6 +202,7 @@
 </body>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 	:root {
 		--dark¿: #16191c;
 		--dark-x: #1e2126;
@@ -180,7 +210,7 @@
 	}
 
 	body {
-		font-family: 'Spartan', sans-serif;
+		font-family: 'Inter', sans-serif;
 		font-weight: 300;
 		color: var(--dark¿);
 	}

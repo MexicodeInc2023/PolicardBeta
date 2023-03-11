@@ -1,5 +1,5 @@
-import { writable } from "svelte/store";
+ import { writable } from "svelte/store"; 
 
 
-export const jwt = writable(null);
-export const authenticated = writable(false);
+export let jwt = writable(null);
+export let authenticated = writable(false);
