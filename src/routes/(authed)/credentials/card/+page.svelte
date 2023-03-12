@@ -61,22 +61,29 @@
 	<title>Policard-Credencial</title>
 </svelte:head>
 {#if OnError}
-	<div class="card text-white bg-danger" style="max-width: 18rem; margin-top: 3rem;">
-		<div class="card-header">Error Insesperado</div>
-		<div class="card-body">
-			<h4 class="card-title">Intente de nuevo</h4>
-		</div>
+	<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true"> ×</button>
+		<span class="glyphicon glyphicon-hand-right" /> <strong class="h4 ">Error Insesperado</strong>
+		<hr class="message-inner-separator" />
+		<p>Intentalo más tarde</p>
 	</div>
 {:else}
 	{#await Datapromise}
-		<div class="card text-white bg-warning" style="max-width: 18rem; margin-top: 3rem;">
-			<div class="card-header">Cargando...</div>
-			<div class="card-body">
-				<h4 class="card-title">Espere un momento</h4>
+		<div class="d-flex flex-row align-items-center justify-content-center" style="height:60vh">
+			<div class="spinner-grow text-success" role="status">
+				<span class="sr-only" />
+			</div>
+			<pre />
+			<div class="spinner-grow text-primary" role="status">
+				<span class="sr-only" />
+			</div>
+			<pre />
+			<div class="spinner-grow text-info" role="status">
+				<span class="sr-only" />
 			</div>
 		</div>
 	{:then data}
-		<div style="text-align: center;"><h1 style="color:#1a1423">Credencial UPTAP</h1></div>
+		<div style="text-align: center;"><h1 style="color:#1a1423 ">Credencial UPTAP</h1></div>
 		<div class="m-auto">
 			<button class="btn btn-primary" on:click={() => window.print()}>Imprimir</button>
 		</div>
@@ -97,7 +104,7 @@
 							Matricula: {data.Datos.license}
 						</p>
 						<p style="color: #1a1423 !important;">
-							Cuatrimestre: {data.Datos.grade}
+							Cuatrimestre: <span class="text-uppercase"> {data.Datos.grade}</span>
 						</p>
 						<p style="color: #1a1423 !important;">
 							Nacimiento: {data.Datos.birthday}
@@ -106,7 +113,11 @@
 					<div style="margin-left: 90px; margin-top: 5px">
 						<QRCode
 							codeValue="Nombre: {data.Datos.personalName} {data.Datos.lastname}|Carrera:{data
-								.Career.carrera}|Matricula:{data.Datos.license}|Cuatrimestre: {data.Datos.grade} "
+								.Career.carrera}|Matricula:{data.Datos.license}|Cuatrimestre: {data.Datos
+								.grade}|Nacimiento: {data.Datos.birthday}| Contacto de Emergencia: {data.Emergency
+								.emergency_name}| Numero 1: {data.Emergency.emergency_phone}| Numero extra: {data
+								.Emergency.emergency_phone2}| Tipo de Sangre: {data.Emergency
+								.blood_type}| Alergias: {data.Emergency.allergy} y {data.Emergency.allergy2}|"
 							squareSize="200"
 						/>
 					</div>
@@ -291,5 +302,48 @@
 		padding: 2px 7px;
 		border-radius: 3px;
 		margin-right: 2px;
+	}
+
+	hr.message-inner-separator {
+		clear: both;
+		margin-top: 10px;
+		margin-bottom: 13px;
+		border: 0;
+		height: 1px;
+		background-image: -webkit-linear-gradient(
+			left,
+			rgba(0, 0, 0, 0),
+			rgba(0, 0, 0, 0.15),
+			rgba(0, 0, 0, 0)
+		);
+		background-image: -moz-linear-gradient(
+			left,
+			rgba(0, 0, 0, 0),
+			rgba(0, 0, 0, 0.15),
+			rgba(0, 0, 0, 0)
+		);
+		background-image: -ms-linear-gradient(
+			left,
+			rgba(0, 0, 0, 0),
+			rgba(0, 0, 0, 0.15),
+			rgba(0, 0, 0, 0)
+		);
+		background-image: -o-linear-gradient(
+			left,
+			rgba(0, 0, 0, 0),
+			rgba(0, 0, 0, 0.15),
+			rgba(0, 0, 0, 0)
+		);
+	}
+
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 10px;
+		font-size: 20px;
+		cursor: pointer;
+		background-color: transparent;
+		border: none;
 	}
 </style>
