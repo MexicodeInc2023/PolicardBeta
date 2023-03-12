@@ -1,5 +1,6 @@
 <script>
 	import QRCode from './components/QRJS.svelte';
+	import jsPDF from 'jspdf';
 	import { jwt, id } from '../../../../stores/auth';
 	import { BaseUrl } from '../../../../stores/apiUrl';
 
@@ -187,11 +188,12 @@
 		border-radius: 5px;
 		perspective: 1000px;
 		height: 100vh;
+		margin-bottom: -115px;
 	}
 	.father {
 		text-align: center;
 		width: 400px;
-		height: 620px;
+		height: 690px;
 		margin: auto;
 		top: 5%;
 		position: relative;
@@ -345,5 +347,10 @@
 		cursor: pointer;
 		background-color: transparent;
 		border: none;
+	}
+	@media print {
+		button {
+			display: none;
+		}
 	}
 </style>

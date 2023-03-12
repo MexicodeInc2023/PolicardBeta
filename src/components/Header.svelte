@@ -243,4 +243,9 @@
 		padding: 3vh 0;
 		font-weight: lighter;
 	}
+	@media print {
+		header {
+			display: none;
+		}
+	}
 </style>
