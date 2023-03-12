@@ -2,9 +2,18 @@
 	const userView = 'http://127.0.0.1:8000/users/userView/';
 	import Status from './card/components/Status.svelte';
 	import { onMount } from 'svelte';
-  import { authenticated } from '../../../stores/auth.js'
+	import { user } from '../../../stores/auth.js';
+	import { authenticated } from '../../../stores/auth.js';
 
+<<<<<<< HEAD
    let message = '';
+=======
+  user.subscribe((value) => {
+    console.log(value);
+  });
+
+	/*  let message = '';
+>>>>>>> 5c102991d20430b31eb54242d161ba538c55907d
 
 	let headersList = {
 		'Content-Type': 'application/json',
@@ -36,6 +45,6 @@
 </svelte:head>
 <div class="container">
 	<h1 class="text-center m-1">Bienvenido!</h1>
-  <h1 class="text-center m-1" style="font-weight: bold; color: #7352F2">Enrique Aguilar Armenta</h1>
+	<h1 class="text-center m-1" style="font-weight: bold; color: #7352F2">{$user}</h1>
 	<Status subject="Solicitud de credencial" />
 </div>

@@ -3,7 +3,8 @@
 	import { BaseUrl } from '../../stores/apiUrl';
 	import { goto } from '$app/navigation';
 	import { fade, fly } from 'svelte/transition';
-	import { jwt } from '../../stores/auth';
+	import { jwt, user, id } from '../../stores/auth';
+	import { authenticated } from '../../stores/auth';
 
 	const loginUrl = BaseUrl + 'login/';
 	let email, password;
@@ -50,7 +51,11 @@
 				throw new Error('No se encontraron tokens de acceso');
 			}
 
+			// Enviamos el id y el usuario a los stores
+			id.set(data.id);
+			user.set(data.name);
 			// Establecer las cookies de acceso y actualización con los valores de los tokens correspondientes
+
 			jwt.set(data.tokens.access);
 			setCookie('access_token', data.tokens.access, 7);
 			setCookie('refresh_token', data.tokens.refresh, 14);
