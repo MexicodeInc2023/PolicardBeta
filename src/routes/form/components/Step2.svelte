@@ -1,12 +1,18 @@
 <script>
 	import {
+		customerPersonalname,
 		customerLastnames,
 		customerMatricula,
 		customerDate,
+		personalnameIsError,
 		lastnamesIsError,
 		matriculaIsError,
 		dateIsError
 	} from './sharedState';
+
+	$: if ($customerPersonalname !== '') {
+		$personalnameIsError = false;
+	}
 
 	$: if ($customerLastnames !== '') {
 		$lastnamesIsError = false;
@@ -29,7 +35,17 @@
 	<p>Ingresa tus datos personales, se mostrarán en tu credencial</p>
 	<form>
 		<div>
-			<label for="lastnamesInput"> Apellidos </label>
+			<label for="personalnameInput"> Nombre(s) </label>
+			<input
+				type="text"
+				class:error={$personalnameIsError}
+				id="lastnames"
+				placeholder=" Ingresa tus apellidos "
+				bind:value={$customerPersonalname}
+			/>
+		</div>
+		<div>
+			<label for="lastnamesInput"> Apellido(s) </label>
 			<input
 				type="text"
 				class:error={$lastnamesIsError}

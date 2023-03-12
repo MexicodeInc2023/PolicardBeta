@@ -8,16 +8,18 @@
 	import {
 		currentStep,
 		customerEmail,
-		customerName,
+		customerUserName,
 		customerPassword,
 		emailIsError,
-		nameIsError,
+		usernameIsError,
 		passwordIsError
 	} from './sharedState';
 	import {
+		customerPersonalname,
 		customerLastnames,
 		customerMatricula,
 		customerDate,
+		personalnameIsError,
 		lastnamesIsError,
 		matriculaIsError,
 		dateIsError
@@ -41,8 +43,8 @@
 
 	function nextStep() {
 		if ($currentStep === 1) {
-			if ($customerName === '') {
-				$nameIsError = true;
+			if ($customerUserName === '') {
+				$usernameIsError = true;
 			}
 			if ($customerEmail === '') {
 				$emailIsError = true;
@@ -51,11 +53,14 @@
 				$passwordIsError = true;
 			}
 
-			if ($customerName !== '' && $customerEmail !== '' && $customerPassword !== '') {
+			if ($customerUserName !== '' && $customerEmail !== '' && $customerPassword !== '') {
 				$currentStep++;
 			}
 		}
 		if ($currentStep === 2) {
+			if ($customerPersonalname === '') {
+				$personalnameIsError = true;
+			}
 			if ($customerLastnames === '') {
 				$lastnamesIsError = true;
 			}
@@ -66,7 +71,7 @@
 				$dateIsError = true;
 			}
 
-			if ($customerLastnames !== '' && $customerMatricula !== '' && $customerDate !== '') {
+			if ($customerPersonalname !== '' && $customerLastnames !== '' && $customerMatricula !== '' && $customerDate !== '') {
 				$currentStep++;
 			}
 		}
