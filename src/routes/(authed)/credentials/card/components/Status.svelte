@@ -63,9 +63,6 @@
               <div class="m-4 alert alert-dismissible alert-success">
                 <h2>LISTO ✅ - Tus datos han sido aprovados</h2>
                 <p>En breve podras visualizar tu credencial</p>
-                <a href="/card/card" class="alert-link">
-                  <strong>VER CREDENCIAL</strong>
-                </a>
               </div>
             {:else if tramite.approve == 1}
               <div class="m-4 alert alert-dismissible alert-info">
