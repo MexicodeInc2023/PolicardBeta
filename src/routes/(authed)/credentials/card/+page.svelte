@@ -3,13 +3,14 @@
 	import { jwt, id } from '../../../../stores/auth';
 	import { BaseUrl } from '../../../../stores/apiUrl';
 
-	let Datos = [];
+	let Datos;
 	let OnError;
 	let id_user = $id;
+
 	// usen una api fake para ver como funciona, no usen la url de abajo porque solo tengo 500 peticiones al mes y ya como por la 400
 	const url = BaseUrl + 'student/' + id_user + '/';
 	console.log(url);
-	const options = {
+	let options = {
 		method: 'GET'
 		/* headers: {
 			'Content-Type': 'application/json',
@@ -20,7 +21,10 @@
 	const Datapromise = fetch(url, options) // fetch the data
 		.then((response) => response.json())
 		.then((data) => {
-			return (Datos = data[0]); // return the data
+			console.log(data.data);
+			Datos = data.data;
+			return Datos;
+			// return the data
 		})
 		.catch((error) => {
 			console.error(error);
@@ -33,26 +37,21 @@
 	<title>Policard-Credencial</title>
 </svelte:head>
 {#if OnError}
-	<div class="card text-white bg-danger  " style="max-width: 18rem; margin-top: 3rem;">
+	<div class="card text-white bg-danger" style="max-width: 18rem; margin-top: 3rem;">
 		<div class="card-header">Error Insesperado</div>
 		<div class="card-body">
 			<h4 class="card-title">Intente de nuevo</h4>
 		</div>
 	</div>
 {:else if !Datos}
-	<div class="progress">
-		<div
-			class="progress-bar progress-bar-striped bg-success"
-			role="progressbar"
-			style="width: 25%;"
-			aria-valuenow="25"
-			aria-valuemin="0"
-			aria-valuemax="100"
-		/>
-		<p style="font-weight: bold; color: #04B404">Cargando Card</p>
+	<div class="card text-white bg-warning" style="max-width: 18rem; margin-top: 3rem;">
+		<div class="card-header">Cargando</div>
+		<div class="card-body">
+			<h4 class="card-title">Espere un momento</h4>
+		</div>
 	</div>
 {:else}
-	{#await Datapromise then Data}
+	{#await Datapromise then data}
 		<div style="text-align: center;"><h1 style="color:#1a1423">Credencial UPTAP</h1></div>
 		<div class="m-auto">
 			<button class="btn btn-primary" on:click={() => window.print()}>Imprimir</button>
@@ -63,47 +62,55 @@
 					<header>
 						<div class="bkg" />
 						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
-						<h3 style="font-size: 1.4rem;">{Data.nombre} {Data.apellidos}</h3>
+						<h3 style="font-size: 1.4rem;">{data.personalName} {data.lastname}</h3>
 					</header>
 					<div class="experiences" style="text-align: center;">
 						<p style="font-weight: bold; color: #7352F2">Universidad Politecnica de Tapachula</p>
 						<p style="font-weight: bold; color: #18BE78">
-							{Data.carrera}
+							<!-- {Data.carrera} -->
 						</p>
 						<p style="color: #1a1423 !important;">
-							Matricula: {Data.matricula}
+							Matricula: {data.license}
+						</p>
+						<p style="color: #1a1423 !important;">
+							Grado: {data.grade}
+						</p>
+						<p style="color: #1a1423 !important;">
+							Nacimiento: {data.birthday}
 						</p>
 					</div>
 					<div style="margin-left: 90px;">
+						<!-- Carrera:{data.carrera} -->
 						<QRCode
-							codeValue="Nombre: {Data.nombre} {Data.apellidos}|Carrera:{Data.carrera}|Matricula:{Data.matricula}|Cuatrimestre: {Data.cuatrimestre} "
+							codeValue="Nombre: {data.personalName} {data.lastname}||Matricula:{data.license}|Cuatrimestre: {data.grade} "
 							squareSize="200"
 						/>
 					</div>
+					<br />
 				</div>
 				<div class="back">
 					<header>
 						<div class="bkg" />
 						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
-						<h3 style="font-size: 1.4rem;">{Data.cuatrimestre}°{Data.grupo}</h3>
+						<h3 style="font-size: 1.4rem;">{data.grade}</h3>
 					</header>
-					<div class="experiences" style="text-align: center;">
-						<p style="color: #1a1423 !important;">
-							Alergia: {Data.alergia}
-						</p>
-						<p style="color: #1a1423 ;">
-							Alergia extra: {Data.alergia_extra}
-						</p>
-						<p style="color: #1a1423 ;">
-							Contacto de emergencia: {Data.contacto_de_emergencia}
-						</p>
-						<p style="color: #1a1423 ;">
-							Numero de emergencia: {Data.numero_de_emergencia}
-						</p>
-						<p style="color: #1a1423 ;">
-							Tipo de Sangre: {Data.blood_type}
-						</p>
-					</div>
+					<!-- <div class="experiences" style="text-align: center;">
+					<p style="color: #1a1423 !important;">
+						Alergia: {Data.alergia}
+					</p>
+					<p style="color: #1a1423 ;">
+						Alergia extra: {Data.alergia_extra}
+					</p>
+					<p style="color: #1a1423 ;">
+						Contacto de emergencia: {Data.contacto_de_emergencia}
+					</p>
+					<p style="color: #1a1423 ;">
+						Numero de emergencia: {Data.numero_de_emergencia}
+					</p>
+					<p style="color: #1a1423 ;">
+						Tipo de Sangre: {Data.blood_type}
+					</p>
+				</div> -->
 				</div>
 			</div>
 		</div>
