@@ -1,14 +1,22 @@
 <script>
 	import QRCode from './components/QRJS.svelte';
-	import { jwt } from '../../../../stores/auth';
-	import {BaseUrl} from "../../../../stores/apiUrl"
+	import { jwt, id } from '../../../../stores/auth';
+	import { BaseUrl } from '../../../../stores/apiUrl';
 
 	let Datos = [];
 	let OnError;
+	let id_user = $id;
 	// usen una api fake para ver como funciona, no usen la url de abajo porque solo tengo 500 peticiones al mes y ya como por la 400
-	const url = BaseUrl + 'student/'; // http://localhost:3001/Policard
+	const url = BaseUrl + 'student/' + id_user + '/';
+	console.log(url);
+	const options = {
+		method: 'GET'
+		/* headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${$jwt}`
+		} */
+	};
 
-	const options = { method: 'GET' };
 	const Datapromise = fetch(url, options) // fetch the data
 		.then((response) => response.json())
 		.then((data) => {
@@ -19,8 +27,6 @@
 			OnError = true;
 			console.log(error);
 		});
-
-	
 </script>
 
 <svelte:head>
@@ -33,7 +39,7 @@
 			<h4 class="card-title">Intente de nuevo</h4>
 		</div>
 	</div>
-{:else if Datos.length === 0}
+{:else if !Datos}
 	<div class="progress">
 		<div
 			class="progress-bar progress-bar-striped bg-success"
@@ -150,7 +156,7 @@
 	}
 
 	.father .front header .bkg {
-		background-color: #18BE78;
+		background-color: #18be78;
 		height: 80px;
 		border-radius: 10px 10px 0 0;
 	}
@@ -209,7 +215,7 @@
 		border: 1px solid #212122;
 	}
 	.father .back header .bkg {
-		background-color: #7352F3;
+		background-color: #7352f3;
 		height: 80px;
 		border-radius: 10px 10px 0 0;
 	}
