@@ -1,15 +1,15 @@
 	<script>
 	import {
 		customerEmail,
-		customerName,
+		customerUserName,
 		customerPassword,
 		emailIsError,
-		nameIsError,
+		usernameIsError,
 		passwordIsError
 	} from './sharedState';
 
-	$: if ($customerName !== '') {
-		$nameIsError = false;
+	$: if ($customerUserName !== '') {
+		$usernameIsError = false;
 	}
 	$: if ($customerEmail !== '') {
 		$emailIsError = false;
@@ -29,13 +29,13 @@
 	<p>Ingresa tus datos personales, estos se mostraran en la credencial.</p>
 	<form>
 		<div>
-			<label for="nameInput"> Nombre </label>
+			<label for="nameInput"> Usuario </label>
 			<input
 				type="text"
-				class:error={$nameIsError}
+				class:error={$usernameIsError}
 				id="nameInput"
-				placeholder=" Ingresa tu nombre "
-				bind:value={$customerName}
+				placeholder=" Ingresa tu usuario "
+				bind:value={$customerUserName}
 			/>
 		</div>
 		<div>
