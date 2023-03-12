@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from '../lib/img/favicon.ico';
+	import logo from '../lib/img/policard-wt-sf.png';
 	import profile from '../lib/img/perfil.jpg';
 	import { authenticated } from '../stores/auth.js';
 	import ModalProfile from './Modal_Profile.svelte';
@@ -36,7 +36,7 @@
 </script>
 
 <header>
-	<nav class="navbar navbar-expand-lg start-header">
+	<nav class="navbar navbar-expand-lg start-header" >
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/">
 				<img src={logo} alt="" width="50" height="50" class="d-inline-block align-text-top" />
