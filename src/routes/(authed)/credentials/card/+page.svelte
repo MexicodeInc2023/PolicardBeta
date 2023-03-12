@@ -5,6 +5,7 @@
 
 	let Datos;
 	let Career;
+	let Emergency;
 	let OnError;
 	let id_user = $id;
 
@@ -22,12 +23,19 @@
 			const response = await fetch(urlStudent, options);
 			const data = await response.json();
 			const Datos = data.data;
+
 			const urlCarrera = BaseUrl + 'careers/' + Datos.id_careers + '/';
 			const carreraResponse = await fetch(urlCarrera, options);
 			const carreraData = await carreraResponse.json();
 			const Career = carreraData.data;
+
+			const urlEmergency = BaseUrl + 'emergency_info/' + Datos.id_emInfo + '/';
+			const emergencyResponse = await fetch(urlEmergency, options);
+			const emergencyData = await emergencyResponse.json();
+			const Emergency = emergencyData.data;
+
 			OnError = false;
-			return { Datos, Career };
+			return { Datos, Career, Emergency };
 		} catch (error) {
 			OnError = true;
 			console.error(error);
@@ -39,15 +47,14 @@
 		.then((response) => {
 			Datos = response.Datos;
 			Career = response.Career;
-			return {Datos, Career};
+			Emergency = response.Emergency;
+			return { Datos, Career, Emergency };
 		})
 		.catch((error) => {
 			console.error(error);
 			OnError = true;
 			console.log(error);
 		});
-
-	
 </script>
 
 <svelte:head>
@@ -60,7 +67,6 @@
 			<h4 class="card-title">Intente de nuevo</h4>
 		</div>
 	</div>
-	
 {:else}
 	{#await Datapromise}
 		<div class="card text-white bg-warning" style="max-width: 18rem; margin-top: 3rem;">
@@ -70,68 +76,82 @@
 			</div>
 		</div>
 	{:then data}
-	<div style="text-align: center;"><h1 style="color:#1a1423">Credencial UPTAP</h1></div>
-	<div class="m-auto">
-		<button class="btn btn-primary" on:click={() => window.print()}>Imprimir</button>
-	</div>
-	<div class="container">
-		<div class="father">
-			<div class="front">
-				<header>
-					<div class="bkg" />
-					<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
-					<h3 style="font-size: 1.4rem;">{data.Datos.personalName} {data.Datos.lastname}</h3>
-				</header>
-				<div class="experiences" style="text-align: center;">
-					<p style="font-weight: bold; color: #7352F2">Universidad Politecnica de Tapachula</p>
-					<p style="font-weight: bold; color: #18BE78">
-					    {data.Career.nameCareers}
-					</p>
-					<p style="color: #1a1423 !important;">
-						Matricula: {data.Datos.license}
-					</p>
-					<p style="color: #1a1423 !important;">
-						Cuatrimestre: {data.Datos.grade}
-					</p>
-					<p style="color: #1a1423 !important;">
-						Nacimiento: {data.Datos.birthday}
-					</p>
+		<div style="text-align: center;"><h1 style="color:#1a1423">Credencial UPTAP</h1></div>
+		<div class="m-auto">
+			<button class="btn btn-primary" on:click={() => window.print()}>Imprimir</button>
+		</div>
+		<div class="container">
+			<div class="father">
+				<div class="front">
+					<header>
+						<div class="bkg" />
+						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
+						<h3 style="font-size: 1.4rem;">{data.Datos.personalName} {data.Datos.lastname}</h3>
+					</header>
+					<div class="experiences" style="text-align: center;">
+						<p style="font-weight: bold; color: #7352F2">Universidad Politecnica de Tapachula</p>
+						<p style="font-weight: bold; color: #18BE78">
+							{data.Career.nameCareers}
+						</p>
+						<p style="color: #1a1423 !important;">
+							Matricula: {data.Datos.license}
+						</p>
+						<p style="color: #1a1423 !important;">
+							Cuatrimestre: {data.Datos.grade}
+						</p>
+						<p style="color: #1a1423 !important;">
+							Nacimiento: {data.Datos.birthday}
+						</p>
+					</div>
+					<div style="margin-left: 90px; margin-top: 5px">
+						<QRCode
+							codeValue="Nombre: {data.Datos.personalName} {data.Datos.lastname}|Carrera:{data
+								.Career.carrera}|Matricula:{data.Datos.license}|Cuatrimestre: {data.Datos.grade} "
+							squareSize="200"
+						/>
+					</div>
+					<br />
 				</div>
-				<div style="margin-left: 90px; margin-top: 5px">
-					
-					<QRCode
-						codeValue="Nombre: {data.Datos.personalName} {data.Datos.lastname}|Carrera:{data.Career.carrera}|Matricula:{data.Datos.license}|Cuatrimestre: {data.Datos.grade} "
-						squareSize="200"
-					/>
+				<div class="back">
+					<header>
+						<div class="bkg" />
+						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
+						{#if data.Emergency == null}
+							<h3 style="font-size: 1.4rem;">El Estudiante no agrego los datos de emergencia</h3>
+						{/if}
+						<h3 style="font-size: 1.4rem;">Contactos de Emergencia</h3>
+						<div class="experiences" style="text-align: center;">
+							<p style="color: #1a1423 !important;">
+								{data.Emergency.emergency_name}
+							</p>
+							<p style="color: #1a1423 !important;">
+								Numero 1: {data.Emergency.emergency_phone}
+							</p>
+							{#if data.Emergency.emergency_phone2 != null}
+								<p style="color: #1a1423 !important;">
+									Numero extra: {data.Emergency.emergency_phone2}
+								</p>
+							{/if}
+							{#if data.Emergency.blood_type != null}
+								<p style="color: #1a1423 !important;">
+									Tipo de sangre: {data.Emergency.blood_type}
+								</p>
+							{/if}
+							{#if data.Emergency.allergy != null}
+								<p style="color: #1a1423 !important;">
+									Alergia: {data.Emergency.allergy}
+								</p>
+							{/if}
+							{#if data.Emergency.allergy2 != null}
+								<p style="color: #1a1423 !important;">
+									Alergia extra: {data.Emergency.allergy2}
+								</p>
+							{/if}
+						</div>
+					</header>
 				</div>
-				<br />
-			</div>
-			<div class="back">
-				<header>
-					<div class="bkg" />
-					<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
-					<h3 style="font-size: 1.4rem;">Datos Extras</h3>
-				</header>
-				<!-- <div class="experiences" style="text-align: center;">
-				<p style="color: #1a1423 !important;">
-					Alergia: {Data.alergia}
-				</p>
-				<p style="color: #1a1423 ;">
-					Alergia extra: {Data.alergia_extra}
-				</p>
-				<p style="color: #1a1423 ;">
-					Contacto de emergencia: {Data.contacto_de_emergencia}
-				</p>
-				<p style="color: #1a1423 ;">
-					Numero de emergencia: {Data.numero_de_emergencia}
-				</p>
-				<p style="color: #1a1423 ;">
-					Tipo de Sangre: {Data.blood_type}
-				</p>
-			</div> -->
 			</div>
 		</div>
-	</div>
 	{:catch error}
 		<div class="card text-white bg-danger" style="max-width: 18rem; margin-top: 3rem;">
 			<div class="card-header">Error Insesperado {error}</div>
