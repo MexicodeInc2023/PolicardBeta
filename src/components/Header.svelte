@@ -83,8 +83,8 @@
 					>
 						<a class="nav-link" href="/credentials/info">Informacion</a>
 					</li>
-				</ul>
-				<li class="nav-item dropdown d-flex dropstart">
+				
+				<li class="nav-item dropdown d-flex">
 					<a
 						class="nav-link dropdown-toggle"
 						data-bs-toggle="dropdown"
@@ -112,16 +112,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="dropdown-menu">
-						<button class="dropdown-item" data-bs-toggle="modal" data-bs-target={'#myModal'}
-							>Perfil</button
-						>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<button class="dropdown-item" data-bs-toggle="modal" data-bs-target={'#myModal'}>Perfil</button>
 						<div class="dropdown-divider" />
 						<form method="POST" action="/logout">
 							<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>
 						</form>
 					</div>
 				</li>
+			</ul>
 			</div>
 		</div>
 	</nav>
@@ -170,7 +169,7 @@
 		display: inline-block;
 	}
 	.nav-item:after {
-		position: absolute;
+		position: relative;
 		bottom: -5px;
 		left: 0;
 		width: 100%;
