@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import logo from '../lib/img/policard-wt-sf.png';
 	import profile from '../lib/img/perfil.jpg';
-	import { authenticated } from '../stores/auth.js';
+	import { authenticated, user, emailUser } from '../stores/auth.js';
 	import ModalProfile from './Modal_Profile.svelte';
 	/* import {
 		customerEmail,
@@ -36,7 +36,7 @@
 </script>
 
 <header>
-	<nav class="navbar navbar-expand-lg start-header" >
+	<nav class="navbar navbar-expand-lg start-header">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/">
 				<img src={logo} alt="" width="50" height="50" class="d-inline-block align-text-top" />
@@ -83,44 +83,46 @@
 					>
 						<a class="nav-link" href="/credentials/info">Informacion</a>
 					</li>
-				
-				<li class="nav-item dropdown d-flex">
-					<a
-						class="nav-link dropdown-toggle"
-						data-bs-toggle="dropdown"
-						href="#"
-						role="button"
-						aria-haspopup="true"
-						aria-expanded="false"
-					>
-						Perfil
-					</a>
-					<!-- Modal -->
-					<div class="modal fade" id="myModal" role="dialog">
-						<div class="modal-dialog">
-							<div class="card">
-								<div class="card-img">
-									<img class="img-fluid" src={logo} />
+
+					<li class="nav-item dropdown d-flex">
+						<a
+							class="nav-link dropdown-toggle"
+							data-bs-toggle="dropdown"
+							href="#"
+							role="button"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							Perfil
+						</a>
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" role="dialog">
+							<div class="modal-dialog">
+								<div class="card">
+									<div class="card-img">
+										<img class="img-fluid" src={logo} />
+									</div>
+									<div class="card-title">
+										<p>{$user}</p>
+									</div>
+									<div class="card-text">
+										<p>{$emailUser}</p>
+									</div>
+									<button class="btn">Cerrar</button>
 								</div>
-								<div class="card-title">
-									<p>Enrique Aguilar</p>
-								</div>
-								<div class="card-text">
-									<p>203418@uptapachula.edu.mx</p>
-								</div>
-								<button class="btn">Cerrar</button>
 							</div>
 						</div>
-					</div>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<button class="dropdown-item" data-bs-toggle="modal" data-bs-target={'#myModal'}>Perfil</button>
-						<div class="dropdown-divider" />
-						<form method="POST" action="/logout">
-							<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>
-						</form>
-					</div>
-				</li>
-			</ul>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<button class="dropdown-item" data-bs-toggle="modal" data-bs-target={'#myModal'}
+								>Perfil</button
+							>
+							<div class="dropdown-divider" />
+							<form method="POST" action="/logout">
+								<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>
+							</form>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</nav>

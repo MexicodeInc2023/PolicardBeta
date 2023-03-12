@@ -3,7 +3,7 @@
 	import { BaseUrl } from '../../stores/apiUrl';
 	import { goto } from '$app/navigation';
 	import { fade, fly } from 'svelte/transition';
-	import { jwt, user, id } from '../../stores/auth';
+	import { jwt, user, id, emailUser } from '../../stores/auth';
 	import { authenticated } from '../../stores/auth';
 
 	const loginUrl = BaseUrl + 'login/';
@@ -54,6 +54,7 @@
 			// Enviamos el id y el usuario a los stores
 			id.set(data.id);
 			user.set(data.name);
+			emailUser.set(data.email);
 			// Establecer las cookies de acceso y actualización con los valores de los tokens correspondientes
 
 			jwt.set(data.tokens.access);

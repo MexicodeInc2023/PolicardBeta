@@ -79,7 +79,7 @@
 							Nacimiento: {data.birthday}
 						</p>
 					</div>
-					<div style="margin-left: 90px;">
+					<div style="margin-left: 90px; margin-top: 5px">
 						<!-- Carrera:{data.carrera} -->
 						<QRCode
 							codeValue="Nombre: {data.personalName} {data.lastname}||Matricula:{data.license}|Cuatrimestre: {data.grade} "
