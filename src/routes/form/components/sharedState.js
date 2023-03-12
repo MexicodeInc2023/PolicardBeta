@@ -9,17 +9,19 @@ export let largerStoreAddOnIsAdded = writable(false)
 export let customizableProfileAddOnIsAdded = writable(false)
 
 // STEP 1 FORM
-export let customerName = writable("")
+export let customerUserName = writable("")
 export let customerEmail = writable("")
 export let customerPassword = writable("")
-export let nameIsError = writable(false)
+export let usernameIsError = writable(false)
 export let emailIsError = writable(false)
 export let passwordIsError = writable(false)
 
 // STEP 2 FORM
+export let customerPersonalname = writable("")
 export let customerLastnames = writable("")
 export let customerMatricula = writable("")
 export let customerDate = writable("")
+export let personalnameIsError = writable(false)
 export let lastnamesIsError = writable(false)
 export let matriculaIsError = writable(false)
 export let dateIsError = writable(false)
