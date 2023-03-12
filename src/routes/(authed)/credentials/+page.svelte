@@ -5,15 +5,13 @@
 	import { user } from '../../../stores/auth.js';
 	import { authenticated } from '../../../stores/auth.js';
 
-<<<<<<< HEAD
    let message = '';
-=======
+
   user.subscribe((value) => {
     console.log(value);
   });
 
-	/*  let message = '';
->>>>>>> 5c102991d20430b31eb54242d161ba538c55907d
+
 
 	let headersList = {
 		'Content-Type': 'application/json',
