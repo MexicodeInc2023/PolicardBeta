@@ -72,7 +72,7 @@
 	.banner-text {
 		font-style: normal;
 		font-weight: 500;
-		font-size: 2.5rem;
+		font-size: 2rem;
 		color: #000;
 	}
 

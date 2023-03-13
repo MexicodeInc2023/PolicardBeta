@@ -1,80 +1,89 @@
 <script>
-import thankYouImg from "../../../lib/img/icon-thank-you.svg"
+	import thankYouImg from '../../../lib/img/icon-thank-you.svg';
+	import { goto } from '$app/navigation';
 
-let showComponent = false
-window.setTimeout(()=>{showComponent = true}, 0)
+	let showComponent = false;
+	window.setTimeout(() => {
+		showComponent = true;
+	}, 0);
+
+	let goLogin = () => {
+		goto('/login');
+	};
 </script>
 
 <article class:show={showComponent}>
-	<img src={thankYouImg} alt="">
+	<img src={thankYouImg} alt="" />
 	<h3>Gracias!</h3>
-	<p>Gracias por confirmar sus datos. Esperamos que te diviertas utilizando nuestra plataforma. 
-		Si alguna vez necesita ayuda, no dude en enviarnos un correo electrónico a mexicode@gmail.com.</p>
-		<button class="nextButton">
-			<a href="/login"> Iniciar Sesion </a>
-			<div class="arrow-wrapper">
-				<div class="arrow" />
-			</div>
-		</button>
+	<p>
+		Gracias por confirmar sus datos. Esperamos que te diviertas utilizando nuestra plataforma. Si
+		alguna vez necesita ayuda, no dude en enviarnos un correo electrónico a mexicode@gmail.com.
+	</p>
+	<button class="nextButton" on:click={goLogin}>
+		 Iniciar Sesión
+		<div class="arrow-wrapper">
+			<div class="arrow" />
+		</div>
+	</button>
 </article>
 
 <style>
-	
-article {
-	display: flex;
-	flex-direction: column;
-	align-items: center;	
-	transition: 0.3s;
-	position: relative;
-	right: -10rem;
-	opacity: 0;
-}
+	article {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		transition: 0.3s;
+		position: relative;
+		right: -10rem;
+		opacity: 0;
+	}
 
-.show {
-	opacity: 1;
-	right: 0;
-}
+	.show {
+		opacity: 1;
+		right: 0;
+	}
 
-img {
-	width: 56px;
-	height: 56px;
-	margin-top: 47px;
-	margin-bottom: 24px;
-}
-
-h3 {
-	font-weight: 700;
-	font-size: 24px;
-	line-height: 28px;
-	text-align: center;
-	color: #022959;
-	margin-bottom: 9px;
-}
-
-p {
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 25px;
-	text-align: center;
-	color: #9699AA;
-	margin-bottom: 47px;
-}
-
-@media screen and (min-width: 992px) {
 	img {
-		width: 80px;
-		height: 80px;
-		margin-bottom: 32px;
-		margin-top: 125px;
+		width: 56px;
+		height: 56px;
+		margin-top: 47px;
+		margin-bottom: 24px;
 	}
 
 	h3 {
-		font-size: 32px;
-		line-height: 37px;
-		margin-bottom: 14px;
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 28px;
+		text-align: center;
+		color: #022959;
+		margin-bottom: 9px;
 	}
-}
-a {
+
+	p {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 25px;
+		text-align: center;
+		color: #9699aa;
+		margin-bottom: 47px;
+	}
+
+	@media screen and (min-width: 992px) {
+		img {
+			width: 80px;
+			height: 80px;
+			margin-bottom: 32px;
+			margin-top: 125px;
+		}
+
+		h3 {
+			font-size: 32px;
+			line-height: 37px;
+			margin-bottom: 14px;
+		}
+	}
+	.a {
+		text-decoration: none;
 		position: relative;
 		display: inline-block;
 		cursor: pointer;
@@ -86,7 +95,7 @@ a {
 		font-size: 15px;
 		color: #fff;
 	}
-.nextButton {
+	.nextButton {
 		--primary-color: #645bff;
 		--secondary-color: #fff;
 		--hover-color: #111;

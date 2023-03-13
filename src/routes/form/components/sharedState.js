@@ -28,7 +28,7 @@ export let dateIsError = writable(false)
 
 // STEP 3 FORM
 export let customerGroup = writable("")
-export let customerCarreer = writable("")
+export let customerCarreer = writable(0)
 export let customerAlergy = writable("")
 export let groupIsError = writable(false)
 export let carreerIsError = writable(false)
@@ -41,3 +41,6 @@ export let customerPhoneEmergency = writable("")
 export let alergyextraIsError = writable(false)
 export let contactemergencyIsError = writable(false)
 export let phoneemergencyIsError = writable(false)
+export let customerPhoneEmergency2 = writable("")
+export let customerBloodType = writable("")
+

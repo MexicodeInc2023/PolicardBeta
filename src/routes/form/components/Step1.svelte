@@ -1,4 +1,4 @@
-	<script>
+<script>
 	import {
 		customerEmail,
 		customerUserName,
@@ -36,12 +36,13 @@
 				id="nameInput"
 				placeholder=" Ingresa tu usuario "
 				bind:value={$customerUserName}
+				required
 			/>
 		</div>
 		<div>
 			<label for="emailInput"> Correo Institucional </label>
 			<input
-				type="email"
+				type="Email"
 				class:error={$emailIsError}
 				id="emailInput"
 				placeholder=" Ingresa tu correo institucional "
@@ -132,11 +133,6 @@
 	input::-webkit-inner-spin-button {
 		-webkit-appearance: none;
 		margin: 0;
-	}
-
-	/* Firefox */
-	input[type='number'] {
-		-moz-appearance: textfield;
 	}
 
 	input.error {

@@ -71,7 +71,12 @@
 				$dateIsError = true;
 			}
 
-			if ($customerPersonalname !== '' && $customerLastnames !== '' && $customerMatricula !== '' && $customerDate !== '') {
+			if (
+				$customerPersonalname !== '' &&
+				$customerLastnames !== '' &&
+				$customerMatricula !== '' &&
+				$customerDate !== ''
+			) {
 				$currentStep++;
 			}
 		}
@@ -107,6 +112,12 @@
 				$currentStep++;
 			}
 		}
+	}
+	const register =  import('../register.js');
+	async function handleClick() {
+		console.log('click');
+
+		(await register).sendRegisterData();
 	}
 </script>
 
@@ -190,6 +201,7 @@
 				class="nextButton confirm"
 				on:click={() => {
 					$currentStep++;
+					handleClick();
 				}}
 			>
 				Confirmar
@@ -602,5 +614,4 @@
 			left: 0;
 		}
 	}
-	
 </style>

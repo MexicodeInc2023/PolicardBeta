@@ -6,6 +6,7 @@
 		alergyextraIsError,
 		contactemergencyIsError,
 		phoneemergencyIsError,
+		customerBloodType,
 	} from "./sharedState";
 
 	$: if ($customerAlergyextra !== "") {
@@ -56,6 +57,14 @@
 				id="phoneemergencyInput"
 				placeholder=" Ingresa tu numero de emergencia "
 				bind:value={$customerPhoneEmergency}
+			/>
+		</div>
+		<div>
+			<label for="bloodTypeInput"> Tipo de Sangre </label>
+			<input
+				type="text"
+				placeholder=" Ingresa tu tipo de sangre "
+				bind:value={$customerBloodType}
 			/>
 		</div>
 	</form>

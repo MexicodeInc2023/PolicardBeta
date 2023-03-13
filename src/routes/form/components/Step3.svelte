@@ -5,16 +5,16 @@
 		customerAlergy,
 		groupIsError,
 		carreerIsError,
-		alergyIsError,
-	} from "./sharedState";
+		alergyIsError
+	} from './sharedState';
 
-	$: if ($customerGroup !== "") {
+	$: if ($customerGroup !== '') {
 		$groupIsError = false;
 	}
-	$: if ($customerCarreer !== "") {
+	$: if ($customerCarreer !== '') {
 		$carreerIsError = false;
 	}
-	$: if ($customerAlergy !== "") {
+	$: if ($customerAlergy !== '') {
 		$alergyIsError = false;
 	}
 
@@ -30,8 +30,13 @@
 	<form>
 		<div>
 			<label for="groupInput"> Grupo </label>
-			<select class="form-select group" class:error={$groupIsError} id="groupInput" bind:value={$customerGroup}>
-				<option> 2A </option>
+			<select
+				class="form-select group"
+				class:error={$groupIsError}
+				id="groupInput"
+				bind:value={$customerGroup}
+			>
+				<option value="2A"> 2A </option>
 				<option> 2B </option>
 				<option> 5A </option>
 				<option> 5B </option>
@@ -40,12 +45,22 @@
 		</div>
 		<div>
 			<label for="carreerInput"> Carrera </label>
-			<select class="form-select group" class:error={$carreerIsError} id="carreerInput" bind:value={$customerCarreer}>
-				<option> Ingeniera de Software </option>
-				<option> Ingeniera en Animacion </option>
-				<option> Ingeniera Mecatronica </option>
-				<option> Ingeniera Automotriz </option>
-				<option> Ingeniera en Pajas </option>
+			<select
+				class="form-select group"
+				class:error={$carreerIsError}
+				id="carreerInput"
+				bind:value={$customerCarreer}
+			>
+				<option value="1">Ingeniería de Software</option>
+				<option value="2"> Ingeniería en Tecnología Ambiental</option>
+				<option value="3"> Ingeniería Financiera</option>
+				<option value="4"> Ingeniería Mecatrónica</option>
+				<option value="5"> Ingeniería Logística y Transporte</option>
+				<option value="6"> Ingeniería Financiera</option>
+				<option value="7"> Ingeniería en Sistemas Automotrices</option>
+				<option value="8"> Ingeniería en Animación y Efectos Visuales</option>
+				<option value="9"> Ingeniería Agroindustrial</option>
+				<option value="10"> Ingeniería en Energía</option>
 			</select>
 		</div>
 		<div>
@@ -148,7 +163,7 @@
 	}
 
 	/* Firefox */
-	input[type="number"] {
+	input[type='number'] {
 		-moz-appearance: textfield;
 	}
 
