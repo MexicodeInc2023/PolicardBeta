@@ -56,7 +56,7 @@
 		<div>
 			<label for="phoneemergencyInput"> Numero de Emergencia </label>
 			<input
-				type="number"
+				type="text"
 				class:error={$phoneemergencyIsError}
 				id="phoneemergencyInput"
 				placeholder=" Ingresa tu numero de emergencia "
