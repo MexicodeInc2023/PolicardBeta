@@ -1,7 +1,7 @@
 <script>
 	import QRCode from './components/QRJS.svelte';
 	import jsPDF from 'jspdf';
-	import { jwt, id } from '../../../../stores/auth';
+	import { jwt, id, id_st } from '../../../../stores/auth';
 	import { BaseUrl } from '../../../../stores/apiUrl';
 
 	let Datos;
@@ -13,10 +13,7 @@
 	const urlStudent = BaseUrl + 'student/' + id_user + '/';
 	let options = {
 		method: 'GET'
-		/* headers: {
-			'Content-Type': 'application/json',
-			'Authorization': `Bearer ${$jwt}`
-		} */
+
 	};
 
 	async function getData(urlStudent, options) {
@@ -24,6 +21,8 @@
 			const response = await fetch(urlStudent, options);
 			const data = await response.json();
 			const Datos = data.data;
+			id_st.set(Datos.id);
+			console.log(Datos);
 
 			const urlCarrera = BaseUrl + 'careers/' + Datos.id_careers + '/';
 			const carreraResponse = await fetch(urlCarrera, options);

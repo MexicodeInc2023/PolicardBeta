@@ -1,21 +1,54 @@
 <script>
-	import { statusCredentials } from '../../../../../stores/states';
+	import { statusCredentials, procedureTrue } from '../../../../../stores/states';
 
-	export let subject;
-  let pendingDot = '';
-  let rejectedDot = '';
-  let acceptedDot = '';
+	let subject;
+	let pendingDot = '';
+	let rejectedDot = '';
+	let acceptedDot = '';
+	let procedureValue = false;
+	let statusValue;
 
-  statusCredentials.subscribe((value) => {
-    if (value == 3) {
-      rejectedDot = 'big-dot-rejected';
-    } else if (value == 2) {
-      acceptedDot = 'big-dot-accepted';
-    } else if (value == 1) {
-      pendingDot = 'big-dot-pending';
-    }
-  });
 
+	/* procedureTrue.subscribe((value) => (procedureValue = value));
+	if (procedureValue == false) {
+		console.log('No hay tramites', procedureValue);
+		subject = 'Credencial';
+	} else {
+		console.log('Hay tramites', procedureValue);
+		subject = 'Tramite';
+		statusCredentials.set(1);
+	} */
+
+	statusCredentials.subscribe((value) => (statusValue = value));
+
+	$: switch ($statusCredentials) {
+		case 3:
+			rejectedDot = 'big-dot-rejected';
+			acceptedDot = '';
+			pendingDot = '';
+			break;
+		case 2:
+			rejectedDot = '';
+			acceptedDot = 'big-dot-accepted';
+			pendingDot = '';
+			break;
+		case 1:
+			rejectedDot = '';
+			acceptedDot = '';
+			pendingDot = 'big-dot-pending';
+			break;
+		default:
+			rejectedDot = '';
+			acceptedDot = '';
+			pendingDot = '';
+	}
+	// Obtener la fecha actual
+	let today = new Date();
+	let dd = String(today.getDate()).padStart(2, '0');
+	let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+	let yyyy = today.getFullYear();
+
+	today = dd + '/' + mm + '/' + yyyy;
 </script>
 
 <div class="container">
@@ -29,6 +62,7 @@
 								<div class="d-flex flex-column">
 									<span class="lead fw-normal">Estado de tu {subject}</span>
 									<span class="text-muted small">Fecha</span>
+									{today}
 								</div>
 							</div>
 							<hr class="my-4" />
@@ -46,13 +80,13 @@
 
 							<div class="d-flex flex-row justify-content-between align-items-center">
 								<div class="d-flex flex-column align-items-start">
-									<span>Fecha</span><span>Solicitada</span>
+									<span>Rechazado</span>
 								</div>
 								<div class="d-flex flex-column justify-content-center">
-									<span>Fecha</span><span>En Revision</span>
+									<span>En Revision</span>
 								</div>
 								<div class="d-flex flex-column justify-content-center align-items-center">
-									<span>Fecha</span><span>Revisada</span>
+									<span>Revisada</span>
 								</div>
 							</div>
 						</div>
@@ -100,41 +134,38 @@
 		display: inline-block;
 	}
 
+	.big-dot-pending {
+		height: 20px;
+		width: 20px;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 0px;
+		background-color: #f7b500;
+		border-radius: 50%;
+		display: inline-block;
+	}
 
-  
-  .big-dot-pending {
-    height: 25px;
-    width: 25px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    background-color: #f7b500;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  
-  .big-dot-accepted {
-    height: 25px;
-    width: 25px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    background-color: #18be78;
-    border-radius: 50%;
-    display: inline-block;
-  }
-  
-  .big-dot-rejected {
-    height: 25px;
-    width: 25px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 0px;
-    background-color: #ff5630;
-    border-radius: 50%;
-    display: inline-block;
-  }
-	
+	.big-dot-accepted {
+		height: 20px;
+		width: 20px;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 0px;
+		background-color: #18be78;
+		border-radius: 50%;
+		display: inline-block;
+	}
+
+	.big-dot-rejected {
+		height: 20px;
+		width: 20px;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 0px;
+		background-color: #ff5630;
+		border-radius: 50%;
+		display: inline-block;
+	}
 
 	.card-stepper {
 		z-index: 0;

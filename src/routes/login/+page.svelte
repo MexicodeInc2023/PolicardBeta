@@ -10,22 +10,18 @@
 	let email, password;
 	let errorVisible = 'none';
 	let successVisible = 'none';
-
 	function hideError() {
 		errorVisible = 'none';
 	}
-
 	function hideSuccess() {
 		successVisible = 'none';
 	}
-
 	function setCookie(name, value, days) {
 		const date = new Date();
 		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
 		const expires = '; expires=' + date.toUTCString();
 		document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/';
 	}
-
 	const submit = async () => {
 		try {
 			const res = await fetch(loginUrl, {
@@ -38,31 +34,24 @@
 					password
 				})
 			});
-
 			if (!res.ok) {
 				authenticated.set(false);
 				throw new Error('No se pudo iniciar sesión');
 			}
-
 			const data = await res.json();
-
 			if (!data.tokens) {
 				authenticated.set(false);
 				throw new Error('No se encontraron tokens de acceso');
 			}
-
 			// Enviamos el id y el usuario a los stores
 			id.set(data.id);
 			user.set(data.name);
 			emailUser.set(data.email);
 			// Establecer las cookies de acceso y actualización con los valores de los tokens correspondientes
-
 			jwt.set(data.tokens.access);
 			setCookie('access_token', data.tokens.access, 7);
 			setCookie('refresh_token', data.tokens.refresh, 14);
-
 			successVisible = 'block';
-
 			// navegar a la página deseada después de autenticarse
 			goto('/credentials');
 		} catch (err) {

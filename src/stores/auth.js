@@ -1,4 +1,4 @@
-import { writable } from "svelte/store"; 
+import { writable } from "svelte/store";
 import { browser } from "$app/environment"
 
 
@@ -12,7 +12,10 @@ export const id = writable(
 );
 id.subscribe((value) => browser && (localStorage.id = value));
 
-export const user = writable( 
+export const id_st = writable(browser && (localStorage.getItem("id_st") || null));
+id_st.subscribe((value) => browser && (localStorage.id_st = value));
+
+export const user = writable(
     browser && (localStorage.getItem("user") || null)
 );
 user.subscribe((value) => browser && (localStorage.user = value));
