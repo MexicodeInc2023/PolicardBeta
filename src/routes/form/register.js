@@ -3,7 +3,7 @@ import { customerEmail, customerUserName, customerPassword, customerPersonalname
 /* const BaseUrl = "https://policard-api.onrender.com/api/"
  */
 
-const BaseUrl = "http://localhost:8000/api/"
+const BaseUrl = "https://policard-api.onrender.com/api/"
 const headersList = {
     "Accept": "*/*",
     "Content-Type": "application/json"
