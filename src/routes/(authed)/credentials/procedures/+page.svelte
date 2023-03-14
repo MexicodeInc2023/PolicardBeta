@@ -1,4 +1,12 @@
 <script>
+	import {
+		statusCredentials,
+		procedureTrue,
+		id_rq,
+		statusProcedures
+	} from '../../../../stores/states';
+	import { id_st } from '../../../../stores/auth';
+	import { BaseUrl } from '../../../../stores/apiUrl';
 	let motivo_reposicion = {
 		motivo_r: ''
 	};
@@ -7,11 +15,105 @@
 		dato: '',
 		motivo_c: ''
 	};
+	let statusPro = null;
+	let id_req = null;
 
-	const onSubmitHandler = (e) => {
+	const checkStatus = async (e) => {
+		try {
+			if (!id_req) {
+				return;
+			}
+			const responseStatus = await fetch(BaseUrl + 'request_reason/' + id_req, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+			const dataStatus = await responseStatus.json();
+			const dataSt = await dataStatus.data;
+			statusPro = dataSt.status;
+			toString(statusPro);
+
+			if (statusPro != undefined || statusPro != null || statusPro != 'undefined') {
+				statusProcedures.set(statusPro);
+				console.log('statusPro', statusPro);
+				if (statusPro == 'revision') {
+					console.log('revision');
+					statusCredentials.set(1);
+					procedureTrue.set(true);
+				} else if (statusPro == 'denegada') {
+					console.log('denegada');
+					statusCredentials.set(3);
+					procedureTrue.set(false);
+				} else if (statusPro == 'aceptado') {
+					console.log('aceptado');
+					statusCredentials.set(2);
+					procedureTrue.set(false);
+				}
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const onSubmitHandler = async (e) => {
+		// Comprobamos si dato esta vacio
+		let reason;
+		if (motivo_changename.dato === '') {
+			console.log('entro');
+			reason = motivo_reposicion.motivo_r;
+			console.log(reason);
+		} else {
+			reason =
+				'Requiero un cambio en el siguiente(s): ' +
+				motivo_changename.dato +
+				' Motivo: ' +
+				motivo_changename.motivo_c;
+			console.log('K', reason);
+		}
+
+		let motivo_Body = {
+			reason: reason,
+			status: 'revision',
+			id_st: $id_st
+		};
+
+		try {
+			console.log(motivo_Body);
+			const response = await fetch(BaseUrl + 'request_reason/', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(motivo_Body)
+			});
+			const data = await response.json();
+			const dataPost = data.data;
+			response.ok ? procedureTrue.set(true) : procedureTrue.set(false);
+			console.log('DATA de ', dataPost);
+			console.log('ID dentro de POST', dataPost.id);
+			id_rq.set(dataPost.id);
+			checkStatus();
+		} catch (error) {
+			console.log(error);
+		}
 		e.preventDefault();
 		console.log(e);
 	};
+
+	id_rq.subscribe((value) => {
+		id_req = value;
+		console.log('Id request', id_req);
+	});
+
+	// Comprobaremos que id_req no sea null o undefined para que no se ejecute la funcion checkStatus
+	if (id_req != null || id_req != undefined || id_req != 'undefined') {
+		console.log('entro');
+		checkStatus();
+		setInterval(() => {
+			checkStatus();
+		}, 86400000);
+	}
 </script>
 
 <svelte:head>
@@ -29,88 +131,175 @@
 				/>
 			</div>
 			<div class="col-lg-6">
-			<div class="col" style="padding: 0 0 20px 0;">
-				<div class="card text-center container">
-					<div class="header">
-						<div class="img-box">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="46"
-								height="46"
-								fill="currentColor"
-								class="bi bi-card-checklist"
-								viewBox="0 0 16 16"
-							>
-								<path
-									d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"
-								/>
-								<path
-									d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"
-								/>
-							</svg>
+				<div class="col" style="padding: 0 0 20px 0;">
+					<div class="card text-center container">
+						<div class="header">
+							<div class="img-box">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="46"
+									height="46"
+									fill="currentColor"
+									class="bi bi-card-checklist"
+									viewBox="0 0 16 16"
+								>
+									<path
+										d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"
+									/>
+									<path
+										d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"
+									/>
+								</svg>
+							</div>
+							<h2 class="login_user">Nueva credencial</h2>
 						</div>
-						<h2 class="login_user">Nueva credencial</h2>
-					</div>
 
-					<div class="content">
-						<h5 class="card-title htxt">Reposicion de credencial</h5>
-						<p class="card-text">
-							¿Perdiste tu credencial?
-							<br />
-							Solicita una nueva ahora.
-						</p>
+						<div class="content">
+							<h5 class="card-title htxt">Reposicion de credencial</h5>
+							<p class="card-text">
+								¿Perdiste tu credencial?
+								<br />
+								Solicita una nueva ahora.
+							</p>
 
-						<button
-							type="button"
-							class="data_reason"
-							data-bs-toggle="modal"
-							data-bs-target="#staticBackdrop"
-						>
-							Solicitar
-						</button>
+							<button
+								type="button"
+								class="data_reason"
+								data-bs-toggle="modal"
+								data-bs-target="#staticBackdrop"
+							>
+								Solicitar
+							</button>
 
-						<div
-							class="modal fade"
-							id="staticBackdrop"
-							data-bs-backdrop="static"
-							data-bs-keyboard="false"
-							tabindex="-1"
-							aria-labelledby="staticBackdropLabel"
-							aria-hidden="true"
-						>
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="staticBackdropLabel">
-											Tramitar Reposición de la credencial
-										</h5>
-										<button
-											type="button"
-											class="btn-close"
-											data-bs-dismiss="modal"
-											aria-label="Close"
-										/>
+							<div
+								class="modal fade"
+								id="staticBackdrop"
+								data-bs-backdrop="static"
+								data-bs-keyboard="false"
+								tabindex="-1"
+								aria-labelledby="staticBackdropLabel"
+								aria-hidden="true"
+							>
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="staticBackdropLabel">
+												Tramitar Reposición de la credencial
+											</h5>
+											<button
+												type="button"
+												class="btn-close"
+												data-bs-dismiss="modal"
+												aria-label="Close"
+											/>
+										</div>
+										<div class="modal-body">
+											<form on:submit={onSubmitHandler}>
+												<div class="mb-3">
+													<label for="message-text" class="col-form-label">Escribe tu motivo:</label
+													>
+													<textarea
+														bind:value={motivo_reposicion.motivo_r}
+														class="form-control"
+														id="motivo_r"
+														placeholder="Explica tus razones"
+													/>
+												</div>
+												<div class="modal-footer">
+													<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
+														>Cerrar</button
+													>
+													<button class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
+												</div>
+											</form>
+										</div>
 									</div>
-									<div class="modal-body">
-										<form on:submit={onSubmitHandler}>
-											<div class="mb-3">
-												<label for="message-text" class="col-form-label">Escribe tu motivo:</label>
-												<textarea
-													bind:value={motivo_reposicion.motivo_r}
-													class="form-control"
-													id="motivo_r"
-													placeholder="Explica tus razones"
-												/>
-											</div>
-											<div class="modal-footer">
-												<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
-													>Cerrar</button
-												>
-												<button class="btn btn-success" data-bs-dismiss="modal"
-													>Enviar</button
-												>
-											</div>
-										</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col" style="padding: 50px 0 30px 0;">
+					<div class="card text-center container register">
+						<div class="header">
+							<div class="img-box">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="46"
+									height="46"
+									class="bi bi-person-circle"
+									viewBox="0 0 16 16"
+								>
+									<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+									<path
+										fill-rule="evenodd"
+										d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+									/>
+								</svg>
+							</div>
+							<h2 class="register_user">Correcion de datos</h2>
+						</div>
+
+						<div class="content">
+							<h5 class="card-title htxt">Datos de tu credencial</h5>
+							<p class="card-text">Solicita cambiar alguno de los datos de tu credencial.</p>
+
+							<button
+								type="button"
+								class="data_correction"
+								data-bs-toggle="modal"
+								data-bs-target="#exampleModal"
+								data-bs-whatever="@getbootstrap">Solicitar</button
+							>
+							<div
+								class="modal fade"
+								id="exampleModal"
+								tabindex="-1"
+								aria-labelledby="exampleModalLabel"
+								aria-hidden="true"
+							>
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Corrección de Datos</h5>
+											<button
+												type="button"
+												class="btn-close"
+												data-bs-dismiss="modal"
+												aria-label="Close"
+											/>
+										</div>
+										<div class="modal-body">
+											<form on:submit={onSubmitHandler}>
+												<div class="mb-3">
+													<label for="recipient-name" class="col-form-label"
+														>¿Que dato de tu credencial quieres cambiar?</label
+													>
+													<input
+														bind:value={motivo_changename.dato}
+														type="text"
+														class="form-control"
+														id="dato"
+														placeholder="Ej. Mi nombre 'Eduardo'"
+													/>
+												</div>
+												<div class="mb-3">
+													<label for="message-text" class="col-form-label">Motivo:</label>
+													<textarea
+														bind:value={motivo_changename.motivo_c}
+														class="form-control"
+														id="motivo_c"
+														placeholder="Explica tus razones"
+													/>
+												</div>
+												<div class="modal-footer">
+													<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
+														>Cerrar</button
+													>
+													<button class="btn btn-success" data-bs-dismiss="modal">Enviar</button>
+												</div>
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -118,96 +307,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="col" style="padding: 50px 0 30px 0;">
-				<div class="card text-center container register">
-					<div class="header">
-						<div class="img-box">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="46"
-								height="46"
-								class="bi bi-person-circle"
-								viewBox="0 0 16 16"
-							>
-								<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-								<path
-									fill-rule="evenodd"
-									d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-								/>
-							</svg>
-						</div>
-						<h2 class="register_user">Correcion de datos</h2>
-					</div>
-
-					<div class="content">
-						<h5 class="card-title htxt">Datos de tu credencial</h5>
-						<p class="card-text">Solicita cambiar alguno de los datos de tu credencial.</p>
-
-						<button
-							type="button"
-							class="data_correction"
-							data-bs-toggle="modal"
-							data-bs-target="#exampleModal"
-							data-bs-whatever="@getbootstrap">Solicitar</button
-						>
-						<div
-							class="modal fade"
-							id="exampleModal"
-							tabindex="-1"
-							aria-labelledby="exampleModalLabel"
-							aria-hidden="true"
-						>
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Corrección de Datos</h5>
-										<button
-											type="button"
-											class="btn-close"
-											data-bs-dismiss="modal"
-											aria-label="Close"
-										/>
-									</div>
-									<div class="modal-body">
-										<form on:submit={onSubmitHandler}>
-											<div class="mb-3">
-												<label for="recipient-name" class="col-form-label"
-													>¿Que dato de tu credencial quieres cambiar?</label
-												>
-												<input
-													bind:value={motivo_changename.dato}
-													type="text"
-													class="form-control"
-													id="dato"
-													placeholder="Ej. Mi nombre 'Eduardo'"
-												/>
-											</div>
-											<div class="mb-3">
-												<label for="message-text" class="col-form-label">Motivo:</label>
-												<textarea
-													bind:value={motivo_changename.motivo_c}
-													class="form-control"
-													id="motivo_c"
-													placeholder="Explica tus razones"	
-												/>
-											</div>
-											<div class="modal-footer">
-												<button type="reset" class="btn btn-secondary" data-bs-dismiss="modal"
-													>Cerrar</button
-												>
-												<button class="btn btn-success" data-bs-dismiss="modal"
-													>Enviar</button
-												>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		</div>
 	</div>
 </div>

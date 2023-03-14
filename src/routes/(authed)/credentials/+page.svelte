@@ -17,7 +17,7 @@
 		'Content-Type': 'application/json',
 	};
 
-	onMount(async () => {
+	/* onMount(async () => {
     try{
       const res = await fetch(userView, {
         method: 'GET',
@@ -34,7 +34,7 @@
       console.log(e)
     }
   
-  });
+  }); */
  
 </script>
 
@@ -43,6 +43,6 @@
 </svelte:head>
 <div class="container">
 	<h1 class="text-center m-1">Bienvenido!</h1>
-	<h1 class="text-center m-1" style="font-weight: bold; color: #7352F2">{$user}</h1>
-	<Status subject="Solicitud de credencial" />
+	<h1 class="text-center m-1 text-uppercase" style="font-weight: bold; color: #7352F2 ">{$user}</h1>
+	<Status  />
 </div>
