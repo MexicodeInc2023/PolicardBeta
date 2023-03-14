@@ -6,16 +6,16 @@
 		alergyextraIsError,
 		contactemergencyIsError,
 		phoneemergencyIsError,
-		customerBloodType,
-	} from "./sharedState";
+		customerBloodType
+	} from './sharedState';
 
-	$: if ($customerAlergyextra !== "") {
+	$: if ($customerAlergyextra !== '') {
 		$alergyextraIsError = false;
 	}
-	$: if ($customerContactemergency !== "") {
+	$: if ($customerContactemergency !== '') {
 		$contactemergencyIsError = false;
 	}
-	$: if ($customerPhoneEmergency !== "") {
+	$: if ($customerPhoneEmergency !== '') {
 		$phoneemergencyIsError = false;
 	}
 
@@ -52,7 +52,7 @@
 		<div>
 			<label for="phoneemergencyInput"> Numero de Emergencia </label>
 			<input
-				type="number"
+				type="text"
 				class:error={$phoneemergencyIsError}
 				id="phoneemergencyInput"
 				placeholder=" Ingresa tu numero de emergencia "
@@ -144,7 +144,7 @@
 	}
 
 	/* Firefox */
-	input[type="number"] {
+	input[type='number'] {
 		-moz-appearance: textfield;
 	}
 

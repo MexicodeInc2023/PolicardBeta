@@ -66,11 +66,7 @@
 		</div>
 		<div>
 			<label for="dateInput"> Fecha de nacimiento </label>
-			<input 
-				type="date" 
-				class:error={$dateIsError} 
-				id="dateInput" 
-				bind:value={$customerDate} />
+			<input type="date" class:error={$dateIsError} id="dateInput" bind:value={$customerDate} />
 		</div>
 	</form>
 </article>

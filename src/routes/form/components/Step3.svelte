@@ -18,6 +18,11 @@
 		$alergyIsError = false;
 	}
 
+	function handleCarreerChange(event) {
+		const value = parseInt(event.target.value);
+		customerCarreer.set(value);
+	}
+
 	let showComponent = false;
 	window.setTimeout(() => {
 		showComponent = true;
@@ -36,22 +41,23 @@
 				id="groupInput"
 				bind:value={$customerGroup}
 			>
-				<option value="2A"> 2A </option>
-				<option> 2B </option>
-				<option> 5A </option>
-				<option> 5B </option>
-				<option> 7A </option>
+				<option value="2a">2A</option>
+				<option value="2b">2B</option>
+				<option value="5a">5A</option>
+				<option value="5b">5B</option>
+				<option value="7a">7A</option>
 			</select>
 		</div>
 		<div>
-			<label for="carreerInput"> Carrera </label>
+			<label for="carreerInput"> Carreras </label>
 			<select
 				class="form-select group"
 				class:error={$carreerIsError}
 				id="carreerInput"
+				on:change={handleCarreerChange}
 				bind:value={$customerCarreer}
 			>
-				<option value="1">Ingeniería de Software</option>
+				<option value="1">Ingeniería en Software</option>
 				<option value="2"> Ingeniería en Tecnología Ambiental</option>
 				<option value="3"> Ingeniería Financiera</option>
 				<option value="4"> Ingeniería Mecatrónica</option>
