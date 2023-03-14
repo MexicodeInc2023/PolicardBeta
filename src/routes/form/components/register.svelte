@@ -36,9 +36,11 @@
 		customerAlergyextra,
 		customerContactemergency,
 		customerPhoneEmergency,
+		customerBloodType,
 		alergyextraIsError,
 		contactemergencyIsError,
-		phoneemergencyIsError
+		phoneemergencyIsError,
+		customerbloodtypeIsError
 	} from './sharedState';
 
 	function nextStep() {
@@ -105,9 +107,12 @@
 				$phoneemergencyIsError = true;
 			}
 			if (
-				$customerAlergyextra !== '' &&
 				$customerContactemergency !== '' &&
 				$customerPhoneEmergency !== ''
+			)
+			if (
+				$customerBloodType !== '' &&
+				$customerbloodtypeIsError !== ''
 			) {
 				$currentStep++;
 			}

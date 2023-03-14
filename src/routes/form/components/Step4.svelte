@@ -3,10 +3,11 @@
 		customerAlergyextra,
 		customerContactemergency,
 		customerPhoneEmergency,
+		customerBloodType,
 		alergyextraIsError,
 		contactemergencyIsError,
 		phoneemergencyIsError,
-		customerBloodType
+		customerbloodtypeIsError
 	} from './sharedState';
 
 	$: if ($customerAlergyextra !== '') {
@@ -17,6 +18,9 @@
 	}
 	$: if ($customerPhoneEmergency !== '') {
 		$phoneemergencyIsError = false;
+	}
+	$: if ($customerBloodType !== '') {
+		$customerbloodtypeIsError = false;
 	}
 
 	let showComponent = false;
@@ -52,7 +56,7 @@
 		<div>
 			<label for="phoneemergencyInput"> Numero de Emergencia </label>
 			<input
-				type="text"
+				type="number"
 				class:error={$phoneemergencyIsError}
 				id="phoneemergencyInput"
 				placeholder=" Ingresa tu numero de emergencia "
@@ -63,6 +67,7 @@
 			<label for="bloodTypeInput"> Tipo de Sangre </label>
 			<input
 				type="text"
+				class:error={$customerbloodtypeIsError}
 				placeholder=" Ingresa tu tipo de sangre "
 				bind:value={$customerBloodType}
 			/>
@@ -101,6 +106,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+		margin-top: -25px;
 	}
 
 	form div {
