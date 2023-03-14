@@ -36,23 +36,23 @@
 
 			if (statusPro != undefined || statusPro != null || statusPro != 'undefined') {
 				statusProcedures.set(statusPro);
-				console.log('statusPro', statusPro);
+				//console.log('statusPro', statusPro);
 				if (statusPro == 'revision') {
-					console.log('revision');
+					//console.log('revision');
 					statusCredentials.set(1);
 					procedureTrue.set(true);
 				} else if (statusPro == 'denegada') {
-					console.log('denegada');
+					//console.log('denegada');
 					statusCredentials.set(3);
 					procedureTrue.set(false);
 				} else if (statusPro == 'aceptado') {
-					console.log('aceptado');
+					//console.log('aceptado');
 					statusCredentials.set(2);
 					procedureTrue.set(false);
 				}
 			}
 		} catch (error) {
-			console.log(error);
+			//console.log(error);
 		}
 	};
 
@@ -60,16 +60,16 @@
 		// Comprobamos si dato esta vacio
 		let reason;
 		if (motivo_changename.dato === '') {
-			console.log('entro');
+			//console.log('entro');
 			reason = motivo_reposicion.motivo_r;
-			console.log(reason);
+			//console.log(reason);
 		} else {
 			reason =
 				'Requiero un cambio en el siguiente(s): ' +
 				motivo_changename.dato +
 				' Motivo: ' +
 				motivo_changename.motivo_c;
-			console.log('K', reason);
+			//console.log('K', reason);
 		}
 
 		let motivo_Body = {
@@ -90,25 +90,25 @@
 			const data = await response.json();
 			const dataPost = data.data;
 			response.ok ? procedureTrue.set(true) : procedureTrue.set(false);
-			console.log('DATA de ', dataPost);
-			console.log('ID dentro de POST', dataPost.id);
+			//console.log('DATA de ', dataPost);
+			//console.log('ID dentro de POST', dataPost.id);
 			id_rq.set(dataPost.id);
 			checkStatus();
 		} catch (error) {
-			console.log(error);
+			//console.log(error);
 		}
 		e.preventDefault();
-		console.log(e);
+		//console.log(e);
 	};
 
 	id_rq.subscribe((value) => {
 		id_req = value;
-		console.log('Id request', id_req);
+		//console.log('Id request', id_req);
 	});
 
 	// Comprobaremos que id_req no sea null o undefined para que no se ejecute la funcion checkStatus
 	if (id_req != null || id_req != undefined || id_req != 'undefined') {
-		console.log('entro');
+		//console.log('entro');
 		checkStatus();
 		setInterval(() => {
 			checkStatus();

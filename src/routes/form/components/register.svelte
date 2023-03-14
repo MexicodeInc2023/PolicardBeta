@@ -120,7 +120,7 @@
 	}
 	const register =  import('../register.js');
 	async function handleClick() {
-		console.log('click');
+		//console.log('click');
 
 		(await register).sendRegisterData();
 	}

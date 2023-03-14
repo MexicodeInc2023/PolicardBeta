@@ -55,7 +55,7 @@
 			// navegar a la página deseada después de autenticarse
 			goto('/credentials');
 		} catch (err) {
-			console.error(err);
+			//console.error(err);
 			errorVisible = 'block';
 			authenticated.set(false);
 		}

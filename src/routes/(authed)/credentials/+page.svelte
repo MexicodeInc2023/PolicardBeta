@@ -8,7 +8,7 @@
    let message = '';
 
   user.subscribe((value) => {
-    console.log(value);
+    //console.log(value);
   });
 
 

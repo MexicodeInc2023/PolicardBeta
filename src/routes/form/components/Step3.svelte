@@ -41,11 +41,24 @@
 				id="groupInput"
 				bind:value={$customerGroup}
 			>
+			    <option value="1a">1A</option>
+				<option value="1b">1B</option>
 				<option value="2a">2A</option>
 				<option value="2b">2B</option>
+				<option value="3a">3A</option>
+				<option value="3b">3B</option>
+				<option value="4a">4A</option>
+				<option value="4b">4B</option>
 				<option value="5a">5A</option>
 				<option value="5b">5B</option>
+				<option value="6a">6A</option>
+				<option value="6b">6B</option>
 				<option value="7a">7A</option>
+				<option value="7b">7B</option>
+				<option value="8a">8A</option>
+				<option value="8b">8B</option>
+				<option value="9a">9A</option>
+				<option value="9b">9B</option>
 			</select>
 		</div>
 		<div>

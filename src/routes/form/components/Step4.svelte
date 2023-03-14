@@ -106,7 +106,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
-		margin-top: -25px;
+		margin-top: -18px;
 	}
 
 	form div {

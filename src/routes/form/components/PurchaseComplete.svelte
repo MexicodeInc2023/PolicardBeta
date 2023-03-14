@@ -82,19 +82,7 @@
 			margin-bottom: 14px;
 		}
 	}
-	.a {
-		text-decoration: none;
-		position: relative;
-		display: inline-block;
-		cursor: pointer;
-		outline: none;
-		border: 0;
-		vertical-align: middle;
-		text-decoration: none;
-		font-family: inherit;
-		font-size: 15px;
-		color: #fff;
-	}
+
 	.nextButton {
 		--primary-color: #645bff;
 		--secondary-color: #fff;

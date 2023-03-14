@@ -1,6 +1,5 @@
 <script>
 	import QRCode from './components/QRJS.svelte';
-	import jsPDF from 'jspdf';
 	import { jwt, id, id_st } from '../../../../stores/auth';
 	import { BaseUrl } from '../../../../stores/apiUrl';
 
@@ -22,7 +21,7 @@
 			const data = await response.json();
 			const Datos = data.data;
 			id_st.set(Datos.id);
-			console.log(Datos);
+			//console.log(Datos);
 
 			const urlCarrera = BaseUrl + 'careers/' + Datos.id_careers + '/';
 			const carreraResponse = await fetch(urlCarrera, options);
@@ -53,7 +52,7 @@
 		.catch((error) => {
 			console.error(error);
 			OnError = true;
-			console.log(error);
+			//console.log(error);
 		});
 </script>
 
@@ -187,7 +186,7 @@
 		border-radius: 5px;
 		perspective: 1000px;
 		height: 100vh;
-		margin-bottom: -115px;
+		margin-bottom: -10px;
 	}
 	.father {
 		text-align: center;
