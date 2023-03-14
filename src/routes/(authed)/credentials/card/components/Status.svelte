@@ -100,7 +100,7 @@
 							</div>
 						{:else if $statusCredentials == 2}
 							<div class="m-4 alert alert-dismissible alert-success">
-								<h2>LISTO ✅ - Tus datos han sido aprovados</h2>
+								<h2>LISTO ✅ - Tus datos han sido aprobados</h2>
 								<p>En breve podras visualizar tu credencial</p>
 							</div>
 						{:else if $statusCredentials == 1}
