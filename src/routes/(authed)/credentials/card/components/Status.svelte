@@ -1,7 +1,7 @@
 <script>
 	import { statusCredentials, procedureTrue } from '../../../../../stores/states';
 
-	let subject;
+	let subject = 'Credencial';
 	let pendingDot = '';
 	let rejectedDot = '';
 	let acceptedDot = '';

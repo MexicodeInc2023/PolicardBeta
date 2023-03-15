@@ -91,7 +91,7 @@
 				<div class="front">
 					<header>
 						<div class="bkg" />
-						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
+						<img src="https://scontent.fmtt1-1.fna.fbcdn.net/v/t39.30808-6/330398881_1087393372662707_4555958013554386975_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH4qVt8dM4Tz3HjJ8qB0jPyqpzTKWSDVBSqnNMpZINUFNh_c2Keakm7nTrzQkOyxRD7F1-CYRIA7NMEBteQUz7n&_nc_ohc=X32exqWK32wAX_hkwC-&_nc_ht=scontent.fmtt1-1.fna&oh=00_AfDj3nm0pggu0sCjJK8PUfV9t9Jww1igVesz4WpDZW8UvA&oe=64165226" alt="Picture" width="90" height="90"/>
 						<h3 style="font-size: 1.4rem;">{data.Datos.personalName} {data.Datos.lastname}</h3>
 					</header>
 					<div class="experiences" style="text-align: center;">
@@ -112,12 +112,11 @@
 					<div style="margin-left: 90px; margin-top: 5px">
 						<QRCode
 							codeValue="Nombre: {data.Datos.personalName} {data.Datos.lastname}|Carrera:{data
-								.Career.carrera}|Matricula:{data.Datos.license}|Cuatrimestre: {data.Datos
+								.Career.nameCareers}|Matricula:{data.Datos.license}|Cuatrimestre: {data.Datos
 								.grade}|Nacimiento: {data.Datos.birthday}| Contacto de Emergencia: {data.Emergency
 								.emergency_name}| Numero 1: {data.Emergency.emergency_phone}| Numero extra: {data
 								.Emergency.emergency_phone2}| Tipo de Sangre: {data.Emergency
 								.blood_type}| Alergias: {data.Emergency.allergy} y {data.Emergency.allergy2}|"
-							squareSize="200"
 						/>
 					</div>
 					<br />
@@ -125,7 +124,7 @@
 				<div class="back">
 					<header>
 						<div class="bkg" />
-						<img src="https://image.ibb.co/kCYMBz/img.png" alt="Picture" />
+						<img src="https://scontent.fmtt1-1.fna.fbcdn.net/v/t39.30808-6/330398881_1087393372662707_4555958013554386975_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeH4qVt8dM4Tz3HjJ8qB0jPyqpzTKWSDVBSqnNMpZINUFNh_c2Keakm7nTrzQkOyxRD7F1-CYRIA7NMEBteQUz7n&_nc_ohc=X32exqWK32wAX_hkwC-&_nc_ht=scontent.fmtt1-1.fna&oh=00_AfDj3nm0pggu0sCjJK8PUfV9t9Jww1igVesz4WpDZW8UvA&oe=64165226" alt="Picture" width="90" height="90"/>
 						{#if data.Emergency == null}
 							<h3 style="font-size: 1.4rem;">El Estudiante no agrego los datos de emergencia</h3>
 						{/if}
@@ -171,6 +170,7 @@
 		</div>
 	{/await}
 {/if}
+
 
 <style>
 	h3 {

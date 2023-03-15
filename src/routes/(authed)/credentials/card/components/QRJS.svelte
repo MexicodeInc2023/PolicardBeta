@@ -1,41 +1,30 @@
 <script>
-  import { onMount } from 'svelte';
-	
+	import { onMount } from 'svelte';
+	import QRCode from 'qrcode';
+
 	export let codeValue;
-	export let squareSize; 
-	
-  let qrcode;
-			
+	export let squareSize;
+
 	onMount(() => {
-
-		let script = document.createElement('script');
-    script.src = "https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"
-    document.head.append(script);
-	
-		script.onload = function() {
-
-			qrcode = new QRCode("qrcode", {
-				text: codeValue,
-		  	width: squareSize,
-        height: squareSize,
-        colorDark : "#5534a5",
-        colorLight : "#f0f8ff",
-        correctLevel : QRCode.CorrectLevel.H
-			});		
-			
-		};				
-	  
+		QRCode.toDataURL(codeValue)
+			.then((url) => {
+				document.getElementById('qrcode').innerHTML =
+					'<div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);"><img src="' +
+					url +
+					'" style="width: 200px"></div>';
+			})
+			.catch((err) => {
+				console.error(err);
+			});
 	});
 </script>
 
+<div id="qrcode" />
+
 <style>
-  #qrcode {
-   
-    width:20px;
-    height:200x;
-
-  }
+	#qrcode {
+		position: relative;
+		width: 200px;
+		height: 200px;
+	}
 </style>
-
-<div id="qrcode"></div>
-
