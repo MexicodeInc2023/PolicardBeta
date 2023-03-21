@@ -3,7 +3,7 @@
 	import imagen1 from '../../../src/lib/img/5.png';
 	import imagen2 from '../../../src/lib/img/2.png';
 	import imagen3 from '../../../src/lib/img/1.png';
-	import gratis from '../../../src/lib/img/gratis.png';
+	import Gratis from '../../../src/lib/img/Gratis.png';
 	import cr from '../../../src/lib/img/cr.png';
 	import qr from '../../../src/lib/img/qr.png';
 	import cross from '../../../src/lib/img/cross.png';
@@ -192,7 +192,7 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={gratis} class="imgc" alt="funcionalidad" />
+									<img src={Gratis} class="imgc" alt="funcionalidad" />
 
 									<h5 class="titlecard">GRATUITA</h5>
 

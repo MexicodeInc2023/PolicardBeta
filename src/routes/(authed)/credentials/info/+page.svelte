@@ -95,13 +95,6 @@
 </body>
 
 <style>
-	.card {
-		height: 325px;
-		transition: all 0.5s;
-		box-shadow: px 15px 30px rgba(25, 25, 25, 0.247), -15px -15px 30px rgba(60, 60, 60, 0.082);
-		text-align: center;
-		overflow: hidden;
-	}
 
 	.text-uppercase {
 		font-size: 3em;
@@ -138,12 +131,7 @@
 		color: #000;
 	}
 
-	.imgc {
-		display: block;
-		margin: auto;
-		position: relative;
-		width: 100px;
-	}
+
 
 	@media only screen and (max-width: 375px) {
 		.container {
