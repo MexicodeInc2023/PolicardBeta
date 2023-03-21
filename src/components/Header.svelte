@@ -12,11 +12,9 @@
 	import {
 		customerDate
 	} from '../routes/form/components/sharedState' */
-
-	const logoutUrl = 'http://127.0.0.1:8000/users/logout/';
+	const logoutUrl = 'https://policard-api.onrender.com/api/logout/';
 	let auth = false;
 	authenticated.subscribe((value) => (auth = value));
-
 	const logout = async () => {
 		const res = await fetch(logoutUrl, {
 			method: 'POST',
@@ -25,13 +23,11 @@
 			},
 			credentials: 'include'
 		});
-
 		location.href = '/';
 	};
 	/* let name = customerName.name;
 	
 	let correo = customerEmail;
-
 	let fecha = customerDate; */
 </script>
 
