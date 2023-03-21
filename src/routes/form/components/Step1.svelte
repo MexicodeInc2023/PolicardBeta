@@ -80,6 +80,7 @@
 		line-height: 28px;
 		color: #022959;
 		margin-bottom: 9px;
+		text-align: center;
 	}
 
 	p {
@@ -87,6 +88,7 @@
 		line-height: 25px;
 		color: #9699aa;
 		margin-bottom: 22px;
+		text-align: center;
 	}
 
 	form {
@@ -139,17 +141,19 @@
 		outline: 1px solid #ee374a;
 	}
 
-	@media screen and (min-width: 1366px) {
+	@media screen and (min-width: 1000px) {
 		h3 {
 			font-size: 32px;
 			line-height: 37px;
 			margin-bottom: 11px;
+			text-align: left;
 		}
 
 		p {
 			font-size: 16px;
 			line-height: 25px;
 			margin-bottom: 40px;
+			text-align: left;
 		}
 
 		label {

@@ -109,7 +109,7 @@
 							Nacimiento: {data.Datos.birthday}
 						</p>
 					</div>
-					<div style="margin-left: 90px; margin-top: 5px">
+					<div style="margin-left: 100px;">
 						<QRCode
 							codeValue="Nombre: {data.Datos.personalName} {data.Datos.lastname}|Carrera:{data
 								.Career.nameCareers}|Matricula:{data.Datos.license}|Cuatrimestre: {data.Datos
@@ -186,7 +186,7 @@
 		border-radius: 5px;
 		perspective: 1000px;
 		height: 100vh;
-		margin-bottom: -10px;
+		margin-bottom: -110px;
 	}
 	.father {
 		text-align: center;
@@ -212,20 +212,15 @@
 	}
 	.father .front {
 		z-index: 2;
-		background-color: #f7fafa;
+		background-image: url(../../../../lib/img/god5.jpg);
 		backface-visibility: hidden;
 		border: 1px solid #212122;
 		/* display: none; */
 	}
 
-	.father .front header .bkg {
-		background-color: #18be78;
-		height: 80px;
-		border-radius: 10px 10px 0 0;
-	}
 	.father .front header img {
 		display: block;
-		margin: -15% auto 0;
+		margin: 5% auto 0;
 	}
 	.father .front header h3 {
 		font-size: 18px;
@@ -269,22 +264,17 @@
 	}
 
 	.father .back {
-		background-color: blue;
 		z-index: 1;
 		transform: rotatey(180deg);
-		background-color: #f7fafa;
+		background-image: url(../../../../lib/img/god5.jpg);
 		backface-visibility: hidden;
 		text-align: left;
 		border: 1px solid #212122;
 	}
-	.father .back header .bkg {
-		background-color: #7352f3;
-		height: 80px;
-		border-radius: 10px 10px 0 0;
-	}
+
 	.father .back header img {
 		display: block;
-		margin: -15% auto 0;
+		margin: 5% auto 0;
 	}
 	.father .back header h3 {
 		font-size: 18px;

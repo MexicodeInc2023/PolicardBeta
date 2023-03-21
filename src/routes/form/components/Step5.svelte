@@ -38,6 +38,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
     #avatar {
@@ -50,6 +51,22 @@
     .hidden {
         display: none;
     }
+    h3 {
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 28px;
+		color: #022959;
+		margin-bottom: 9px;
+		text-align: center;
+	}
+
+	p {
+		font-size: 16px;
+		line-height: 25px;
+		color: #9699aa;
+		margin-bottom: 22px;
+		text-align: center;
+	}
 
     .upload-btn {
         width: 128px;

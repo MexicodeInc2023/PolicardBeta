@@ -80,7 +80,10 @@
 					</div>
 					<div class="col-sm-6 col-xs-12 text-white p-5">
 						<div class="lead">
-							<h3 style="color: #000000;">Bienvenido a Policard</h3>
+							<div style="text-align: center;">
+								<img src={Policard} alt="" width="140px" />
+							</div>
+							<h3 style="text-align: center; color: #000000;">Bienvenido a Policard</h3>
 							<p class="fs-6 mb-4" style="color: #000000;">
 								<small
 									>Inicie sesión para continuar con el trámite de tu credencial digital, Policard.</small
@@ -151,6 +154,9 @@
 <style>
 	body {
 		background: #475d62 url(../../lib/img/background1.jpg);
+		background-position: center; 
+		background-repeat: no-repeat; 
+		background-size: cover; 
 	}
 	#innerPage {
 		width: 100%;
