@@ -8,7 +8,6 @@
 	let procedureValue = false;
 	let statusValue;
 
-
 	/* procedureTrue.subscribe((value) => (procedureValue = value));
 	if (procedureValue == false) {
 		console.log('No hay tramites', procedureValue);

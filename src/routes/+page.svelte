@@ -9,7 +9,7 @@
 <body>
 	<section class="banner">
 		<div>
-			<img src={logo} alt="Logo" class="logo" />
+			<img src={logo} alt="Logo" class="logo" loading="lazy" decoding="async" />
 		</div>
 
 		<div class="container">
@@ -28,7 +28,15 @@
 					</a>
 				</div>
 				<div class="col-lg-6 d-none d-lg-block imagehero">
-					<img src={imageHero} class="img-fluid" alt="policard" />
+					<img
+						src={imageHero}
+						class="img-fluid"
+						alt="policard"
+						loading="lazy"
+						decoding="async"
+						height="100%"
+						width="100%"
+					/>
 				</div>
 			</div>
 			<br />

@@ -128,6 +128,8 @@
 					src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg"
 					alt=""
 					class="img-fluid mb-3 d-none d-md-block"
+					loading="lazy"
+					decoding="async"
 				/>
 			</div>
 			<div class="col-lg-6">

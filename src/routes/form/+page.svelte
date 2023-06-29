@@ -7,7 +7,7 @@
 <body>
 	<section class="banner">
 		<div>
-			<img src={Logo} alt="Logo" class="logo" />
+			<img src={Logo} alt="Logo" class="logo" loading="lazy" decoding="async" />
 		</div>
 		<div class="container">
 			<div class="row main">
@@ -19,7 +19,7 @@
 					</p>
 				</div>
 				<div class="col-lg-6 d-none d-lg-block lol">
-					<img src={Logo2} class="img-fluid" alt="policard" />
+					<img src={Logo2} class="img-fluid" alt="policard" loading="lazy" decoding="async" />
 				</div>
 			</div>
 		</div>
@@ -119,36 +119,36 @@
 	}
 	@media screen and (max-width: 630px) {
 		.banner-title {
-		font-style: normal;
-		font-weight: 700;
-		font-size: 4rem;
-		background: linear-gradient(180deg, #7352f3 0%, #5a40c0 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		text-align: center;
-	}
+			font-style: normal;
+			font-weight: 700;
+			font-size: 4rem;
+			background: linear-gradient(180deg, #7352f3 0%, #5a40c0 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-align: center;
+		}
 
-	.banner-text {
-		font-style: normal;
-		font-weight: 500;
-		font-size: 2.5rem;
-		color: #000;
-		text-align: center;
-	}
-	.banner  {
-		background-image: none;
-	}
-	.logo {
-		position: absolute;
-		width: 135px;
-		height: 135px;
-		left: 134px;
-		top: 0px;
-		align-items: center;
-	}
-	.main {
-		margin-top: 25%;
-	}
+		.banner-text {
+			font-style: normal;
+			font-weight: 500;
+			font-size: 2.5rem;
+			color: #000;
+			text-align: center;
+		}
+		.banner {
+			background-image: none;
+		}
+		.logo {
+			position: absolute;
+			width: 135px;
+			height: 135px;
+			left: 134px;
+			top: 0px;
+			align-items: center;
+		}
+		.main {
+			margin-top: 25%;
+		}
 	}
 </style>

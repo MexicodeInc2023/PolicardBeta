@@ -1,9 +1,6 @@
 import { customerEmail, customerUserName, customerPassword, customerPersonalname, customerLastnames, customerMatricula, customerDate, customerGroup, customerAlergy, customerAlergyextra, customerContactemergency, customerPhoneEmergency, customerPhoneEmergency2, customerBloodType, customerCarreer } from "./components/sharedState";
 
-/* const BaseUrl = "https://policard-api.onrender.com/api/"
- */
-
-const BaseUrl = "https://policard-api.onrender.com/api/"
+import { BaseUrl } from "../../stores/apiUrl";
 const headersList = {
     "Accept": "*/*",
     "Content-Type": "application/json"
@@ -88,7 +85,7 @@ export const sendRegisterData = async () => {
     try {
         // Enviamos los datos de registro
 
-        const response = await fetch(`${BaseUrl}register/`, {
+        const response = await fetch(`${BaseUrl}api/register/`, {
             method: 'POST',
             headers: headersList,
             body: registerRequestBody
@@ -100,7 +97,7 @@ export const sendRegisterData = async () => {
         const DataUser = data;
 
         // Enviamos los datos de emergencia
-        const response2 = await fetch(`${BaseUrl}emergency_info/`, {
+        const response2 = await fetch(`${BaseUrl}api/emergency_info/`, {
             method: 'POST',
             headers: headersList,
             body: emergencyRequestBody
@@ -118,7 +115,7 @@ export const sendRegisterData = async () => {
             id_emInfo: DataEmergency.id,
         });
         console.log(requestBodyWithIds);
-        const response3 = await fetch(`${BaseUrl}student/`, {
+        const response3 = await fetch(`${BaseUrl}api/student/`, {
             method: 'POST',
             headers: headersList,
             body: requestBodyWithIds,

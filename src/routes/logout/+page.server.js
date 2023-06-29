@@ -1,10 +1,11 @@
 import { redirect } from '@sveltejs/kit';
 import { jwt, id, user } from '../../stores/auth';
+import { BaseUrl } from '../../stores/apiUrl';
 export const actions = {
 	default: async ({ cookies }) => {
 		console.log(cookies.get('access_token'));
 		console.log(cookies.get('refresh_token'));
-		const response = await fetch(`https://policard-api.onrender.com/api/logout/`, {
+		const response = await fetch(`${BaseUrl}api/logout/`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -27,6 +28,6 @@ export const actions = {
 			throw redirect(307, `/credentials`);
 		}
 
-/* Este si jala xd */
+		/* Este si jala xd */
 	}
 };

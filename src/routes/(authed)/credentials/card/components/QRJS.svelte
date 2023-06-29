@@ -11,7 +11,7 @@
 				document.getElementById('qrcode').innerHTML =
 					'<div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);"><img src="' +
 					url +
-					'" style="width: 200px"></div>';
+					'" style="width: 200px" loading="lazy" decoding="async"></div>';
 			})
 			.catch((err) => {
 				console.error(err);

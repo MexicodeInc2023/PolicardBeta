@@ -1,1 +1,1 @@
-export const BaseUrl = 'https://policard-api.onrender.com/api/';
+export const BaseUrl = 'https://policard-back.onrender.com/';

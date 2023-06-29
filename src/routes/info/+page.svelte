@@ -30,19 +30,19 @@
 				<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src={imagen1} class="d-block w-100" alt="" />
+							<img src={imagen1} class="d-block w-100" alt="" loading="lazy" decoding="async" />
 						</div>
 						<div class="carousel-item">
-							<img src={imagen2} class="d-block w-100" alt="" />
+							<img src={imagen2} class="d-block w-100" alt="" loading="lazy" decoding="async" />
 						</div>
 						<div class="carousel-item">
-							<img src={imagen3} class="d-block w-100" alt="" />
+							<img src={imagen3} class="d-block w-100" alt="" loading="lazy" decoding="async" />
 						</div>
 						<div class="carousel-item">
-							<img src={imagen1} class="d-block w-100" alt="" />
+							<img src={imagen1} class="d-block w-100" alt="" loading="lazy" decoding="async" />
 						</div>
 						<div class="carousel-item">
-							<img src={imagen2} class="d-block w-100" alt="" />
+							<img src={imagen2} class="d-block w-100" alt="" loading="lazy" decoding="async" />
 						</div>
 					</div>
 					<button
@@ -84,7 +84,13 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={estudiantes} class="imgc" alt="estudiantes" />
+									<img
+										src={estudiantes}
+										class="imgc"
+										alt="estudiantes"
+										loading="lazy"
+										decoding="async"
+									/>
 
 									<h5 class="titlecard">Estudiantes</h5>
 
@@ -108,7 +114,13 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={verificar} class="imgc" alt="verificar" />
+									<img
+										src={verificar}
+										class="imgc"
+										alt="verificar"
+										loading="lazy"
+										decoding="async"
+									/>
 
 									<h5 class="titlecard">Verificar</h5>
 
@@ -132,7 +144,7 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={tramitar} class="imgc" alt="tramitar" />
+									<img src={tramitar} class="imgc" alt="tramitar" loading="lazy" decoding="async" />
 
 									<h5 class="titlecard">Tramitar</h5>
 
@@ -157,7 +169,7 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={acceso} class="imgc" alt="acceso" />
+									<img src={acceso} class="imgc" alt="acceso" loading="lazy" decoding="async" />
 
 									<h5 class="titlecard">Acceso</h5>
 
@@ -192,7 +204,13 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={Gratis} class="imgc" alt="funcionalidad" />
+									<img
+										src={Gratis}
+										class="imgc"
+										alt="funcionalidad"
+										loading="lazy"
+										decoding="async"
+									/>
 
 									<h5 class="titlecard">GRATUITA</h5>
 
@@ -216,7 +234,7 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={cr} class="imgc" alt="beneficios" />
+									<img src={cr} class="imgc" alt="beneficios" loading="lazy" decoding="async" />
 
 									<h5 class="titlecard">IDENTIFICACIÓN</h5>
 
@@ -238,7 +256,7 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={qr} class="imgc" alt="funcionalidad" />
+									<img src={qr} class="imgc" alt="funcionalidad" loading="lazy" decoding="async" />
 
 									<h5 class="titlecard">CÓDIGO QR</h5>
 
@@ -262,7 +280,7 @@
 								</div>
 
 								<div class="media-body text-right">
-									<img src={cross} class="imgc" alt="lgo1" />
+									<img src={cross} class="imgc" alt="lgo1" loading="lazy" decoding="async" />
 
 									<h5 class="titlecard">Cross Platform</h5>
 

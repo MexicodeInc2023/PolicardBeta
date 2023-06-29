@@ -6,7 +6,7 @@
 	import { jwt, user, id, emailUser } from '../../stores/auth';
 	import { authenticated } from '../../stores/auth';
 
-	const loginUrl = BaseUrl + 'login/';
+	const loginUrl = BaseUrl + 'api/login/';
 	let email, password;
 	let errorVisible = 'none';
 	let successVisible = 'none';
@@ -34,10 +34,16 @@
 					password
 				})
 			});
+
 			if (!res.ok) {
+				console.log(res);
+				console.log('Fallo');
+				errorVisible = 'block';
+				console.log(errorVisible);
 				authenticated.set(false);
 				throw new Error('No se pudo iniciar sesión');
 			}
+
 			const data = await res.json();
 			if (!data.tokens) {
 				authenticated.set(false);
@@ -81,7 +87,7 @@
 					<div class="col-sm-6 col-xs-12 text-white p-5">
 						<div class="lead">
 							<div style="text-align: center;">
-								<img src={Policard} alt="" width="140px" />
+								<img src={Policard} alt="" width="140px" loading="lazy" decoding="async" />
 							</div>
 							<h3 style="text-align: center; color: #000000;">Bienvenido a Policard</h3>
 							<p class="fs-6 mb-4" style="color: #000000;">
@@ -114,7 +120,7 @@
 						<br />
 						<div
 							class="alert alert-danger alert-dismissible fade show"
-							style="display: {errorVisible}"
+							style="display:{errorVisible}"
 							role="alert"
 							transition:fade
 						>
@@ -152,11 +158,14 @@
 </body>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
 	body {
 		background: #475d62 url(../../lib/img/background1.jpg);
-		background-position: center; 
-		background-repeat: no-repeat; 
-		background-size: cover; 
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		font-family: 'Inter', sans-serif;
 	}
 	#innerPage {
 		width: 100%;

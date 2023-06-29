@@ -106,23 +106,22 @@
 			if ($customerPhoneEmergency === '') {
 				$phoneemergencyIsError = true;
 			}
-			if (
-				$customerContactemergency !== '' &&
-				$customerPhoneEmergency !== ''
-			)
-			if (
-				$customerBloodType !== '' &&
-				$customerbloodtypeIsError !== ''
-			) {
-				$currentStep++;
-			}
+			if ($customerContactemergency !== '' && $customerPhoneEmergency !== '')
+				if ($customerBloodType !== '' && $customerbloodtypeIsError !== '') {
+					$currentStep++;
+				}
 		}
 	}
-	const register =  import('../register.js');
+	const register = import('../register.js');
 	async function handleClick() {
 		//console.log('click');
 
-		(await register).sendRegisterData();
+		(await register).sendRegisterData().catch((err) => {
+			console.log(err);
+			alert('Error al enviar los datos, por favor intenta de nuevo');
+			return;
+		});
+		$currentStep++;
 	}
 </script>
 
@@ -205,7 +204,6 @@
 			<button
 				class="nextButton confirm"
 				on:click={() => {
-					$currentStep++;
 					handleClick();
 				}}
 			>
