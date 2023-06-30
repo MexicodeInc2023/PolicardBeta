@@ -4,6 +4,8 @@
 	import profile from '../lib/img/perfil.jpg';
 	import { authenticated, user, emailUser } from '../stores/auth.js';
 	import ModalProfile from './Modal_Profile.svelte';
+	import { goto } from '$app/navigation';
+
 	/* import {
 		customerEmail,
 		customerName,
@@ -12,19 +14,15 @@
 	import {
 		customerDate
 	} from '../routes/form/components/sharedState' */
-	const logoutUrl = 'https://policard-api.onrender.com/api/logout/';
+	/* const logoutUrl = 'https://policard-api.onrender.com/api/logout/';
 	let auth = false;
 	authenticated.subscribe((value) => (auth = value));
-	const logout = async () => {
-		const res = await fetch(logoutUrl, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			credentials: 'include'
-		});
-		location.href = '/';
-	};
+	 */
+
+	async function handleSignOut(event) {
+		await goto(`/?signout=${true}`, { replaceState: true });
+		location.reload();
+	}
 	/* let name = customerName.name;
 	
 	let correo = customerEmail;
@@ -113,9 +111,7 @@
 								>Perfil</button
 							>
 							<div class="dropdown-divider" />
-							<form method="POST" action="/logout">
-								<button class="dropdown-item" href="#" on:click={logout}>Cerrar Sesion</button>
-							</form>
+							<button class="dropdown-item" on:click={handleSignOut}>Cerrar Sesion</button>
 						</div>
 					</li>
 				</ul>
