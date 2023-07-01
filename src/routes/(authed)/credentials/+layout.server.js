@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+/* import { redirect } from '@sveltejs/kit';
 import { jwt } from '../../../stores/auth';
 
 
@@ -11,4 +11,4 @@ export function load({ cookies, url }) {
 	}
 	console.log('Hay cookies!!');
 
-}
+} */
