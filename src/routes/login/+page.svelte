@@ -74,8 +74,8 @@
 
 <body>
 	<section
-		in:fly={{ x: -100, duration: 500, delay: 500 }}
-		out:fly={{ duration: 500 }}
+		in:fly|global={{ x: -100, duration: 500, delay: 500 }}
+		out:fly|global={{ duration: 500 }}
 		class="background-radial-gradient overflow-hidden"
 	>
 		<div class="container vh-100 d-flex align-items-center">
@@ -122,7 +122,7 @@
 							class="alert alert-danger alert-dismissible fade show"
 							style="display:{errorVisible}"
 							role="alert"
-							transition:fade
+							transition:fade|global
 						>
 							Error al iniciar sesión. Por favor, comprueba tus credenciales e intenta de nuevo.
 							<button
@@ -139,7 +139,7 @@
 							style="display: {successVisible}"
 							role="alert"
 							class:successVisible
-							transition:fade
+							transition:fade|global
 						>
 							Sesión iniciada correctamente.
 							<button

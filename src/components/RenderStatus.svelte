@@ -22,5 +22,5 @@
   </style>
   
   {#if show}
-    <div transition:fade|local class="box">source: {render}</div>
+    <div transition:fade class="box">source: {render}</div>
   {/if}

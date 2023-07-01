@@ -7,7 +7,9 @@
 <body>
 	<section class="banner">
 		<div>
-			<img src={Logo} alt="Logo" class="logo" loading="lazy" decoding="async" />
+			<a href="/">
+				<img src={Logo} alt="Logo" class="logo" loading="lazy" decoding="async" />
+			</a>
 		</div>
 		<div class="container">
 			<div class="row main">
