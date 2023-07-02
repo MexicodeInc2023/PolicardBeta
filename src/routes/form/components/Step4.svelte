@@ -9,6 +9,7 @@
 		phoneemergencyIsError,
 		customerbloodtypeIsError
 	} from './sharedState';
+	import { browser } from '$app/environment';
 
 	$: if ($customerAlergyextra !== '') {
 		$alergyextraIsError = false;
@@ -24,9 +25,11 @@
 	}
 
 	let showComponent = false;
-	window.setTimeout(() => {
-		showComponent = true;
-	}, 0);
+	if (browser) {
+		window.setTimeout(() => {
+			showComponent = true;
+		}, 0);
+	}
 </script>
 
 <article class:show={showComponent}>

@@ -7,6 +7,7 @@
 		usernameIsError,
 		passwordIsError
 	} from './sharedState';
+	import { browser } from '$app/environment';
 
 	$: if ($customerUserName !== '') {
 		$usernameIsError = false;
@@ -19,9 +20,11 @@
 	}
 
 	let showComponent = false;
-	window.setTimeout(() => {
-		showComponent = true;
-	}, 0);
+	if (browser) {
+		window.setTimeout(() => {
+			showComponent = true;
+		}, 0);
+	}
 </script>
 
 <article class:show={showComponent}>

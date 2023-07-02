@@ -15,12 +15,12 @@ export const actions = {
 				refresh: cookies.get('refresh_token')
 			})
 		});
-
+		let empty = '';
 		if (response.ok) {
-			jwt.set(null);
-			id.set(null);
-			user.set(null);
-			console.log('Cookies borradas Adios!');
+			jwt.subscribe((value) => { empty = value; });
+			id.subscribe((value) => { empty = value; });
+			user.subscribe((value) => { empty = value; });
+			console.log('Cookies borradas Adios!', empty);
 			cookies.delete('access_token');
 			cookies.delete('refresh_token');
 			throw redirect(307, `/`);

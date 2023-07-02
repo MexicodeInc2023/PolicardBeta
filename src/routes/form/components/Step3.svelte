@@ -7,6 +7,7 @@
 		carreerIsError,
 		alergyIsError
 	} from './sharedState';
+	import { browser } from '$app/environment';
 
 	$: if ($customerGroup !== '') {
 		$groupIsError = false;
@@ -24,9 +25,11 @@
 	}
 
 	let showComponent = false;
-	window.setTimeout(() => {
-		showComponent = true;
-	}, 0);
+	if (browser) {
+		window.setTimeout(() => {
+			showComponent = true;
+		}, 0);
+	}
 </script>
 
 <article class:show={showComponent}>

@@ -9,6 +9,7 @@
 		matriculaIsError,
 		dateIsError
 	} from './sharedState';
+	import { browser } from '$app/environment';
 
 	$: if ($customerPersonalname !== '') {
 		$personalnameIsError = false;
@@ -25,9 +26,11 @@
 	}
 
 	let showComponent = false;
-	window.setTimeout(() => {
-		showComponent = true;
-	}, 0);
+	if (browser) {
+		window.setTimeout(() => {
+			showComponent = true;
+		}, 0);
+	}
 </script>
 
 <article class:show={showComponent}>
