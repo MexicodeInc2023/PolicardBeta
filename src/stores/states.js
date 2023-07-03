@@ -20,3 +20,7 @@ procedureTrue.subscribe((value) => browser && (localStorage.procedureTrue = valu
 
 export const count = writable(0);
 /* export const statusCredentials = writable(1); */
+
+
+
+export const loading = writable(false);

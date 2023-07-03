@@ -3,36 +3,33 @@
 	import { fade, fly } from 'svelte/transition';
 	import { superForm } from 'sveltekit-superforms/client';
 	import { jwt, user, id, emailUser, authenticated } from '../../stores/auth';
+	import { loading } from '../../stores/states';
 
-    export let data
-    const { form, errors, constraints } = superForm(data.form);
-    
+	export let data;
+	const { form, errors, constraints, delayed } = superForm(data.form);
+
 	let errorVisible = 'none';
 	let successVisible = 'none';
+
 	function hideError() {
 		errorVisible = 'none';
 	}
 
-    
-	if(data.success){
+	if (data.success) {
 		errorVisible = 'none';
-        id.set(data.dataLogin.id);
-        user.set(data.dataLogin.name);
-        emailUser.set(data.dataLogin.email);
-        // Establecer las cookies de acceso y actualización con los valores de los tokens correspondientes
-        jwt.set(data.dataLogin.tokens.access);
-        authenticated.set(true);
+		id.set(data.dataLogin.id);
+		user.set(data.dataLogin.name);
+		emailUser.set(data.dataLogin.email);
+		// Establecer las cookies de acceso y actualización con los valores de los tokens correspondientes
+		jwt.set(data.dataLogin.tokens.access);
+		authenticated.set(true);
 	}
-     
 
-
-
-	if(data.error){
+	if (data.error) {
 		errorVisible = 'block';
 	}
-	
-	setInterval(hideError, 3000);
 
+	setInterval(hideError, 3000);
 </script>
 
 <svelte:head>
@@ -50,7 +47,6 @@
 				<div class="row align-items-center justify-content-center">
 					<div class="col-sm-6 col-xs-12 d-sm-block d-none">
 						<div id="imgBgn" />
-						
 					</div>
 					<div class="col-sm-6 col-xs-12 text-white p-5">
 						<div class="lead">
@@ -74,21 +70,26 @@
 								type="email"
 								name="email"
 								aria-invalid={$errors.email ? 'true' : undefined}
-                                bind:value={$form.email}
-                                {...$constraints.email} 
+								bind:value={$form.email}
+								{...$constraints.email}
 							/>
 							{#if $errors.email}<span class="invalid">{$errors.email}</span>{/if}
 							<input
 								class="form-control rounded-0 mb-3"
 								placeholder=" Ingresa tu contraseña "
 								type="password"
-                                name="password"
-                                aria-invalid={$errors.password ? 'true' : undefined}
-                                bind:value={$form.password}
-                                {...$constraints.password}
+								name="password"
+								aria-invalid={$errors.password ? 'true' : undefined}
+								bind:value={$form.password}
+								{...$constraints.password}
 							/>
 							{#if $errors.password}<span class="invalid">{$errors.password}</span>{/if}
-							<button class="btn btn-rounded mt-4 w-100" type="submit"> Iniciar Sesion </button>
+							<button class="btn btn-rounded mt-4 w-100" type="submit">
+								Inciar Sesión
+								{#if $loading}
+									<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
+								{/if}
+							</button>
 						</form>
 						<br />
 						<div
@@ -125,8 +126,8 @@
 	}
 
 	.invalid {
-      color: rgb(246, 49, 49);
-    }
+		color: rgb(246, 49, 49);
+	}
 	#innerPage {
 		width: 100%;
 		max-width: 840px;
