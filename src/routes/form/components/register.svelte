@@ -5,6 +5,8 @@
 	import Step4 from './Step4.svelte';
 	import Step5 from './Step5.svelte';
 	import PurchaseComplete from './PurchaseComplete.svelte';
+	import { z } from 'zod';
+	import { superValidate } from 'sveltekit-superforms/server';
 	import {
 		currentStep,
 		customerEmail,
@@ -43,21 +45,52 @@
 		customerbloodtypeIsError
 	} from './sharedState';
 
+	const emailSchema = z
+		.string()
+		.email()
+		.refine((value) => {
+			const allowedDomain = 'uptapachula.edu.mx';
+			const emailParts = value.split('@');
+			const domain = emailParts[emailParts.length - 1];
+			return domain === allowedDomain;
+		});
+
+	const userSchema = z.object({
+		username: z.string().min(3),
+		email: emailSchema,
+		password: z.string().min(6)
+	});
+
+	let userValidated = false;
+
+	$: userData = {
+		username: $customerUserName,
+		email: $customerEmail,
+		password: $customerPassword
+	};
+
+	const validate = async () => {
+		const form = await superValidate(userData, userSchema);
+
+		if (!form.valid) {
+			console.log(form.errors);
+			userValidated = false;
+			return form;
+		}
+		userValidated = true;
+		return form;
+	};
+
 	function nextStep() {
 		if ($currentStep === 1) {
-			if ($customerUserName === '') {
-				$usernameIsError = true;
-			}
-			if ($customerEmail === '') {
-				$emailIsError = true;
-			}
-			if ($customerPassword === '') {
-				$passwordIsError = true;
-			}
-
-			if ($customerUserName !== '' && $customerEmail !== '' && $customerPassword !== '') {
-				$currentStep++;
-			}
+			validate().then((form) => {
+				form.errors.username ? ($usernameIsError = true) : ($usernameIsError = false);
+				form.errors.email ? ($emailIsError = true) : ($emailIsError = false);
+				form.errors.password ? ($passwordIsError = true) : ($passwordIsError = false);
+				if (form.valid) {
+					$currentStep++;
+				}
+			});
 		}
 		if ($currentStep === 2) {
 			if ($customerPersonalname === '') {
@@ -253,6 +286,7 @@
 		font-size: 14px;
 		line-height: 16px;
 		transition: 0.25s;
+		z-index: 10;
 	}
 
 	.stepButton.selected {
@@ -305,6 +339,7 @@
 		align-items: center;
 		gap: 0.6em;
 		font-weight: bold;
+		z-index: 10;
 	}
 
 	.nextButton .arrow-wrapper {

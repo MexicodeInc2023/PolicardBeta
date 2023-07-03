@@ -9,16 +9,6 @@
 	} from './sharedState';
 	import { browser } from '$app/environment';
 
-	$: if ($customerUserName !== '') {
-		$usernameIsError = false;
-	}
-	$: if ($customerEmail !== '') {
-		$emailIsError = false;
-	}
-	$: if ($customerPassword !== '') {
-		$passwordIsError = false;
-	}
-
 	let showComponent = false;
 	if (browser) {
 		window.setTimeout(() => {
@@ -29,7 +19,10 @@
 
 <article class:show={showComponent}>
 	<h3>Registro de usuario</h3>
-	<p>Ingresa tus datos personales, estos se mostraran en la credencial.</p>
+	<p>
+		Ingresa tus datos personales, estos se mostraran en la credencial. Por favor, durante el proceso
+		<b>no recargues la pagina</b>
+	</p>
 	<form>
 		<div>
 			<label for="nameInput"> Usuario </label>
@@ -41,6 +34,8 @@
 				bind:value={$customerUserName}
 				required
 			/>
+			{#if $usernameIsError}<span class="invalid">El usuario debe tener al menos 3 caracteres</span
+				>{/if}
 		</div>
 		<div>
 			<label for="emailInput"> Correo Institucional </label>
@@ -51,6 +46,7 @@
 				placeholder=" Ingresa tu correo institucional "
 				bind:value={$customerEmail}
 			/>
+			{#if $emailIsError}<span class="invalid">El correo debe ser el institucional</span>{/if}
 		</div>
 		<div>
 			<label for="passwordInput"> Contraseña </label>
@@ -61,6 +57,8 @@
 				placeholder=" Ingresa tu contraseña "
 				bind:value={$customerPassword}
 			/>
+			{#if $passwordIsError}<span class="invalid">La contraseña debe ser al menos de 6 digitos</span
+				>{/if}
 		</div>
 	</form>
 </article>
@@ -76,7 +74,10 @@
 		opacity: 1;
 		right: 0;
 	}
-
+	.invalid {
+		color: red;
+		background: transparent !important;
+	}
 	h3 {
 		font-weight: 700;
 		font-size: 24px;
