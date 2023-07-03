@@ -4,6 +4,7 @@
 	import { superForm } from 'sveltekit-superforms/client';
 	import { jwt, user, id, emailUser, authenticated } from '../../stores/auth';
 	import { loading } from '../../stores/states';
+	import CookiesAlert from '../../components/CookiesAlert.svelte';
 
 	export let data;
 	const { form, errors, constraints, delayed } = superForm(data.form);
@@ -37,6 +38,7 @@
 </svelte:head>
 
 <body>
+	<CookiesAlert />
 	<section
 		in:fly|global={{ x: -100, duration: 500, delay: 500 }}
 		out:fly|global={{ duration: 500 }}

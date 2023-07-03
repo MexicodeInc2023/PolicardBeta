@@ -2,9 +2,11 @@
 	import Register from './components/register.svelte';
 	import Logo from '../../lib/img/favicon.ico';
 	import Logo2 from '../../lib/img/credentialization.png';
+	import CookiesAlert from '../../components/CookiesAlert.svelte';
 </script>
 
 <body>
+	<CookiesAlert />
 	<section class="banner">
 		<div>
 			<a href="/">
