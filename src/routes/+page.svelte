@@ -26,12 +26,7 @@
 						<span class="bottom-key-1" />
 						<span class="bottom-key-2" />
 					</a>
-					<a href="/privacidad" class="fancy">
-						<span class="top-key" />
-						<span class="text"> Aviso de privacidad </span>
-						<span class="bottom-key-1" />
-						<span class="bottom-key-2" />
-					</a>
+					
 				</div>
 				<div class="col-lg-6 d-none d-lg-block imagehero">
 					<img

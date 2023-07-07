@@ -19,5 +19,5 @@
 	/>
 	Usamos cookies para el funcionamiento de la página &lbbrk;No te procupes no es de uso comercial&rbbrk;
 	. Al continuar navegando, aceptas el uso de cookies. Para más
-	<a href="/info" target="_blank">Politicas de Policard</a>.
+	<a href="/privacidad" target="_blank">Politicas de Policard</a>.
 </div>

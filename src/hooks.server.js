@@ -4,7 +4,7 @@ import { BaseUrl } from './stores/apiUrl';
 
 
 
-const unProtectedRoutes = ['/', '/login', '/info', '/form'];
+const unProtectedRoutes = ['/', '/login', '/info', '/form', '/privacidad'];
 
 export const handle = async ({ event, resolve }) => {
     const sessionId = event.cookies.get('access_token');

@@ -87,7 +87,7 @@
 							/>
 							{#if $errors.password}<span class="invalid">{$errors.password}</span>{/if}
 							<button class="btn btn-rounded mt-4 w-100" type="submit">
-								Inciar Sesión
+								Iniciar Sesión
 								{#if $loading}
 									<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
 								{/if}
