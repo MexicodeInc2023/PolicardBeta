@@ -21,7 +21,7 @@
 	statusCredentials.subscribe((value) => (statusValue = value));
 
 	$: switch ($statusCredentials) {
-		case 'rechazado':
+		case 'denegada':
 			rejectedDot = 'big-dot-rejected';
 			acceptedDot = '';
 			pendingDot = '';
@@ -31,7 +31,7 @@
 			acceptedDot = 'big-dot-accepted';
 			pendingDot = '';
 			break;
-		case 'pendiente':
+		case 'revision':
 			rejectedDot = '';
 			acceptedDot = '';
 			pendingDot = 'big-dot-pending';
@@ -89,7 +89,7 @@
 								</div>
 							</div>
 						</div>
-						{#if $statusCredentials === 'rechazado'}
+						{#if $statusCredentials === 'denegada'}
 							<!-- content here -->
 							<div class="m-4 alert alert-dismissible alert-danger">
 								<h2>Rechazado ❌</h2>
@@ -102,7 +102,7 @@
 								<h2>LISTO ✅ - Tus datos han sido aprobados</h2>
 								<p>En breve podras visualizar tu credencial</p>
 							</div>
-						{:else if $statusCredentials === 'pendiente'}
+						{:else if $statusCredentials === 'revision'}
 							<div class="m-4 alert alert-dismissible alert-info">
 								<h2>En Revision 🔎</h2>
 								<p>Tus datos se estan comprobando. Mantente al pendiente</p>
