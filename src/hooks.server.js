@@ -1,7 +1,7 @@
 import { redirect } from '@sveltejs/kit';
-import { jwt, id, user } from './stores/auth';
+import { jwt } from './stores/auth';
 import { BaseUrl } from './stores/apiUrl';
-
+import * as db from '$lib/server/database.js';
 
 
 const unProtectedRoutes = ['/', '/login', '/info', '/form', '/privacidad'];
@@ -20,9 +20,7 @@ export const handle = async ({ event, resolve }) => {
         if (event.cookies.get('access_token') == null || event.cookies.get('refresh_token') == null) {
             console.log("Cookies corruptas");
             jwt.set(null);
-            id.set(null);
-            user.set(null);
-            localStorage.clear();
+            db.clearSession();
             event.cookies.delete('access_token');
             event.cookies.delete('refresh_token');
             throw redirect(307, `/`);
@@ -45,15 +43,14 @@ export const handle = async ({ event, resolve }) => {
             console.log("No se pudo eliminar las cookies");
         }
         jwt.set(null);
-        id.set(null);
-        user.set(null);
+        db.clearSession();
         event.cookies.delete('access_token');
         event.cookies.delete('refresh_token');
         console.log('Cookies borradas, Adios!');
         throw redirect(303, `/`);
     }
-    
-    
+
+
 
     return resolve(event);
 };

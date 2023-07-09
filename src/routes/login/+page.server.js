@@ -6,7 +6,7 @@ import { BaseUrl } from '../../stores/apiUrl';
 import { authenticated } from '../../stores/auth';
 import { beforeNavigate } from '$app/navigation';
 import { loading } from '../../stores/states';
-
+import * as db from '$lib/server/database.js';
 const loginUrl = BaseUrl + 'api/login/';
 const emailSchema = z.string().email().refine((value) => {
     const allowedDomain = "gmail.com";
@@ -72,12 +72,16 @@ export const actions = {
         }
 
         dataLogin = await res.json();
+
         if (!dataLogin.tokens) {
             error = true;
             success = false;
             authenticated.set(false);
             throw new Error('No se encontraron tokens de acceso');
         }
+
+        console.log(dataLogin);
+        db.setSession(dataLogin);
 
         cookies.set('access_token', dataLogin.tokens.access, {
             path: '/',

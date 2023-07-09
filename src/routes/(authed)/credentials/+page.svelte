@@ -1,48 +1,24 @@
 <script>
-	const userView = 'http://127.0.0.1:8000/users/userView/';
 	import Status from './card/components/Status.svelte';
-	import { onMount } from 'svelte';
-	import { user } from '../../../stores/auth.js';
-	import { authenticated } from '../../../stores/auth.js';
 
-   let message = '';
+	export let data;
 
-  user.subscribe((value) => {
-    //console.log(value);
-  });
-
-
-
-	let headersList = {
-		'Content-Type': 'application/json',
-	};
-
-	/* onMount(async () => {
-    try{
-      const res = await fetch(userView, {
-        method: 'GET',
-        headers: headersList,
-        credentials: 'include',
-      });
-      const data = await res.json();
-      message = data;
-      authenticated.set(true);
-
-    }catch(e){
-      message = 'No estas logeado';
-      authenticated.set(false);
-      console.log(e)
-    }
-  
-  }); */
- 
+	if (!data) {
+		console.log('No hay datos');
+	}
 </script>
 
 <svelte:head>
 	<title>Bienvenido</title>
 </svelte:head>
-<div class="container">
-	<h1 class="text-center m-1">Bienvenido!</h1>
-	<h1 class="text-center m-1 text-uppercase" style="font-weight: bold; color: #7352F2 ">{$user}</h1>
-	<Status  />
-</div>
+{#if !data}
+	<p>Cargando...</p>
+{:else}
+	<div class="container">
+		<h1 class="text-center m-1">Bienvenido!</h1>
+		<h1 class="text-center m-1 text-uppercase" style="font-weight: bold; color: #7352F2 ">
+			{data.session.user}
+		</h1>
+		<Status />
+	</div>
+{/if}

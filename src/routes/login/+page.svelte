@@ -2,7 +2,7 @@
 	import Policard from '../../lib/img/policard-wt-sf.png';
 	import { fade, fly } from 'svelte/transition';
 	import { superForm } from 'sveltekit-superforms/client';
-	import { jwt, user, id, emailUser, authenticated } from '../../stores/auth';
+	import { jwt, authenticated } from '../../stores/auth';
 	import { loading } from '../../stores/states';
 	import CookiesAlert from '../../components/CookiesAlert.svelte';
 
@@ -16,12 +16,13 @@
 		errorVisible = 'none';
 	}
 
+	if (!data) {
+		console.log('No hay datos');
+		$loading = true;
+	}
+
 	if (data.success) {
 		errorVisible = 'none';
-		id.set(data.dataLogin.id);
-		user.set(data.dataLogin.name);
-		emailUser.set(data.dataLogin.email);
-		// Establecer las cookies de acceso y actualización con los valores de los tokens correspondientes
 		jwt.set(data.dataLogin.tokens.access);
 		authenticated.set(true);
 	}
