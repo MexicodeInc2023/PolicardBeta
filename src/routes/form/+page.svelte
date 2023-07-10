@@ -1,4 +1,8 @@
 <script>
+	import Modal from './components/Modal_remmber.svelte';
+
+	let visible = '';
+
 	import Register from './components/register.svelte';
 	import Logo from '../../lib/img/favicon.ico';
 	import Logo2 from '../../lib/img/credentialization.png';
@@ -8,6 +12,8 @@
 
 	onMount(() => {
 		document.addEventListener('visibilitychange', handleVisibilityChange);
+
+		visible = 'visible';
 	});
 
 	function handleVisibilityChange() {
@@ -20,9 +26,10 @@
 		}
 	}
 </script>
-
 <body>
 	<CookiesAlert />
+	<Modal {visible}/>
+	
 	<section class="banner">
 		<div>
 			<a href="/">
