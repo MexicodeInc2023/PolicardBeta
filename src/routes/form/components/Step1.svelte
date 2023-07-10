@@ -75,6 +75,7 @@
 		right: 0;
 	}
 	.invalid {
+		font-size: 12px;
 		color: red;
 		background: transparent !important;
 	}

@@ -11,19 +11,6 @@
 	} from './sharedState';
 	import { browser } from '$app/environment';
 
-	$: if ($customerAlergyextra !== '') {
-		$alergyextraIsError = false;
-	}
-	$: if ($customerContactemergency !== '') {
-		$contactemergencyIsError = false;
-	}
-	$: if ($customerPhoneEmergency !== '') {
-		$phoneemergencyIsError = false;
-	}
-	$: if ($customerBloodType !== '') {
-		$customerbloodtypeIsError = false;
-	}
-
 	let showComponent = false;
 	if (browser) {
 		window.setTimeout(() => {
@@ -74,6 +61,8 @@
 				placeholder=" Ingresa tu tipo de sangre "
 				bind:value={$customerBloodType}
 			/>
+			{#if $customerbloodtypeIsError}<span class="invalid">El tipo de sangre no es valido</span
+				>{/if}
 		</div>
 	</form>
 </article>
@@ -90,6 +79,11 @@
 		right: 0;
 	}
 
+	.invalid {
+		font-size: 12px;
+		color: red;
+		background: transparent !important;
+	}
 	h3 {
 		font-weight: 700;
 		font-size: 24px;

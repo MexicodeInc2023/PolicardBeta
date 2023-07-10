@@ -8,11 +8,12 @@ import { beforeNavigate } from '$app/navigation';
 import { loading } from '../../stores/states';
 import * as db from '$lib/server/database.js';
 const loginUrl = BaseUrl + 'api/login/';
+
 const emailSchema = z.string().email().refine((value) => {
-    const allowedDomain = "gmail.com";
+    const allowedDomain = ["uptapachula.edu.mx", "gmail.com"];
     const emailParts = value.split("@");
     const domain = emailParts[emailParts.length - 1];
-    return domain === allowedDomain;
+    return allowedDomain.includes(domain);
 }, {
     message: "El correo debe ser el institucional.",
 });

@@ -5,7 +5,7 @@
 	import Step4 from './Step4.svelte';
 	import Step5 from './Step5.svelte';
 	import PurchaseComplete from './PurchaseComplete.svelte';
-	import { z } from 'zod';
+	import { userSchema, personalSchema, groupSchema, emergencySchema } from './validateSchemas.js';
 	import { superValidate } from 'sveltekit-superforms/server';
 	import {
 		currentStep,
@@ -45,45 +45,45 @@
 		customerbloodtypeIsError
 	} from './sharedState';
 
-	const emailSchema = z
-		.string()
-		.email()
-		.refine((value) => {
-			const allowedDomain = 'uptapachula.edu.mx';
-			const emailParts = value.split('@');
-			const domain = emailParts[emailParts.length - 1];
-			return domain === allowedDomain;
-		});
-
-	const userSchema = z.object({
-		username: z.string().min(3),
-		email: emailSchema,
-		password: z.string().min(6)
-	});
-
-	let userValidated = false;
-
 	$: userData = {
 		username: $customerUserName,
 		email: $customerEmail,
 		password: $customerPassword
 	};
 
-	const validate = async () => {
-		const form = await superValidate(userData, userSchema);
+	$: personalData = {
+		personalname: $customerPersonalname,
+		lastnames: $customerLastnames,
+		matricula: String($customerMatricula),
+		date: $customerDate
+	};
 
+	$: groupData = {
+		group: $customerGroup,
+		carreer: $customerCarreer,
+		alergy: $customerAlergy
+	};
+
+	$: emergencyData = {
+		alergyextra: $customerAlergyextra,
+		contactemergency: $customerContactemergency,
+		phoneEmergency: $customerPhoneEmergency,
+		bloodType: $customerBloodType
+	};
+
+	const validate = async (data, schema) => {
+		const form = await superValidate(data, schema);
+		console.log(form);
 		if (!form.valid) {
 			console.log(form.errors);
-			userValidated = false;
 			return form;
 		}
-		userValidated = true;
 		return form;
 	};
 
 	function nextStep() {
 		if ($currentStep === 1) {
-			validate().then((form) => {
+			validate(userData, userSchema).then((form) => {
 				form.errors.username ? ($usernameIsError = true) : ($usernameIsError = false);
 				form.errors.email ? ($emailIsError = true) : ($emailIsError = false);
 				form.errors.password ? ($passwordIsError = true) : ($passwordIsError = false);
@@ -93,56 +93,42 @@
 			});
 		}
 		if ($currentStep === 2) {
-			if ($customerPersonalname === '') {
-				$personalnameIsError = true;
-			}
-			if ($customerLastnames === '') {
-				$lastnamesIsError = true;
-			}
-			if ($customerMatricula === '') {
-				$matriculaIsError = true;
-			}
-			if ($customerDate === '') {
-				$dateIsError = true;
-			}
-
-			if (
-				$customerPersonalname !== '' &&
-				$customerLastnames !== '' &&
-				$customerMatricula !== '' &&
-				$customerDate !== ''
-			) {
-				$currentStep++;
-			}
-		}
-		if ($currentStep === 3) {
-			if ($customerGroup === '') {
-				$groupIsError = true;
-			}
-			if ($customerCarreer === '') {
-				$carreerIsError = true;
-			}
-			if ($customerAlergy === '') {
-				$alergyIsError = true;
-			}
-			if ($customerGroup !== '' && $customerCarreer !== '' && $customerAlergy !== '') {
-				$currentStep++;
-			}
-		}
-		if ($currentStep === 4) {
-			if ($customerAlergyextra === '') {
-				$alergyextraIsError = true;
-			}
-			if ($customerContactemergency === '') {
-				$contactemergencyIsError = true;
-			}
-			if ($customerPhoneEmergency === '') {
-				$phoneemergencyIsError = true;
-			}
-			if ($customerContactemergency !== '' && $customerPhoneEmergency !== '')
-				if ($customerBloodType !== '' && $customerbloodtypeIsError !== '') {
+			validate(personalData, personalSchema).then((form) => {
+				form.errors.personalname ? ($personalnameIsError = true) : ($personalnameIsError = false);
+				form.errors.lastnames ? ($lastnamesIsError = true) : ($lastnamesIsError = false);
+				form.errors.matricula ? ($matriculaIsError = true) : ($matriculaIsError = false);
+				form.errors.date ? ($dateIsError = true) : ($dateIsError = false);
+				if (form.valid) {
 					$currentStep++;
 				}
+			});
+		}
+		if ($currentStep === 3) {
+			validate(groupData, groupSchema).then((form) => {
+				form.errors.group ? ($groupIsError = true) : ($groupIsError = false);
+				form.errors.carreer ? ($carreerIsError = true) : ($carreerIsError = false);
+				form.errors.alergy ? ($alergyIsError = true) : ($alergyIsError = false);
+				if (form.valid) {
+					$currentStep++;
+				}
+			});
+		}
+		if ($currentStep === 4) {
+			validate(emergencyData, emergencySchema).then((form) => {
+				form.errors.alergyextra ? ($alergyextraIsError = true) : ($alergyextraIsError = false);
+				form.errors.contactemergency
+					? ($contactemergencyIsError = true)
+					: ($contactemergencyIsError = false);
+				form.errors.phoneEmergency
+					? ($phoneemergencyIsError = true)
+					: ($phoneemergencyIsError = false);
+				form.errors.bloodType
+					? ($customerbloodtypeIsError = true)
+					: ($customerbloodtypeIsError = false);
+				if (form.valid) {
+					$currentStep++;
+				}
+			});
 		}
 	}
 	const register = import('../register.js');
@@ -179,14 +165,14 @@
 				<button class="stepButton" class:selected={$currentStep === 3}>3</button>
 				<div class="stepText">
 					<p>Paso 3</p>
-					<b> Datos personales </b>
+					<b> Datos escolares </b>
 				</div>
 			</div>
 			<div class="stepContainer">
 				<button class="stepButton" class:selected={$currentStep === 4}>4</button>
 				<div class="stepText">
 					<p>Paso 4</p>
-					<b> Datos personales </b>
+					<b> Datos de emergencia </b>
 				</div>
 			</div>
 			<div class="stepContainer">

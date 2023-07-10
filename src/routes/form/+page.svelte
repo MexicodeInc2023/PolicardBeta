@@ -3,6 +3,22 @@
 	import Logo from '../../lib/img/favicon.ico';
 	import Logo2 from '../../lib/img/credentialization.png';
 	import CookiesAlert from '../../components/CookiesAlert.svelte';
+
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		document.addEventListener('visibilitychange', handleVisibilityChange);
+	});
+
+	function handleVisibilityChange() {
+		if (document.hidden) {
+			// El usuario no se encuentra en la pestaña activa
+			document.title = '¡No pierdad tu avance!';
+		} else {
+			// El usuario volvió a la pestaña activa
+			document.title = 'Policard | Registro';
+		}
+	}
 </script>
 
 <body>
