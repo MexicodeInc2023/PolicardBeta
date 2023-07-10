@@ -6,7 +6,7 @@ id_rq.subscribe((value) => browser && (localStorage.id_rq = value));
 
 
 export const statusCredentials = writable(
-    browser && (localStorage.getItem("statusCredentials") || 1)
+    browser && (localStorage.getItem("statusCredentials") || "")
 );
 statusCredentials.subscribe((value) => browser && (localStorage.statusCredentials = value));
 
@@ -20,3 +20,7 @@ procedureTrue.subscribe((value) => browser && (localStorage.procedureTrue = valu
 
 export const count = writable(0);
 /* export const statusCredentials = writable(1); */
+
+
+
+export const loading = writable(false);

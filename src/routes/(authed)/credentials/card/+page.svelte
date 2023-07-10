@@ -1,6 +1,6 @@
 <script>
 	import QRCode from './components/QRJS.svelte';
-	import { jwt, id, id_st } from '../../../../stores/auth';
+	import { id_st } from '../../../../stores/auth';
 	import { BaseUrl } from '../../../../stores/apiUrl';
 	import LogoPersona from '../../../../lib/img/LOGOUPTAPPED.png';
 
@@ -8,9 +8,11 @@
 	let Career;
 	let Emergency;
 	let OnError;
-	let id_user = $id;
+	export let data;
 
-	const urlStudent = BaseUrl + 'api/student/' + id_user + '/';
+	const dataSession = data.session;
+	console.log(dataSession);
+	const urlStudent = BaseUrl + 'api/student/' + dataSession.id + '/';
 	let options = {
 		method: 'GET'
 	};
@@ -21,7 +23,6 @@
 			const data = await response.json();
 			const Datos = data.data;
 			id_st.set(Datos.id);
-			//console.log(Datos);
 
 			const urlCarrera = BaseUrl + 'api/careers/' + Datos.id_careers + '/';
 			const carreraResponse = await fetch(urlCarrera, options);
@@ -62,7 +63,7 @@
 {#if OnError}
 	<div class="alert alert-danger">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true"> ×</button>
-		<span class="glyphicon glyphicon-hand-right" /> <strong class="h4 ">Error Insesperado</strong>
+		<span class="glyphicon glyphicon-hand-right" /> <strong class="h4">Error Insesperado</strong>
 		<hr class="message-inner-separator" />
 		<p>Intentalo más tarde</p>
 	</div>

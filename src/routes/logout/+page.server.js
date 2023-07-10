@@ -1,6 +1,8 @@
 import { redirect } from '@sveltejs/kit';
 import { jwt, id, user } from '../../stores/auth';
 import { BaseUrl } from '../../stores/apiUrl';
+
+let clear = false;
 export const actions = {
 	default: async ({ cookies }) => {
 		console.log(cookies.get('access_token'));
@@ -17,10 +19,8 @@ export const actions = {
 		});
 
 		if (response.ok) {
-			jwt.set(null);
-			id.set(null);
-			user.set(null);
-			console.log('Cookies borradas Adios!');
+			clear = true;
+			console.log(clear);
 			cookies.delete('access_token');
 			cookies.delete('refresh_token');
 			throw redirect(307, `/`);
@@ -29,5 +29,16 @@ export const actions = {
 		}
 
 		/* Este si jala xd */
+	}
+};
+
+export const load = async () => {
+	// Server API:
+	if (clear) {
+		jwt.set('');
+		id.set('');
+		user.set('');
+		console.log('Se limpiaron los stores');
+		clear = false;
 	}
 };
