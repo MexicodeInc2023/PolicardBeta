@@ -1,9 +1,11 @@
 <script>
 	import { page } from '$app/stores';
 	import logo from '../lib/img/policard-wt-sf.png';
+	import profile from '../lib/img/perfil.jpg';
+	import { authenticated, user, emailUser } from '../stores/auth.js';
+	import ModalProfile from './Modal_Profile.svelte';
 	import { goto } from '$app/navigation';
 
-	export let loginData;
 	/* import {
 		customerEmail,
 		customerName,
@@ -53,7 +55,7 @@
 						class={$page.url.pathname === '/credentials' ? 'nav-item active' : 'nav-item '}
 						aria-current={$page.url.pathname === '/credentials' ? 'page' : undefined}
 					>
-						<a class="nav-link" href="/credentials">Inicio</a>
+						<a class="nav-link " href="/credentials">Inicio</a>
 					</li>
 					<li
 						class={$page.url.pathname === '/credentials/card' ? 'nav-item active' : 'nav-item '}
@@ -95,10 +97,10 @@
 										<img class="img-fluid" src={logo} />
 									</div>
 									<div class="card-title">
-										<p>{loginData.user}</p>
+										<p>{$user}</p>
 									</div>
 									<div class="card-text">
-										<p>{loginData.emailUser}</p>
+										<p>{$emailUser}</p>
 									</div>
 									<button class="btn">Cerrar</button>
 								</div>

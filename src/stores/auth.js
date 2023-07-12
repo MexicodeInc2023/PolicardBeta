@@ -7,22 +7,13 @@ export const jwt = writable(
 );
 jwt.subscribe((value) => browser && (localStorage.jwt = value));
 
-export const authenticated = writable(
-    browser && (localStorage.getItem("authenticated") || false)
-);
-authenticated.subscribe((value) => browser && (localStorage.authenticated = value));
-
-export const id_st = writable(browser && (localStorage.getItem("id_st") || null));
-id_st.subscribe((value) => browser && (localStorage.id_st = value));
-
-
-
-/*
 export const id = writable(
     browser && (localStorage.getItem("id") || null)
 );
 id.subscribe((value) => browser && (localStorage.id = value));
 
+export const id_st = writable(browser && (localStorage.getItem("id_st") || null));
+id_st.subscribe((value) => browser && (localStorage.id_st = value));
 
 export const user = writable(
     browser && (localStorage.getItem("user") || null)
@@ -34,4 +25,7 @@ export const emailUser = writable(
 );
 emailUser.subscribe((value) => browser && (localStorage.emailUser = value));
 
- */
+export const authenticated = writable(
+    browser && (localStorage.getItem("authenticated") || false)
+);
+authenticated.subscribe((value) => browser && (localStorage.authenticated = value));

@@ -26,7 +26,6 @@
 						<span class="bottom-key-1" />
 						<span class="bottom-key-2" />
 					</a>
-					
 				</div>
 				<div class="col-lg-6 d-none d-lg-block imagehero">
 					<img

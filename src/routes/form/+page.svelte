@@ -1,40 +1,13 @@
 <script>
-	import Modal from './components/Modal_remmber.svelte';
-
-	let visible = '';
-
 	import Register from './components/register.svelte';
 	import Logo from '../../lib/img/favicon.ico';
 	import Logo2 from '../../lib/img/credentialization.png';
-	import CookiesAlert from '../../components/CookiesAlert.svelte';
-
-	import { onMount } from 'svelte';
-
-	onMount(() => {
-		document.addEventListener('visibilitychange', handleVisibilityChange);
-
-		visible = 'visible';
-	});
-
-	function handleVisibilityChange() {
-		if (document.hidden) {
-			// El usuario no se encuentra en la pestaña activa
-			document.title = '¡No pierdad tu avance!';
-		} else {
-			// El usuario volvió a la pestaña activa
-			document.title = 'Policard | Registro';
-		}
-	}
 </script>
+
 <body>
-	<CookiesAlert />
-	<Modal {visible}/>
-	
 	<section class="banner">
 		<div>
-			<a href="/">
-				<img src={Logo} alt="Logo" class="logo" loading="lazy" decoding="async" />
-			</a>
+			<img src={Logo} alt="Logo" class="logo" loading="lazy" decoding="async" />
 		</div>
 		<div class="container">
 			<div class="row main">

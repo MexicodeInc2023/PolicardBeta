@@ -1,10 +1,8 @@
 import { redirect } from '@sveltejs/kit';
-import { jwt } from './stores/auth';
+import { jwt, id, user } from './stores/auth';
 import { BaseUrl } from './stores/apiUrl';
-import * as db from '$lib/server/database.js';
 
-
-const unProtectedRoutes = ['/', '/login', '/info', '/form', '/privacidad'];
+const unProtectedRoutes = ['/', '/login', '/info', '/form'];
 
 export const handle = async ({ event, resolve }) => {
     const sessionId = event.cookies.get('access_token');
@@ -14,18 +12,8 @@ export const handle = async ({ event, resolve }) => {
 
     const query = event.url.searchParams.get('signout');
     if (Boolean(query) == true) {
-        console.log("Listo para eliminar " + event.cookies.get('access_token'));
-        console.log("Listo para eliminar " + event.cookies.get('refresh_token'));
-
-        if (event.cookies.get('access_token') == null || event.cookies.get('refresh_token') == null) {
-            console.log("Cookies corruptas");
-            jwt.set(null);
-            db.clearSession();
-            event.cookies.delete('access_token');
-            event.cookies.delete('refresh_token');
-            throw redirect(307, `/`);
-        }
-
+        console.log(event.cookies.get('access_token'));
+        console.log(event.cookies.get('refresh_token'));
         const response = await fetch(`${BaseUrl}api/logout/`, {
             method: 'POST',
             headers: {
@@ -37,20 +25,19 @@ export const handle = async ({ event, resolve }) => {
             })
         }).catch((error) => {
             console.log("Erorrr", error);
+            throw redirect(307, `/credentials`);
         });
 
-        if (!response.ok) {
-            console.log("No se pudo eliminar las cookies");
+        if (response.ok) {
+            jwt.set(null);
+            id.set(null);
+            user.set(null);
+            console.log('Cookies borradas, Adios!');
+            event.cookies.delete('access_token');
+            event.cookies.delete('refresh_token');
+            throw redirect(307, `/`);
         }
-        jwt.set(null);
-        db.clearSession();
-        event.cookies.delete('access_token');
-        event.cookies.delete('refresh_token');
-        console.log('Cookies borradas, Adios!');
-        throw redirect(303, `/`);
+        throw redirect(307, `/credentials`);
     }
-
-
-
     return resolve(event);
 };

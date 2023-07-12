@@ -21,17 +21,17 @@
 	statusCredentials.subscribe((value) => (statusValue = value));
 
 	$: switch ($statusCredentials) {
-		case 'denegada':
+		case 3:
 			rejectedDot = 'big-dot-rejected';
 			acceptedDot = '';
 			pendingDot = '';
 			break;
-		case 'aceptado':
+		case 2:
 			rejectedDot = '';
 			acceptedDot = 'big-dot-accepted';
 			pendingDot = '';
 			break;
-		case 'revision':
+		case 1:
 			rejectedDot = '';
 			acceptedDot = '';
 			pendingDot = 'big-dot-pending';
@@ -68,11 +68,11 @@
 							<div
 								class="d-flex flex-row justify-content-between align-items-center align-content-center"
 							>
-								<span class="d-flex justify-content-center align-items-center dot {rejectedDot}" />
+								<span class="d-flex justify-content-center align-items-center  dot {rejectedDot}" />
 								<hr class="flex-fill track-line" />
-								<span class="d-flex justify-content-center align-items-center dot {pendingDot}" />
+								<span class="d-flex justify-content-center align-items-center  dot {pendingDot}" />
 								<hr class="flex-fill track-line" />
-								<span class="d-flex justify-content-center align-items-center dot {acceptedDot}">
+								<span class="d-flex justify-content-center align-items-center  dot {acceptedDot}">
 									<i class="fa fa-check text-white" /></span
 								>
 							</div>
@@ -89,7 +89,7 @@
 								</div>
 							</div>
 						</div>
-						{#if $statusCredentials === 'denegada'}
+						{#if $statusCredentials == 3}
 							<!-- content here -->
 							<div class="m-4 alert alert-dismissible alert-danger">
 								<h2>Rechazado ❌</h2>
@@ -97,12 +97,12 @@
 									Tus datos han sido rechazados, comunicate con las autoridades correspondientes.
 								</p>
 							</div>
-						{:else if $statusCredentials === 'aceptado'}
+						{:else if $statusCredentials == 2}
 							<div class="m-4 alert alert-dismissible alert-success">
 								<h2>LISTO ✅ - Tus datos han sido aprobados</h2>
 								<p>En breve podras visualizar tu credencial</p>
 							</div>
-						{:else if $statusCredentials === 'revision'}
+						{:else if $statusCredentials == 1}
 							<div class="m-4 alert alert-dismissible alert-info">
 								<h2>En Revision 🔎</h2>
 								<p>Tus datos se estan comprobando. Mantente al pendiente</p>
