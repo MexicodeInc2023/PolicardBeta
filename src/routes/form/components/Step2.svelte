@@ -9,22 +9,30 @@
 		matriculaIsError,
 		dateIsError
 	} from './sharedState';
-	import { browser } from '$app/environment';
-	let showComponent = false;
-	if (browser) {
-		window.setTimeout(() => {
-			showComponent = true;
-		}, 0);
+
+	$: if ($customerPersonalname !== '') {
+		$personalnameIsError = false;
 	}
+
+	$: if ($customerLastnames !== '') {
+		$lastnamesIsError = false;
+	}
+	$: if ($customerMatricula !== '') {
+		$matriculaIsError = false;
+	}
+	$: if ($customerDate !== '') {
+		$dateIsError = false;
+	}
+
+	let showComponent = false;
+	window.setTimeout(() => {
+		showComponent = true;
+	}, 0);
 </script>
 
 <article class:show={showComponent}>
 	<h3>Registro de usuario</h3>
-	{#if personalnameIsError || lastnamesIsError || matriculaIsError || dateIsError}
-		<p>Ingresa tus datos personales, no dejes espacios vacios</p>
-	{:else}
-		<p>Ingresa tus datos personales, se mostrarán en tu credencial</p>
-	{/if}
+	<p>Ingresa tus datos personales, se mostrarán en tu credencial</p>
 	<form>
 		<div>
 			<label for="personalnameInput"> Nombre(s) </label>
@@ -55,11 +63,6 @@
 				placeholder=" Ingresa tu matricula escolar "
 				bind:value={$customerMatricula}
 			/>
-			{#if $matriculaIsError}
-				<span class="invalid"
-					>La matricula no debe contener numeros ni caracteres especiales. Es requerida</span
-				>
-			{/if}
 		</div>
 		<div>
 			<label for="dateInput"> Fecha de nacimiento </label>
@@ -74,11 +77,6 @@
 		position: relative;
 		right: -10rem;
 		opacity: 0;
-	}
-	.invalid {
-		font-size: 12px;
-		color: red;
-		background: transparent !important;
 	}
 	.show {
 		opacity: 1;

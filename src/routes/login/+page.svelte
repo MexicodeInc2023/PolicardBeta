@@ -1,37 +1,71 @@
 <script>
 	import Policard from '../../lib/img/policard-wt-sf.png';
+	import { BaseUrl } from '../../stores/apiUrl';
+	import { goto } from '$app/navigation';
 	import { fade, fly } from 'svelte/transition';
-	import { superForm } from 'sveltekit-superforms/client';
-	import { jwt, authenticated } from '../../stores/auth';
-	import { loading } from '../../stores/states';
-	import CookiesAlert from '../../components/CookiesAlert.svelte';
+	import { jwt, user, id, emailUser } from '../../stores/auth';
+	import { authenticated } from '../../stores/auth';
 
-	export let data;
-	const { form, errors, constraints, delayed } = superForm(data.form);
-
+	const loginUrl = BaseUrl + 'api/login/';
+	let email, password;
 	let errorVisible = 'none';
 	let successVisible = 'none';
-
 	function hideError() {
 		errorVisible = 'none';
 	}
-
-	if (!data) {
-		console.log('No hay datos');
-		$loading = true;
+	function hideSuccess() {
+		successVisible = 'none';
 	}
-
-	if (data.success) {
-		errorVisible = 'none';
-		jwt.set(data.dataLogin.tokens.access);
-		authenticated.set(true);
+	function setCookie(name, value, days) {
+		const date = new Date();
+		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+		const expires = '; expires=' + date.toUTCString();
+		document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/';
 	}
+	const submit = async () => {
+		try {
+			const res = await fetch(loginUrl, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					email,
+					password
+				})
+			});
 
-	if (data.error) {
-		errorVisible = 'block';
-	}
+			if (!res.ok) {
+				console.log(res);
+				console.log('Fallo');
+				errorVisible = 'block';
+				console.log(errorVisible);
+				authenticated.set(false);
+				throw new Error('No se pudo iniciar sesión');
+			}
 
-	setInterval(hideError, 3000);
+			const data = await res.json();
+			if (!data.tokens) {
+				authenticated.set(false);
+				throw new Error('No se encontraron tokens de acceso');
+			}
+			// Enviamos el id y el usuario a los stores
+			id.set(data.id);
+			user.set(data.name);
+			emailUser.set(data.email);
+			// Establecer las cookies de acceso y actualización con los valores de los tokens correspondientes
+			jwt.set(data.tokens.access);
+			setCookie('access_token', data.tokens.access, 7);
+			setCookie('refresh_token', data.tokens.refresh, 14);
+			successVisible = 'block';
+			// navegar a la página deseada después de autenticarse
+			goto('/credentials');
+		} catch (err) {
+			//console.error(err);
+			errorVisible = 'block';
+			authenticated.set(false);
+		}
+	};
 </script>
 
 <svelte:head>
@@ -39,10 +73,9 @@
 </svelte:head>
 
 <body>
-	<CookiesAlert />
 	<section
-		in:fly|global={{ x: -100, duration: 500, delay: 500 }}
-		out:fly|global={{ duration: 500 }}
+		in:fly={{ x: -100, duration: 500, delay: 500 }}
+		out:fly={{ duration: 500 }}
 		class="background-radial-gradient overflow-hidden"
 	>
 		<div class="container vh-100 d-flex align-items-center">
@@ -66,40 +99,30 @@
 						<div class="mt-4">
 							<p style="color: #000000;">Ingresa tus credenciales</p>
 						</div>
-						<form method="POST">
+						<form on:submit={submit}>
 							<input
 								class="form-control rounded-0 mb-3"
+								type="Email"
+								name=""
 								placeholder=" Ingresa tu correo institucional"
-								type="email"
-								name="email"
-								aria-invalid={$errors.email ? 'true' : undefined}
-								bind:value={$form.email}
-								{...$constraints.email}
+								bind:value={email}
 							/>
-							{#if $errors.email}<span class="invalid">{$errors.email}</span>{/if}
 							<input
+								id="exampleInputPassword1"
 								class="form-control rounded-0 mb-3"
-								placeholder=" Ingresa tu contraseña "
 								type="password"
-								name="password"
-								aria-invalid={$errors.password ? 'true' : undefined}
-								bind:value={$form.password}
-								{...$constraints.password}
+								name=""
+								placeholder=" Ingresa tu contraseña "
+								bind:value={password}
 							/>
-							{#if $errors.password}<span class="invalid">{$errors.password}</span>{/if}
-							<button class="btn btn-rounded mt-4 w-100" type="submit">
-								Iniciar Sesión
-								{#if $loading}
-									<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
-								{/if}
-							</button>
+							<button class="btn btn-rounded mt-4 w-100" type="submit"> Iniciar Sesion </button>
 						</form>
 						<br />
 						<div
 							class="alert alert-danger alert-dismissible fade show"
 							style="display:{errorVisible}"
 							role="alert"
-							transition:fade|global
+							transition:fade
 						>
 							Error al iniciar sesión. Por favor, comprueba tus credenciales e intenta de nuevo.
 							<button
@@ -108,6 +131,23 @@
 								data-bs-dismiss="alert"
 								aria-label="Close"
 								on:click={hideError}
+							/>
+						</div>
+
+						<div
+							class="alert alert-success alert-dismissible fade show"
+							style="display: {successVisible}"
+							role="alert"
+							class:successVisible
+							transition:fade
+						>
+							Sesión iniciada correctamente.
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="alert"
+								aria-label="Close"
+								on:click={hideSuccess}
 							/>
 						</div>
 					</div>
@@ -126,10 +166,6 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 		font-family: 'Inter', sans-serif;
-	}
-
-	.invalid {
-		color: rgb(246, 49, 49);
 	}
 	#innerPage {
 		width: 100%;

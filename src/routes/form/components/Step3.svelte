@@ -7,14 +7,26 @@
 		carreerIsError,
 		alergyIsError
 	} from './sharedState';
-	import { browser } from '$app/environment';
+
+	$: if ($customerGroup !== '') {
+		$groupIsError = false;
+	}
+	$: if ($customerCarreer !== '') {
+		$carreerIsError = false;
+	}
+	$: if ($customerAlergy !== '') {
+		$alergyIsError = false;
+	}
+
+	function handleCarreerChange(event) {
+		const value = parseInt(event.target.value);
+		customerCarreer.set(value);
+	}
 
 	let showComponent = false;
-	if (browser) {
-		window.setTimeout(() => {
-			showComponent = true;
-		}, 0);
-	}
+	window.setTimeout(() => {
+		showComponent = true;
+	}, 0);
 </script>
 
 <article class:show={showComponent}>
@@ -29,7 +41,7 @@
 				id="groupInput"
 				bind:value={$customerGroup}
 			>
-				<option value="1a">1A</option>
+			    <option value="1a">1A</option>
 				<option value="1b">1B</option>
 				<option value="2a">2A</option>
 				<option value="2b">2B</option>
@@ -48,7 +60,6 @@
 				<option value="9a">9A</option>
 				<option value="9b">9B</option>
 			</select>
-			{#if $groupIsError}<span class="invalid">Selecciona un grupo</span>{/if}
 		</div>
 		<div>
 			<label for="carreerInput"> Carreras </label>
@@ -56,20 +67,20 @@
 				class="form-select group"
 				class:error={$carreerIsError}
 				id="carreerInput"
+				on:change={handleCarreerChange}
 				bind:value={$customerCarreer}
 			>
-				<option value={1} number>Ingeniería en Software</option>
-				<option value={2} number> Ingeniería en Tecnología Ambiental</option>
-				<option value={3} number> Ingeniería Financiera</option>
-				<option value={4} number> Ingeniería Mecatrónica</option>
-				<option value={5} number> Ingeniería Logística y Transporte</option>
-				<option value={6} number> Ingeniería Financiera</option>
-				<option value={7} number> Ingeniería en Sistemas Automotrices</option>
-				<option value={8} number> Ingeniería en Animación y Efectos Visuales</option>
-				<option value={9} number> Ingeniería Agroindustrial</option>
-				<option value={10} number> Ingeniería en Energía</option>
+				<option value="1">Ingeniería en Software</option>
+				<option value="2"> Ingeniería en Tecnología Ambiental</option>
+				<option value="3"> Ingeniería Financiera</option>
+				<option value="4"> Ingeniería Mecatrónica</option>
+				<option value="5"> Ingeniería Logística y Transporte</option>
+				<option value="6"> Ingeniería Financiera</option>
+				<option value="7"> Ingeniería en Sistemas Automotrices</option>
+				<option value="8"> Ingeniería en Animación y Efectos Visuales</option>
+				<option value="9"> Ingeniería Agroindustrial</option>
+				<option value="10"> Ingeniería en Energía</option>
 			</select>
-			{#if $carreerIsError}<span class="invalid">Selecciona una carrera</span>{/if}
 		</div>
 		<div>
 			<label for="alergyInput"> Alergia </label>
@@ -80,9 +91,6 @@
 				placeholder=" Ingresa alguna alergia que padeces "
 				bind:value={$customerAlergy}
 			/>
-			{#if $alergyIsError}<span class="invalid"
-					>Si, estas segur@ que no tienes alergias solo pon 'NO'</span
-				>{/if}
 		</div>
 	</form>
 </article>
@@ -93,12 +101,6 @@
 		position: relative;
 		right: -10rem;
 		opacity: 0;
-	}
-
-	.invalid {
-		font-size: 12px;
-		color: red;
-		background: transparent !important;
 	}
 	.show {
 		opacity: 1;

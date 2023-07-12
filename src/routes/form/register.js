@@ -91,7 +91,6 @@ export const sendRegisterData = async () => {
             body: registerRequestBody
         });
         if (!response.ok) {
-            console.log(response);
             throw new Error("Error en la petición" + response.status);
         }
         const data = await response.json();
@@ -104,7 +103,6 @@ export const sendRegisterData = async () => {
             body: emergencyRequestBody
         });
         if (!response2.ok) {
-            console.log(response2);
             throw new Error("Error en la petición" + response2.status);
         }
         const data2 = await response2.json();
@@ -123,7 +121,6 @@ export const sendRegisterData = async () => {
             body: requestBodyWithIds,
         });
         if (!response3.ok) {
-            console.log(response3);
             throw new Error("Error en la petición" + response3.status);
         }
         const data3 = await response3.json();
