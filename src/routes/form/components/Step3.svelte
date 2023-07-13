@@ -63,11 +63,11 @@
 				<option value={3} number> Ingeniería Financiera</option>
 				<option value={4} number> Ingeniería Mecatrónica</option>
 				<option value={5} number> Ingeniería Logística y Transporte</option>
-				<option value={6} number> Ingeniería Financiera</option>
-				<option value={7} number> Ingeniería en Sistemas Automotrices</option>
-				<option value={8} number> Ingeniería en Animación y Efectos Visuales</option>
-				<option value={9} number> Ingeniería Agroindustrial</option>
-				<option value={10} number> Ingeniería en Energía</option>
+				<option value={6} number> Ingeniería en Sistemas Automotrices</option>
+				<option value={7} number> Ingeniería en Animación y Efectos Visuales</option>
+				<option value={8} number> Ingeniería Agroindustrial</option>
+				<option value={9} number> Ingeniería en Energía</option>
+				<option value={10} number> Ingeniería en Nanotecnología</option>
 			</select>
 			{#if $carreerIsError}<span class="invalid">Selecciona una carrera</span>{/if}
 		</div>

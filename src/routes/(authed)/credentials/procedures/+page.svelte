@@ -1,12 +1,11 @@
 <script>
 	import {
-		statusCredentials,
 		procedureTrue,
-		id_rq,
-		statusProcedures
+		id_rq
 	} from '../../../../stores/states';
 	import { id_st } from '../../../../stores/auth';
 	import { BaseUrl } from '../../../../stores/apiUrl';
+	import { checkStatus } from './checkStatus';
 	let motivo_reposicion = {
 		motivo_r: ''
 	};
@@ -14,46 +13,6 @@
 	let motivo_changename = {
 		dato: '',
 		motivo_c: ''
-	};
-	let statusPro = null;
-	let id_req = null;
-
-	const checkStatus = async (e) => {
-		try {
-			if (!id_req) {
-				return;
-			}
-			const responseStatus = await fetch(BaseUrl + 'request_reason/' + id_req, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			});
-			const dataStatus = await responseStatus.json();
-			const dataSt = await dataStatus.data;
-			statusPro = dataSt.status;
-			toString(statusPro);
-
-			if (statusPro != undefined || statusPro != null || statusPro != 'undefined') {
-				statusProcedures.set(statusPro);
-				//console.log('statusPro', statusPro);
-				if (statusPro == 'revision') {
-					//console.log('revision');
-					statusCredentials.set(1);
-					procedureTrue.set(true);
-				} else if (statusPro == 'denegada') {
-					//console.log('denegada');
-					statusCredentials.set(3);
-					procedureTrue.set(false);
-				} else if (statusPro == 'aceptado') {
-					//console.log('aceptado');
-					statusCredentials.set(2);
-					procedureTrue.set(false);
-				}
-			}
-		} catch (error) {
-			//console.log(error);
-		}
 	};
 
 	const onSubmitHandler = async (e) => {
@@ -80,47 +39,38 @@
 
 		try {
 			console.log(motivo_Body);
-			const response = await fetch(BaseUrl + 'request_reason/', {
+			const response = await fetch(BaseUrl + 'api/request_reason/', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify(motivo_Body)
+			}).catch((error) => {
+				console.log(error);
 			});
+			console.log(response);
 			const data = await response.json();
 			const dataPost = data.data;
 			response.ok ? procedureTrue.set(true) : procedureTrue.set(false);
 			//console.log('DATA de ', dataPost);
 			//console.log('ID dentro de POST', dataPost.id);
 			id_rq.set(dataPost.id);
-			checkStatus();
+			id_rq.subscribe((value) => {
+				checkStatus(value);
+			});
 		} catch (error) {
-			//console.log(error);
+			console.log(error);
 		}
 		e.preventDefault();
 		//console.log(e);
 	};
-
-	id_rq.subscribe((value) => {
-		id_req = value;
-		//console.log('Id request', id_req);
-	});
-
-	// Comprobaremos que id_req no sea null o undefined para que no se ejecute la funcion checkStatus
-	if (id_req != null || id_req != undefined || id_req != 'undefined') {
-		//console.log('entro');
-		checkStatus();
-		setInterval(() => {
-			checkStatus();
-		}, 86400000);
-	}
 </script>
 
 <svelte:head>
 	<title>Policard-Tramites</title>
 </svelte:head>
 <div>
-	<div class="container ">
+	<div class="container">
 		<h1 class="text-center m-1">Tramites</h1>
 		<div class="row no-gutters m-5">
 			<div class="col-lg-6 d-none d-lg-inline-block">

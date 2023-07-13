@@ -5,20 +5,8 @@
 	let pendingDot = '';
 	let rejectedDot = '';
 	let acceptedDot = '';
-	let procedureValue = false;
-	let statusValue;
 
-	/* procedureTrue.subscribe((value) => (procedureValue = value));
-	if (procedureValue == false) {
-		console.log('No hay tramites', procedureValue);
-		subject = 'Credencial';
-	} else {
-		console.log('Hay tramites', procedureValue);
-		subject = 'Tramite';
-		statusCredentials.set(1);
-	} */
-
-	statusCredentials.subscribe((value) => (statusValue = value));
+	procedureTrue.subscribe((value) => (value ? (subject = 'Tramite') : (subject = 'Credencial')));
 
 	$: switch ($statusCredentials) {
 		case 'denegada':
@@ -35,6 +23,11 @@
 			rejectedDot = '';
 			acceptedDot = '';
 			pendingDot = 'big-dot-pending';
+			break;
+		case 'eliminado':
+			rejectedDot = 'big-dot-rejected';
+			acceptedDot = '';
+			pendingDot = '';
 			break;
 		default:
 			rejectedDot = '';
@@ -89,7 +82,7 @@
 								</div>
 							</div>
 						</div>
-						{#if $statusCredentials === 'denegada'}
+						{#if $statusCredentials === 'denegada' || $statusCredentials === 'eliminado'}
 							<!-- content here -->
 							<div class="m-4 alert alert-dismissible alert-danger">
 								<h2>Rechazado ❌</h2>

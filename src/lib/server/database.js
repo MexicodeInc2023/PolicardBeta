@@ -13,6 +13,14 @@ export function setSession(data) {
     console.log('Se ha guardado la sesión en el local', db.get('session'));
 }
 
+export function setSessionStatus(status) {
+    const sessionData = { ...db.get('session') };
+    sessionData.status = status;
+    db.set('session', sessionData);
+    console.log('Se ha actualizado el estado de la sesión en el local', db.get('session'));
+}
+
+
 export function getSession() {
     return db.get('session') || {};
 }

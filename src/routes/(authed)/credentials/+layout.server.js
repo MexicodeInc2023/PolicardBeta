@@ -5,4 +5,3 @@ export const load = async () => {
 	return { session };
 }
 
-
