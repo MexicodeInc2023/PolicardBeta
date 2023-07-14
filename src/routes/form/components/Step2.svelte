@@ -27,7 +27,7 @@
 	{/if}
 	<form>
 		<div>
-			<label for="personalnameInput"> Nombre(s) </label>
+			<label for="personalnameInput"> Nombre(s) <span>*</span></label>
 			<input
 				type="text"
 				class:error={$personalnameIsError}
@@ -37,7 +37,7 @@
 			/>
 		</div>
 		<div>
-			<label for="lastnamesInput"> Apellido(s) </label>
+			<label for="lastnamesInput"> Apellido(s) <span>*</span></label>
 			<input
 				type="text"
 				class:error={$lastnamesIsError}
@@ -47,7 +47,7 @@
 			/>
 		</div>
 		<div>
-			<label for="matriculaInput"> Matricula </label>
+			<label for="matriculaInput"> Matricula <span>*</span></label>
 			<input
 				type="number"
 				class:error={$matriculaIsError}
@@ -62,13 +62,16 @@
 			{/if}
 		</div>
 		<div>
-			<label for="dateInput"> Fecha de nacimiento </label>
+			<label for="dateInput"> Fecha de nacimiento <span>*</span></label>
 			<input type="date" class:error={$dateIsError} id="dateInput" bind:value={$customerDate} />
 		</div>
 	</form>
 </article>
 
 <style>
+	span {
+		color: red;
+	}
 	article {
 		transition: 0.3s;
 		position: relative;

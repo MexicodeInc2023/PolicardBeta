@@ -22,7 +22,7 @@
 	<p>Ingresa tus datos personales, se mostrarán en tu credencial.</p>
 	<form>
 		<div>
-			<label for="groupInput"> Grupo </label>
+			<label for="groupInput"> Grupo <span>*</span></label>
 			<select
 				class="form-select group"
 				class:error={$groupIsError}
@@ -51,7 +51,7 @@
 			{#if $groupIsError}<span class="invalid">Selecciona un grupo</span>{/if}
 		</div>
 		<div>
-			<label for="carreerInput"> Carreras </label>
+			<label for="carreerInput"> Carreras <span>*</span></label>
 			<select
 				class="form-select group"
 				class:error={$carreerIsError}
@@ -72,7 +72,7 @@
 			{#if $carreerIsError}<span class="invalid">Selecciona una carrera</span>{/if}
 		</div>
 		<div>
-			<label for="alergyInput"> Alergia </label>
+			<label for="alergyInput"> Alergia <span>*</span></label>
 			<input
 				type="text"
 				class:error={$alergyIsError}
@@ -88,6 +88,9 @@
 </article>
 
 <style>
+	span{
+		color: red;
+	}
 	article {
 		transition: 0.3s;
 		position: relative;

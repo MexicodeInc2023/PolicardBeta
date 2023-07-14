@@ -34,7 +34,7 @@
 			/>
 		</div>
 		<div>
-			<label for="contacemergencyInput"> Contacto de Emergencia </label>
+			<label for="contacemergencyInput"> Contacto de Emergencia <span>*</span></label>
 			<input
 				type="text"
 				class:error={$contactemergencyIsError}
@@ -44,7 +44,7 @@
 			/>
 		</div>
 		<div>
-			<label for="phoneemergencyInput"> Numero de Emergencia </label>
+			<label for="phoneemergencyInput"> Numero de Emergencia <span>*</span></label>
 			<input
 				type="text"
 				class:error={$phoneemergencyIsError}
@@ -54,7 +54,7 @@
 			/>
 		</div>
 		<div>
-			<label for="bloodTypeInput"> Tipo de Sangre </label>
+			<label for="bloodTypeInput"> Tipo de Sangre <span>*</span></label>
 			<input
 				type="text"
 				class:error={$customerbloodtypeIsError}
@@ -68,6 +68,9 @@
 </article>
 
 <style>
+	span {
+		color: red;
+	}
 	article {
 		transition: 0.3s;
 		position: relative;
