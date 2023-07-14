@@ -143,7 +143,6 @@
 		$currentStep++;
 	}
 </script>
-
 <main>
 	<aside>
 		<div class="overAllStep">
@@ -231,7 +230,6 @@
 		{/if}
 	</div>
 </main>
-
 <style>
 	/* MOBILE FIRST APPROACH */
 	main {

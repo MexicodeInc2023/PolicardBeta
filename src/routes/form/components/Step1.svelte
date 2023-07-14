@@ -25,7 +25,7 @@
 	</p>
 	<form>
 		<div>
-			<label for="nameInput"> Usuario </label>
+			<label for="nameInput"> Usuario <span>*</span></label>
 			<input
 				type="text"
 				class:error={$usernameIsError}
@@ -38,7 +38,7 @@
 				>{/if}
 		</div>
 		<div>
-			<label for="emailInput"> Correo Institucional </label>
+			<label for="emailInput"> Correo Institucional <span>*</span></label>
 			<input
 				type="Email"
 				class:error={$emailIsError}
@@ -49,7 +49,7 @@
 			{#if $emailIsError}<span class="invalid">El correo debe ser el institucional</span>{/if}
 		</div>
 		<div>
-			<label for="passwordInput"> Contraseña </label>
+			<label for="passwordInput"> Contraseña <span>*</span></label>
 			<input
 				type="password"
 				class:error={$passwordIsError}
@@ -64,6 +64,10 @@
 </article>
 
 <style>
+	span
+	{
+		color: red;
+	}
 	article {
 		transition: 0.3s;
 		position: relative;

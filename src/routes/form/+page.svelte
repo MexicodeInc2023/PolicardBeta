@@ -40,13 +40,10 @@
 			<div class="row main">
 				<div class="col-xl-6 col-lg-8">
 					<h1 class="banner-title">Policard</h1>
-					<p class="banner-text">
-						Identificacion Institucional <br />
-						que emite el Departamento de Servicios Escolares
-					</p>
+
 				</div>
 				<div class="col-lg-6 d-none d-lg-block lol">
-					<img src={Logo2} class="img-fluid" alt="policard" loading="lazy" decoding="async" />
+					
 				</div>
 			</div>
 		</div>
@@ -64,13 +61,12 @@
 		margin-left: 3px;
 		margin-right: 3px;
 	}
-
 	.banner {
 		background-image: url('../../lib/img/background.png');
 		background-size: cover;
 		background-position: 0 0, top left;
 		background-repeat: no-repeat;
-		padding: 50px 0;
+		padding: 1px 100px;
 		position: relative;
 	}
 
@@ -79,11 +75,10 @@
 		width: 135px;
 		height: 135px;
 		left: 134px;
-		top: 0px;
 	}
 
 	.main {
-		margin-top: 25%;
+		margin-top: 160px;
 	}
 
 	.banner-title {
