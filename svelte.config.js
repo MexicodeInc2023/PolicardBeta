@@ -7,9 +7,6 @@ const config = {
 		csp: {
 			mode: "hash",
 			directives: { "script-src": ["self"] },
-			reportOnly: {
-				'script-src': ['self']
-			}
 		},
 	}
 };
