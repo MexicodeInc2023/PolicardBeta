@@ -21,9 +21,9 @@
             <p>Esto se mostrará en tu credencial</p>
             <form>
             {#if avatar}
-            <img id="avatar" src={avatar} alt="avatar"/>
+            <img id="avatar" src={avatar} alt="avatar" loading="lazy" decoding="async"/>
              {:else}
-            <img id="avatar" src={imageDfl} alt="avatar"/>
+            <img id="avatar" src={imageDfl} alt="avatar" loading="lazy" decoding="async"/>
         {/if}
         </form>
         </div>
@@ -34,53 +34,5 @@
 </div>
 
 <style>
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    #avatar {
-        border-radius: 99999px;
-        height: 128px;
-        width: 128px;
-        margin-bottom: 10px;
-    }
-
-    .hidden {
-        display: none;
-    }
-    h3 {
-		font-weight: 700;
-		font-size: 24px;
-		line-height: 28px;
-		color: #022959;
-		margin-bottom: 9px;
-		text-align: center;
-	}
-
-	p {
-		font-size: 16px;
-		line-height: 25px;
-		color: #9699aa;
-		margin-bottom: 22px;
-		text-align: center;
-	}
-
-    .upload-btn {
-        width: 128px;
-        height: 32px;
-        background-color: black;
-        font-family: sans-serif;
-        color: white;
-        font-weight: bold;
-        border: none;
-    }
-
-    .upload-btn:hover {
-        background-color: white;
-        color: black;
-        outline: black solid 2px;
-    }
+    .container{display:flex;flex-direction:column;align-items:center;text-align:center}#avatar{border-radius:99999px;height:128px;width:128px;margin-bottom:10px}.hidden{display:none}h3{font-weight:700;font-size:24px;line-height:28px;color:#022959;margin-bottom:9px;text-align:center}p{font-size:16px;line-height:25px;color:#9699aa;margin-bottom:22px;text-align:center}.upload-btn{width:128px;height:32px;background-color:#000;font-family:sans-serif;color:#fff;font-weight:700;border:none}.upload-btn:hover{background-color:#fff;color:#000;outline:#000 solid 2px}
 </style>

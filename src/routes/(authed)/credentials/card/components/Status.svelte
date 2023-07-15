@@ -109,57 +109,5 @@
 </div>
 
 <style>
-	.track-line {
-		height: 2px !important;
-		background-color: #616ae7;
-		opacity: 1;
-	}
-
-	.dot {
-		height: 10px;
-		width: 10px;
-		margin-left: 3px;
-		margin-right: 3px;
-		margin-top: 0px;
-		background-color: #96b6a8;
-		border-radius: 50%;
-		display: inline-block;
-	}
-
-	.big-dot-pending {
-		height: 20px;
-		width: 20px;
-		margin-left: 0px;
-		margin-right: 0px;
-		margin-top: 0px;
-		background-color: #f7b500;
-		border-radius: 50%;
-		display: inline-block;
-	}
-
-	.big-dot-accepted {
-		height: 20px;
-		width: 20px;
-		margin-left: 0px;
-		margin-right: 0px;
-		margin-top: 0px;
-		background-color: #18be78;
-		border-radius: 50%;
-		display: inline-block;
-	}
-
-	.big-dot-rejected {
-		height: 20px;
-		width: 20px;
-		margin-left: 0px;
-		margin-right: 0px;
-		margin-top: 0px;
-		background-color: #ff5630;
-		border-radius: 50%;
-		display: inline-block;
-	}
-
-	.card-stepper {
-		z-index: 0;
-	}
+	.track-line{height:2px!important;background-color:#616ae7;opacity:1}.dot{height:10px;width:10px;margin-left:3px;margin-right:3px;margin-top:0;background-color:#96b6a8;border-radius:50%;display:inline-block}.big-dot-pending{height:20px;width:20px;margin-left:0;margin-right:0;margin-top:0;background-color:#f7b500;border-radius:50%;display:inline-block}.big-dot-accepted{height:20px;width:20px;margin-left:0;margin-right:0;margin-top:0;background-color:#18be78;border-radius:50%;display:inline-block}.big-dot-rejected{height:20px;width:20px;margin-left:0;margin-right:0;margin-top:0;background-color:#ff5630;border-radius:50%;display:inline-block}.card-stepper{z-index:0}
 </style>

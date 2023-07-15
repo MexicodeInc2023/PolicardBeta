@@ -11,7 +11,7 @@
 	<section class="banner">
 		<div>
 			<a href="/">
-				<img src={Logo} alt="Logo" class="logo" />
+				<img src={Logo} alt="Logo" class="logo" loading="lazy" decoding="async" />
 			</a>
 		</div>
 		<br /><br /><br /><br />
@@ -307,72 +307,5 @@
 
 
 <style>
-   .banner {
-		background-image: url('../../lib/img/background.png');
-		background-size: cover;
-		background-position: 0 0, top left;
-		background-repeat: no-repeat;
-		padding: 50px 0;
-		position: relative;
-	}
-
-	.logo {
-		position: absolute;
-		width: 135px;
-		height: 135px;
-		left: 134px;
-		top: 0px;
-	}
-
-
-	.text-uppercase {
-		font-size: 4em;
-		letter-spacing: 0.1em;
-		font-weight: 600;
-		text-transform: uppercase;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		color: #000;
-		text-align: center;
-		color: #5a40c0;
-	}
-
-    .text2 {
-		font-size: 2.0em;
-		letter-spacing: 0.1em;
-		font-weight: 700;
-		text-transform: uppercase;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		color: #000;
-		text-align: center;
-		color: #18BE78;
-	}
-
-	.text3 {
-		font-size: 1.6em;
-		letter-spacing: 0.1em;
-		font-weight: 700;
-		text-transform: uppercase;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		color: #000;
-		text-align:center;
-		color: #18BE78;
-	}
-
-    .banner-text {
-		font-style: normal;
-		font-weight: 400;
-		font-size: 1.4rem;
-		text-align:justify;
-		color: #000;
-	}
-
-    .privA{
-		display: block;
-		margin: auto;
-		position: relative;
-		width: 325px;
-    }
+   .banner{background-image:url(../../lib/img/background.png);background-size:cover;background-position:0 0,top left;background-repeat:no-repeat;padding:50px 0;position:relative}.logo{position:absolute;width:135px;height:135px;left:134px;top:0}.text-uppercase{font-size:4em;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:18px 0 0;transition:all .5s;color:#000;text-align:center;color:#5a40c0}.text2{font-size:2em;letter-spacing:.1em;font-weight:700;text-transform:uppercase;padding:18px 0 0;transition:all .5s;color:#000;text-align:center;color:#18BE78}.text3{font-size:1.6em;letter-spacing:.1em;font-weight:700;text-transform:uppercase;padding:18px 0 0;transition:all .5s;color:#000;text-align:center;color:#18BE78}.banner-text{font-style:normal;font-weight:400;font-size:1.4rem;text-align:justify;color:#000}.privA{display:block;margin:auto;position:relative;width:325px}
 </style>
