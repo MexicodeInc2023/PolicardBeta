@@ -96,49 +96,5 @@
 
 <style>
 
-	.text-uppercase {
-		font-size: 3em;
-		letter-spacing: 0.1em;
-		font-weight: 600;
-		text-transform: uppercase;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		color: #000;
-		text-align: center;
-		color: #5a40c0;
-	}
-
-	.titlecard {
-		font-size: 1.5em;
-		letter-spacing: 0.1em;
-		font-weight: 600;
-		text-transform: uppercase;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		color: #000;
-		text-align: center;
-		color: #5a40c0;
-	}
-
-	.pcard {
-		font-size: 1.2em;
-
-		font-weight: 600;
-		text-transform: none;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		text-align: justify;
-		color: #000;
-	}
-
-
-
-	@media only screen and (max-width: 375px) {
-		.container {
-			position: relative;
-			margin-top: 705px;
-			margin-left: 20px;
-			margin-right: 3px;
-		}
-	}
+.text-uppercase{font-size:3em;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:18px 0 0;transition:all .5s;color:#000;text-align:center;color:#5a40c0}.titlecard{font-size:1.5em;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:18px 0 0;transition:all .5s;color:#000;text-align:center;color:#5a40c0}.pcard{font-size:1.2em;font-weight:600;text-transform:none;padding:18px 0 0;transition:all .5s;text-align:justify;color:#000}@media only screen and (max-width: 375px){.container{position:relative;margin-top:705px;margin-left:20px;margin-right:3px}}
 </style>

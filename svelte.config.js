@@ -4,11 +4,11 @@ import adapter from '@sveltejs/adapter-vercel';
 const config = {
 	kit: {
 		adapter: adapter(),
-		csp: {
+		/* csp: {
 			mode: "hash",
 			directives: { "script-src": ["self"] },
 			
-		},
+		}, */
 	}
 }
 export default config;

@@ -17,7 +17,7 @@
 	<section class="banner">
 		<div>
 			<a href="/">
-				<img src={Logo} alt="Logo" class="logo" />
+				<img src={Logo} alt="Logo" class="logo" loading="lazy" decoding="async"/>
 			</a>
 		</div>
 
@@ -392,115 +392,5 @@
 </body>
 
 <style>
-	.banner {
-		background-image: url('../../lib/img/background.png');
-		background-size: cover;
-		background-position: 0 0, top left;
-		background-repeat: no-repeat;
-		padding: 50px 0;
-		position: relative;
-	}
-
-	.logo {
-		position: absolute;
-		width: 135px;
-		height: 135px;
-		left: 134px;
-		top: 0px;
-	}
-
-	.card {
-		height: 325px;
-		transition: all 0.5s;
-		box-shadow: px 15px 30px rgba(25, 25, 25, 0.247), -15px -15px 30px rgba(60, 60, 60, 0.082);
-		text-align: center;
-		overflow: hidden;
-	}
-
-	.text-uppercase {
-		font-size: 3em;
-		letter-spacing: 0.1em;
-		font-weight: 600;
-		text-transform: uppercase;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		color: #000;
-		text-align: center;
-		color: #5a40c0;
-	}
-
-	.titlecard {
-		font-size: 1.5em;
-		letter-spacing: 0.1em;
-		font-weight: 600;
-		text-transform: uppercase;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		color: #000;
-		text-align: center;
-		color: #5a40c0;
-	}
-
-	.pcard {
-		font-size: 1.2em;
-
-		font-weight: 600;
-		text-transform: none;
-		padding: 18px 0 0 0;
-		transition: all 0.5s;
-		text-align: justify;
-		color: #000;
-	}
-
-	.logo {
-		position: absolute;
-		width: 135px;
-		height: 135px;
-		left: 134px;
-		top: 0px;
-	}
-
-	.imgc {
-		display: block;
-		margin: auto;
-		position: relative;
-		width: 100px;
-	}
-
-	.carousel-item {
-		-moz-animation: automatizacion 3s infinite linear;
-		-o-animation: automatizacion 3s infinite linear;
-		-webkit-animation: automatizacion 3s infinite linear;
-		animation: automatizacion 3s infinite linear;
-		-webkit-transition: all 0.75s ease;
-		-moz-transition: all 0.75s ease;
-		-ms-transition: all 0.75s ease;
-		-o-transition: all 0.75s ease;
-		transition: all 0.75s ease;
-	}
-
-	/*responsive*/
-
-	@media screen and (max-width: 630px) {
-		.banner {
-			background-image: none;
-		}
-		.logo {
-			position: absolute;
-			width: 135px;
-			height: 135px;
-			left: 134px;
-			top: 0px;
-			align-items: center;
-		}
-	}
-
-	@media only screen and (max-width: 375px) {
-		.container {
-			position: relative;
-			margin-top: 705px;
-			margin-left: 20px;
-			margin-right: 3px;
-		}
-	}
+	.banner{background-image:url(../../lib/img/background.png);background-size:cover;background-position:0 0,top left;background-repeat:no-repeat;padding:50px 0;position:relative}.logo{position:absolute;width:135px;height:135px;left:134px;top:0}.card{height:325px;transition:all .5s;box-shadow:px 15px 30px rgba(25,25,25,0.247),-15px -15px 30px rgba(60,60,60,0.082);text-align:center;overflow:hidden}.text-uppercase{font-size:3em;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:18px 0 0;transition:all .5s;color:#000;text-align:center;color:#5a40c0}.titlecard{font-size:1.5em;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:18px 0 0;transition:all .5s;color:#000;text-align:center;color:#5a40c0}.pcard{font-size:1.2em;font-weight:600;text-transform:none;padding:18px 0 0;transition:all .5s;text-align:justify;color:#000}.logo{position:absolute;width:135px;height:135px;left:134px;top:0}.imgc{display:block;margin:auto;position:relative;width:100px}.carousel-item{-moz-animation:automatizacion 3s infinite linear;-o-animation:automatizacion 3s infinite linear;-webkit-animation:automatizacion 3s infinite linear;animation:automatizacion 3s infinite linear;-webkit-transition:all .75s ease;-moz-transition:all .75s ease;-ms-transition:all .75s ease;-o-transition:all .75s ease;transition:all .75s ease}@media screen and (max-width: 630px){.banner{background-image:none}.logo{position:absolute;width:135px;height:135px;left:134px;top:0;align-items:center}}@media only screen and (max-width: 375px){.container{position:relative;margin-top:705px;margin-left:20px;margin-right:3px}}
 </style>
