@@ -174,13 +174,16 @@
 					<b> Datos de emergencia </b>
 				</div>
 			</div>
-			<div class="stepContainer">
+			
+			<!--
+				<div class="stepContainer">
 				<button class="stepButton" class:selected={$currentStep >= 5}>5</button>
 				<div class="stepText">
 					<p>Paso 5</p>
 					<b> Sube tu fotografia </b>
 				</div>
-			</div>
+			</div>-->
+			
 		</div>
 	</aside>
 	<div class="formContainer">
@@ -192,9 +195,9 @@
 			<Step3 />
 		{:else if $currentStep === 4}
 			<Step4 />
+		<!-- {:else if $currentStep === 5}
+			<Step5 /> -->
 		{:else if $currentStep === 5}
-			<Step5 />
-		{:else if $currentStep === 6}
 			<PurchaseComplete />
 		{/if}
 	</div>
@@ -204,7 +207,7 @@
 			on:click={() => {
 				$currentStep--;
 			}}
-			class:show={$currentStep > 1 && $currentStep < 6}
+			class:show={$currentStep > 1 && $currentStep < 5}
 		>
 			<div class="arrow-wrapperr">
 				<div class="arrow back" />
@@ -212,13 +215,13 @@
 			Regresar
 		</button>
 		{#if $currentStep < 5}
-			<button class="nextButton" on:click={nextStep}>
+			<button class="nextButton confirm" on:click={nextStep}>
 				Siguiente
 				<div class="arrow-wrapper">
 					<div class="arrow" />
 				</div>
 			</button>
-		{:else if $currentStep === 5}
+		<!-- {:else if $currentStep === 5}
 			<button
 				class="nextButton confirm"
 				on:click={() => {
@@ -226,7 +229,7 @@
 				}}
 			>
 				Confirmar
-			</button>
+			</button> -->
 		{/if}
 	</div>
 </main>

@@ -13,17 +13,17 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Recuerda:</h5>
+				<h5 class="modal-title">Recuerda</h5>
 			</div>
 			<div class="modal-body">
 				<p>
 					Esto es un formulario, no actualices la pagina. Sí perdiste tu credencial contactate con
-					soporte para la reposición
+					soporte para la reposición de tu credencial.
 				</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" on:click={changeVisible}
-					>Close</button
+					>Cerrar</button
 				>
 			</div>
 		</div>
