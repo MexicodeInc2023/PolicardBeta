@@ -11,15 +11,15 @@
 		>
 			<div href="/#" class="d-flex align-items-center p-0 text-dark">
 				<img alt="logo" src={logo} width="30px" loading="lazy" decoding="async" />
-				<span class="ml-4 h5 font-weight-bold">Policard</span>
+				<span class="ml-3 h5 font-weight-bold">Policard</span>
 			</div>
 			<small
 				>&copy; Universidad Politécnica de Tapachula, By Mexic0de. Todos los derechos reservados.</small
 			>
 			<div class="footer-col">
 				<h5>Conocenos:</h5>
-				<div class="social-links">
-					<a href="https://mexic0de.page/" target="_blank"><img src={logoMex} width="30px" loading="lazy" decoding="async" ></a>
+				<div class="conocenos">
+					<a href="https://mexic0de.page/" target="_blank"><img src={logoMex} width="30px"></a>
 				</div>
 			</div>
 	</footer>
@@ -41,7 +41,7 @@
 	color: #ffffff;
 	padding-left: 8px;
 }
-.footer-col .social-links a{
+.footer-col .conocenos a{
 	display: inline-block;
 	height: 40px;
 	width: 40px;
@@ -53,7 +53,7 @@
 	color: #ffffff;
 	transition: all 0.5s ease;
 }
-.footer-col .social-links a:hover{
+.footer-col .conocenos a:hover{
 	color: #24262b;
 	background-color: #ffffff;
 }
